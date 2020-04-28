@@ -1,10 +1,22 @@
-import {SET_CATEGORY_LIST} from "./actionTypes";
+import {FETCH_CATEGORIES_REQUEST, FETCH_CATEGORIES_FAILURE, FETCH_CATEGORIES_SUCCESS} from "./actionTypes";
 
-export const setCategoryList = categoryList => (
+export const fetchCategoriesRequest = () => (
     {
-        type: SET_CATEGORY_LIST,
+        type: FETCH_CATEGORIES_REQUEST
+    }
+);
+
+export const fetchCategoriesSuccess = categoryList => (
+    {
+        type: FETCH_CATEGORIES_SUCCESS,
         payload: {
             categoryList: categoryList
         }
+    }
+);
+
+export const fetchCategoriesFailure = () => (
+    {
+        type: FETCH_CATEGORIES_FAILURE
     }
 );

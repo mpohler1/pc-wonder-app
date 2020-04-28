@@ -1,7 +1,20 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {fetchCategoriesRequest, fetchCategoriesFailure, fetchCategoriesSuccess} from "../actions/actions";
+import {fetchCategories} from "../service/apiService";
 
 class Navbar extends Component {
+
+    componentDidMount() {
+        this.props.fetchCategoriesRequest();
+        fetchCategories().then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchCategoriesSuccess(json.text)
+            } else {
+                this.props.fetchCategoriesFailure();
+            }
+        });
+    }
 
     render() {
         return (
@@ -31,4 +44,8 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, {
+    fetchCategoriesRequest,
+    fetchCategoriesSuccess,
+    fetchCategoriesFailure
+})(Navbar);

@@ -1,8 +1,8 @@
-import {SET_CATEGORY_LIST} from "../actions/actionTypes";
+import {FETCH_CATEGORIES_SUCCESS} from "../actions/actionTypes";
 
 function categoryReducer(state = {categoryList: []}, action) {
     switch (action.type) {
-        case SET_CATEGORY_LIST:
+        case FETCH_CATEGORIES_SUCCESS:
             return Object.assign({}, state, (
                 {
                     list: action.payload.categoryList

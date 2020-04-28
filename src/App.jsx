@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import SiteNavbar from "./components/SiteNavbar";
 import CategoryNavbar from "./components/CategoryNavbar";
 import MainView from "./components/MainView";

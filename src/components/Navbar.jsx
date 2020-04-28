@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
 class Navbar extends Component {
 
@@ -24,4 +25,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+    return {
+        categories: state.categories.list
+    };
+};
+
+export default connect(mapStateToProps)(Navbar);

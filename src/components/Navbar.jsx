@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class SiteNavbar extends Component {
+class Navbar extends Component {
 
     render() {
         return (
@@ -24,4 +24,4 @@ class SiteNavbar extends Component {
     }
 }
 
-export default SiteNavbar;
+export default Navbar;

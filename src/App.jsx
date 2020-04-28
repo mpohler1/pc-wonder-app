@@ -1,28 +1,22 @@
 import React from 'react';
-import SiteNavbar from "./components/SiteNavbar";
-import CategoryNavbar from "./components/CategoryNavbar";
+import Navbar from "./components/Navbar";
 import MainView from "./components/MainView";
 import Footer from "./components/Footer";
 
 function App() {
-  return (
-    <div className="container-fluid">
-      <div className="row">
-        <SiteNavbar/>
-      </div>
-      <div className="row">
-        <div className="col">
-          <CategoryNavbar/>
+    return (
+        <div className="container-fluid">
+            <div className="row">
+                <Navbar/>
+            </div>
+            <div className="row">
+                <MainView/>
+            </div>
+            <div className="row">
+                <Footer/>
+            </div>
         </div>
-        <div className="col">
-          <MainView/>
-        </div>
-      </div>
-      <div className="row">
-        <Footer/>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;

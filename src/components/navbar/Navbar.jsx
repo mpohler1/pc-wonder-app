@@ -4,14 +4,27 @@ import {
     fetchCategoriesRequest,
     fetchCategoriesFailure,
     fetchCategoriesSuccess,
-    setNavbarMenuVisibility
-} from "../actions/actions";
-import {fetchCategories} from "../service/apiService";
+    setNavbarMenuVisibility, setMainViewMode
+} from "../../actions/actions";
+import {fetchCategories} from "../../service/apiService";
+import {CART, PRODUCT_GRID} from "../../resources/viewMode";
 
 class Navbar extends Component {
 
-    handleOnClick() {
+    handleMenuIconClick() {
         this.props.setNavbarMenuVisibility(!this.props.menuVisible);
+    }
+
+    handleMenuItemClick(id) {
+        this.props.setMainViewMode(PRODUCT_GRID);
+    }
+
+    handleSearch() {
+        this.props.setMainViewMode(PRODUCT_GRID);
+    }
+
+    handleCartClick() {
+        this.props.setMainViewMode(CART);
     }
 
     handleOnBlur(event) {
@@ -40,24 +53,34 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="container-fluid navbar navbar-dark sticky-top bg-dark flex-nowrap">
+                {/** Navbar Menu Button **/}
                 <button className="navbar-toggler"
                         id="navbarDropdownMenuButton"
                         type="button"
-                        onClick={() => this.handleOnClick()}
+                        onClick={() => this.handleMenuIconClick()}
                         onBlur={event => this.handleOnBlur(event)}>
                     <span className="navbar-toggler-icon"/>
                 </button>
+
+                {/** Search Bar **/}
                 <div className="input-group px-3">
                     <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
                     <div className="input-group-append">
-                        <button className="btn btn-outline-primary" type="submit">
+                        <button className="btn btn-outline-primary"
+                                type="submit"
+                                onClick={() => this.handleSearch()}>
                             <span className="oi oi-magnifying-glass"/>
                         </button>
                     </div>
                 </div>
-                <button className="btn" type="button">
+
+                {/** Cart Button **/}
+                <button className="btn"
+                        type="button"
+                        onClick={() => this.handleCartClick()}>
                     <span className="h3 oi oi-cart text-white"/>
                 </button>
+
                 {
                     this.props.menuVisible &&
                     (
@@ -65,7 +88,8 @@ class Navbar extends Component {
                              aria-labelledby="navbarDropdownMenuButton">
                             {this.props.categories.map(category => (
                                 <React.Fragment>
-                                    <button className="btn nav-item nav-link">
+                                    <button className="btn nav-item nav-link"
+                                            onClick={() => this.handleMenuItemClick(category.id)}>
                                         {category.name}
                                     </button>
                                     {
@@ -93,5 +117,6 @@ export default connect(mapStateToProps, {
     fetchCategoriesRequest,
     fetchCategoriesSuccess,
     fetchCategoriesFailure,
-    setNavbarMenuVisibility
+    setNavbarMenuVisibility,
+    setMainViewMode
 })(Navbar);

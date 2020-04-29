@@ -1,5 +1,5 @@
 export function fetchCategories() {
-    const endpoint = "http://localhost:8080/categories";
+    const endpoint = "http://192.168.1.69:8080/categories";
     const headers = {
         'content-type': 'application/json'
     };

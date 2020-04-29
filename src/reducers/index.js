@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
-import categoryReducer from "./CategoryReducer"
+import categoryReducer from "./categoryReducer"
+import navbarReducer from "./navbarReducer";
 
-export default combineReducers({categories: categoryReducer})
+export default combineReducers({categories: categoryReducer, navbar: navbarReducer})

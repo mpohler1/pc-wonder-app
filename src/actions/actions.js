@@ -3,7 +3,7 @@ import {
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
     SET_NAVBAR_MENU_VISIBILITY,
-    SET_MAIN_VIEW_MODE
+    SET_MAIN_VIEW_MODE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -24,6 +24,27 @@ export const fetchCategoriesSuccess = categoryList => (
 export const fetchCategoriesFailure = () => (
     {
         type: FETCH_CATEGORIES_FAILURE
+    }
+);
+
+export const fetchProductsRequest = () => (
+    {
+        type: FETCH_PRODUCTS_REQUEST
+    }
+);
+
+export const fetchProductsSuccess = productList => (
+    {
+        type: FETCH_PRODUCTS_SUCCESS,
+        payload: {
+            productList: productList
+        }
+    }
+);
+
+export const fetchProductsFailure = () => (
+    {
+        type: FETCH_PRODUCTS_FAILURE
     }
 );
 

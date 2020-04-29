@@ -1,6 +1,6 @@
 import {FETCH_CATEGORIES_SUCCESS} from "../actions/actionTypes";
 
-function categoryReducer(state = {categoryList: []}, action) {
+function categoryReducer(state = {list: []}, action) {
     switch (action.type) {
         case FETCH_CATEGORIES_SUCCESS:
             return Object.assign({}, state, (

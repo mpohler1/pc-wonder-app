@@ -1,16 +1,21 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
 class ProductGrid extends Component {
 
     render() {
         return (
-            <div>
-                <h1 className="display-1">
-                    Product Grid
-                </h1>
+            <div className="container-fluid">
+
             </div>
         );
     }
 }
 
-export default ProductGrid;
+const mapStateToProps = state => {
+    return {
+        products: state.products.list
+    };
+};
+
+export default connect(mapStateToProps, {})(ProductGrid);

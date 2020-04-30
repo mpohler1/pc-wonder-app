@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {setDetailProduct, setMainViewMode} from "../../actions/actions";
+import {PRODUCT_DETAIL} from "../../resources/viewMode";
 
 class ProductGrid extends Component {
+
+    handleProductClick(product) {
+        this.props.setDetailProduct(product);
+        this.props.setMainViewMode(PRODUCT_DETAIL);
+    }
 
     render() {
         return (
@@ -12,8 +19,9 @@ class ProductGrid extends Component {
                             <div className="col p-1 d-flex align-items-stretch">
                                 <div className="card container-fluid p-0 m-0">
                                     <img src={product.imageURL}
-                                         className="card-img-top product-thumbnail container-fluid p-0 m-0"
+                                         className="btn btn-card-img card-img-top product-thumbnail container-fluid p-0 m-0"
                                          alt={product.name + " image"}
+                                         onClick={() => this.handleProductClick(product)}
                                     />
                                     <div className="card-body">
                                         <h5 className="card-title">
@@ -48,4 +56,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {})(ProductGrid);
+export default connect(mapStateToProps, {
+    setDetailProduct,
+    setMainViewMode
+})(ProductGrid);

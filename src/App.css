@@ -2,3 +2,9 @@
     object-fit: cover;
     height: 230px;
 }
+
+.btn-card-img {
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

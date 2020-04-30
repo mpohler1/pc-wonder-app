@@ -7,7 +7,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className="container-fluid navbar navbar-dark sticky-top bg-dark flex-nowrap">
+            <nav className="navbar navbar-dark bg-dark flex-nowrap sticky-top">
                 <Menu/>
                 <SearchBar/>
                 <CartButton/>

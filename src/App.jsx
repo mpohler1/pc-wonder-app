@@ -44,16 +44,10 @@ class App extends Component{
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <Navbar/>
-                </div>
-                <div className="row">
-                    <MainView/>
-                </div>
-                <div className="row">
-                    <Footer/>
-                </div>
+            <div className="">
+                <Navbar/>
+                <MainView/>
+                <Footer/>
             </div>
         );
     }

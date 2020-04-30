@@ -1,0 +1,4 @@
+.product-thumbnail {
+    object-fit: cover;
+    height: 230px;
+}

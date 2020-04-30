@@ -5,8 +5,38 @@ class ProductGrid extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-
+            <div className="container-fluid bg-white">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 bg-secondary p-1">
+                    {
+                        this.props.products.map(product => (
+                            <div className="col p-1 d-flex align-items-stretch">
+                                <div className="card container-fluid p-0 m-0">
+                                    <img src={product.imageURL}
+                                         className="card-img-top product-thumbnail container-fluid p-0 m-0"
+                                         alt={product.name + " image"}
+                                    />
+                                    <div className="card-body">
+                                        <h5 className="card-title">
+                                            {product.name}
+                                        </h5>
+                                        <p className="card-subtitle">
+                                            {product.manufacturer.name}
+                                        </p>
+                                        <h5 className="card-title">
+                                            {product.rating}
+                                        </h5>
+                                        <h4 className="card-title">
+                                            ${product.price.toFixed(2)}
+                                        </h4>
+                                        <button className="btn btn-primary">
+                                            Add To Cart
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         );
     }

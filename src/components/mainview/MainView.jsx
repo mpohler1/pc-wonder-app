@@ -6,8 +6,6 @@ import Checkout from "./Checkout";
 import {CART, CHECKOUT, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
 import {connect} from "react-redux";
 
-
-
 class MainView extends Component {
 
     render() {

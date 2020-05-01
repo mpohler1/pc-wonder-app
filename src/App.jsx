@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/navigation/Navbar";
 import MainView from "./components/mainview/MainView";
 import Footer from "./components/footer/Footer";
 import {connect} from "react-redux";
@@ -12,6 +12,7 @@ import {
     fetchProductsRequest,
     fetchProductsSuccess
 } from "./actions/actions";
+import Drawer from "./components/navigation/Drawer";
 
 class App extends Component{
 
@@ -48,6 +49,7 @@ class App extends Component{
                 <Navbar/>
                 <MainView/>
                 <Footer/>
+                <Drawer/>
             </div>
         );
     }

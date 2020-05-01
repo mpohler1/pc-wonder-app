@@ -8,3 +8,15 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+.drawer {
+    height: 100vh;
+    width: fit-content;
+    position: fixed;
+    top: 0;
+}
+
+.drawer-list {
+    width: 100%;
+    overflow-y: auto;
+}

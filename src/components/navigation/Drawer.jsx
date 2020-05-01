@@ -1,22 +1,18 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
+import {fetchProductsByCategory} from "../../service/apiService";
 import {PRODUCT_GRID} from "../../resources/viewMode";
+import MenuButton from "./MenuButton";
+import {connect} from "react-redux";
 import {
     fetchProductsFailure,
     fetchProductsRequest,
-    fetchProductsSuccess,
-    setMainViewMode,
+    fetchProductsSuccess, setMainViewMode,
     setNavbarMenuVisibility
 } from "../../actions/actions";
-import {fetchProductsByCategory} from "../../service/apiService";
 
-class Menu extends Component {
+class Drawer extends Component {
 
-    handleMenuIconClick() {
-        this.props.setNavbarMenuVisibility(!this.props.menuVisible);
-    }
-
-    handleMenuItemClick(id) {
+    handleOnClick(id) {
         this.props.fetchProductsRequest();
         fetchProductsByCategory(id).then(([response, json]) => {
             if (response.status === 200) {
@@ -26,6 +22,7 @@ class Menu extends Component {
             }
         });
         this.props.setMainViewMode(PRODUCT_GRID);
+        this.props.setNavbarMenuVisibility(false);
     }
 
     handleOnBlur(event) {
@@ -38,32 +35,27 @@ class Menu extends Component {
     render() {
         return (
             <React.Fragment>
-                <button className="navbar-toggler"
-                        id="navbarDropdownMenuButton"
-                        type="button"
-                        onClick={() => this.handleMenuIconClick()}
-                        onBlur={event => this.handleOnBlur(event)}>
-                    <span className="navbar-toggler-icon"/>
-                </button>
                 {
                     this.props.menuVisible &&
-                    (
-                        <div className="dropdown-menu show"
-                             aria-labelledby="navbarDropdownMenuButton">
+                    <div className="hide drawer navbar navbar-dark bg-dark d-flex flex-column flex-nowrap align-items-start border-right border-secondary px-0 m-0"
+                        onBlur={event => this.handleOnBlur(event)}>
+                        <div className="d-flex flex-row flex-nowrap align-items-start border-bottom border-secondary px-3 pt-2 pb-3">
+                            <MenuButton/>
+                            <h3 className="text-white text-nowrap ml-3">
+                                PC Wonder
+                            </h3>
+                        </div>
+                        <div className="drawer-list d-flex flex-column flex-nowrap align-items-start mt-2 mb-auto">
                             {this.props.categories.map(category => (
-                                <React.Fragment>
-                                    <button className="btn nav-item nav-link"
-                                            onClick={() => this.handleMenuItemClick(category.id)}>
+                                <div className="nav-item">
+                                    <button className="h5 btn btn-lg nav-link text-white-50 text-nowrap p-0 pl-3"
+                                            onClick={() => this.handleOnClick(category.id)}>
                                         {category.name}
                                     </button>
-                                    {
-                                        category.id !== this.props.categories[this.props.categories.length - 1].id &&
-                                        <div className="dropdown-divider"/>
-                                    }
-                                </React.Fragment>
+                                </div>
                             ))}
                         </div>
-                    )
+                    </div>
                 }
             </React.Fragment>
         );
@@ -74,7 +66,7 @@ const mapStateToProps = state => {
     return {
         categories: state.categories.list,
         menuVisible: state.navbar.menuVisible
-    }
+    };
 };
 
 export default connect(mapStateToProps, {
@@ -83,4 +75,4 @@ export default connect(mapStateToProps, {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure
-})(Menu);
+})(Drawer);

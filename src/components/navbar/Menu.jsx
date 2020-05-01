@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {PRODUCT_GRID} from "../../resources/viewMode";
-import {setMainViewMode, setNavbarMenuVisibility} from "../../actions/actions";
+import {
+    fetchProductsFailure,
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    setMainViewMode,
+    setNavbarMenuVisibility
+} from "../../actions/actions";
+import {fetchProductsByCategory} from "../../service/apiService";
 
 class Menu extends Component {
 
@@ -10,6 +17,14 @@ class Menu extends Component {
     }
 
     handleMenuItemClick(id) {
+        this.props.fetchProductsRequest();
+        fetchProductsByCategory(id).then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json);
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        });
         this.props.setMainViewMode(PRODUCT_GRID);
     }
 
@@ -64,5 +79,8 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     setNavbarMenuVisibility,
-    setMainViewMode
+    setMainViewMode,
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsFailure
 })(Menu);

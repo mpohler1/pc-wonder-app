@@ -1,5 +1,7 @@
+const apiURL = "http://192.168.1.69:8080";
+
 export function fetchCategories() {
-    const endpoint = "http://192.168.1.69:8080/categories";
+    const endpoint = apiURL + "/categories";
     const headers = {
         'content-type': 'application/json'
     };
@@ -13,7 +15,21 @@ export function fetchCategories() {
 }
 
 export function fetchAllProducts() {
-    const endpoint = "http://192.168.1.69:8080/products";
+    const endpoint = apiURL + "/products";
+    const headers = {
+        'content-type': 'application/json'
+    };
+    return fetch(endpoint, {
+        method: 'GET',
+        headers: headers
+    }).then(response => Promise.all([
+        response,
+        response.json()
+    ]))
+}
+
+export function fetchProductsByCategory(categoryId) {
+    const endpoint = apiURL + "/products/category/" + categoryId;
     const headers = {
         'content-type': 'application/json'
     };

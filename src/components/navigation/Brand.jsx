@@ -27,7 +27,7 @@ class Brand extends Component {
 
     render() {
         return (
-            <h3 className="btn brand text-white text-nowrap ml-3 py-2"
+            <h3 className="btn brand text-white text-nowrap ml-3 px-0 py-2"
                 onClick={() => this.handleOnClick()}>
                 PC Wonder
             </h3>

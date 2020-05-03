@@ -3,16 +3,15 @@ import SearchBar from "./SearchBar";
 import MenuButton from "./MenuButton";
 import CartButton from "./CartButton";
 import {connect} from "react-redux";
+import Brand from "./Brand";
 
 class Navbar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-dark bg-dark flex-nowrap">
+            <nav className="navbar navbar-dark bg-dark flex-nowrap sticky-top">
                 <MenuButton/>
-                <h3 className="text-white text-nowrap ml-3 py-2">
-                    PC Wonder
-                </h3>
+                <Brand/>
                 <SearchBar/>
                 <CartButton/>
             </nav>

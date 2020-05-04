@@ -8,7 +8,7 @@ import {
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
     SET_DETAIL_PRODUCT,
-    SET_NAVBAR_MOBILE
+    SET_NAVBAR_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -62,12 +62,21 @@ export const setNavbarMobile = mobile => (
     }
 );
 
-
 export const setDrawerVisibility = drawerVisible => (
     {
         type: SET_DRAWER_VISIBILITY,
         payload: {
             drawerVisible: drawerVisible
+        }
+    }
+);
+
+export const setScrollYAndStickyTop = (scrollY, stickyTop) => (
+    {
+        type: SET_SCROLL_Y_AND_STICKY_TOP,
+        payload: {
+            scrollY: scrollY,
+            stickyTop: stickyTop
         }
     }
 );

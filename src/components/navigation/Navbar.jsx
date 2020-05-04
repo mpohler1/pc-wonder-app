@@ -5,7 +5,10 @@ import CartButton from "./CartButton";
 import {connect} from "react-redux";
 import Brand from "./Brand";
 import {BOOTSTRAP_XS_BREAKPOINT} from "../../resources/breakpoints";
-import {setNavbarMobile} from "../../actions/actions";
+import {setNavbarMobile, setScrollYAndStickyTop} from "../../actions/actions";
+
+const CLASS_LIST_WITH_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 sticky-top";
+const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0";
 
 class Navbar extends Component {
 
@@ -17,17 +20,32 @@ class Navbar extends Component {
         }
     }
 
+    handleScroll() {
+        const newScrollY = window.scrollY;
+        if (!this.props.drawerVisible) {
+            if (newScrollY > this.props.scrollY) {
+                this.props.setScrollYAndStickyTop(newScrollY, false);
+            } else {
+                this.props.setScrollYAndStickyTop(newScrollY, true);
+            }
+        } else {
+            this.props.setScrollYAndStickyTop(newScrollY, this.props.stickyTop);
+        }
+    }
+
     componentDidMount() {
         window.addEventListener('resize', () => this.handleResize());
+        window.addEventListener('scroll', () => this.handleScroll());
     }
 
     componentWillUnmount() {
         window.removeEventListener('resize', () => this.handleResize());
+        window.removeEventListener('scroll', () => this.handleScroll());
     }
 
     render() {
         return (
-            <nav className="container-fluid navbar navbar-dark bg-dark sticky-top pr-0">
+            <nav className={this.props.stickyTop ? CLASS_LIST_WITH_STICKY_TOP : CLASS_LIST_WITHOUT_STICKY_TOP}>
                 {
                     this.props.mobile
                         ?
@@ -60,10 +78,13 @@ const mapStateToProps = state => {
     return {
         categories: state.categories.list,
         drawerVisible: state.navbar.drawerVisible,
-        mobile: state.navbar.mobile
+        mobile: state.navbar.mobile,
+        scrollY: state.navbar.scrollY,
+        stickyTop: state.navbar.stickyTop
     };
 };
 
 export default connect(mapStateToProps, {
-    setNavbarMobile
+    setNavbarMobile,
+    setScrollYAndStickyTop
 })(Navbar);

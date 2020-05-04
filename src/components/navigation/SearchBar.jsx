@@ -11,7 +11,7 @@ class SearchBar extends Component {
 
     render() {
         return (
-            <div className="input-group px-3">
+            <div className="input-group px-0 px-sm-3 py-0 mx-0">
                 <input className="form-control" type="search" placeholder="Search" aria-label="Search"/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-primary"

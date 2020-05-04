@@ -3,7 +3,12 @@ import {
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
     SET_DRAWER_VISIBILITY,
-    SET_MAIN_VIEW_MODE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, SET_DETAIL_PRODUCT
+    SET_MAIN_VIEW_MODE,
+    FETCH_PRODUCTS_REQUEST,
+    FETCH_PRODUCTS_SUCCESS,
+    FETCH_PRODUCTS_FAILURE,
+    SET_DETAIL_PRODUCT,
+    SET_NAVBAR_MOBILE
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -48,6 +53,16 @@ export const fetchProductsFailure = () => (
     }
 );
 
+export const setNavbarMobile = mobile => (
+    {
+        type: SET_NAVBAR_MOBILE,
+        payload: {
+            mobile: mobile
+        }
+    }
+);
+
+
 export const setDrawerVisibility = drawerVisible => (
     {
         type: SET_DRAWER_VISIBILITY,
@@ -73,4 +88,4 @@ export const setDetailProduct = product => (
             product: product
         }
     }
-)
+);

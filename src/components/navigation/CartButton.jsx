@@ -11,7 +11,7 @@ class CartButton extends Component {
 
     render() {
         return (
-            <button className="btn"
+            <button className="btn ml-auto mr-0"
                     type="button"
                     onClick={() => this.handleOnClick()}>
                 <span className="h3 oi oi-cart text-white"/>

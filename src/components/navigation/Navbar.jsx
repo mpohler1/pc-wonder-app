@@ -4,8 +4,8 @@ import MenuButton from "./MenuButton";
 import CartButton from "./CartButton";
 import {connect} from "react-redux";
 import Brand from "./Brand";
-import {BOOTSTRAP_XS_BREAKPOINT} from "../../resources/breakpoints";
-import {setNavbarMobile, setScrollYAndStickyTop} from "../../actions/actions";
+import {SM_BREAKPOINT} from "../../resources/breakpoints";
+import {setMobile, setScrollYAndStickyTop} from "../../actions/actions";
 
 const CLASS_LIST_WITH_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 sticky-top";
 const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0";
@@ -13,10 +13,10 @@ const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dar
 class Navbar extends Component {
 
     handleResize() {
-        if (this.props.mobile && window.innerWidth >= BOOTSTRAP_XS_BREAKPOINT) {
-            this.props.setNavbarMobile(false)
-        } else if (!this.props.mobile && window.innerWidth < BOOTSTRAP_XS_BREAKPOINT) {
-            this.props.setNavbarMobile(true)
+        if (this.props.mobile && window.innerWidth >= SM_BREAKPOINT) {
+            this.props.setMobile(false)
+        } else if (!this.props.mobile && window.innerWidth < SM_BREAKPOINT) {
+            this.props.setMobile(true)
         }
     }
 
@@ -74,13 +74,13 @@ const mapStateToProps = state => {
     return {
         categories: state.categories.list,
         drawerVisible: state.navbar.drawerVisible,
-        mobile: state.navbar.mobile,
         scrollY: state.navbar.scrollY,
-        stickyTop: state.navbar.stickyTop
+        stickyTop: state.navbar.stickyTop,
+        mobile: state.screen.mobile
     };
 };
 
 export default connect(mapStateToProps, {
-    setNavbarMobile,
+    setMobile,
     setScrollYAndStickyTop
 })(Navbar);

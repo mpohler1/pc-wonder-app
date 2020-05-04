@@ -1,10 +1,8 @@
-import {SET_DRAWER_VISIBILITY, SET_NAVBAR_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP} from "../actions/actionTypes";
-import {BOOTSTRAP_XS_BREAKPOINT} from "../resources/breakpoints";
+import {SET_DRAWER_VISIBILITY, SET_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP} from "../actions/actionTypes";
 
 function navbarReducer(
     state = {
         drawerVisible: false,
-        mobile: (window.innerWidth <= BOOTSTRAP_XS_BREAKPOINT),
         scrollY: 0,
         stickyTop: true
     },
@@ -14,11 +12,6 @@ function navbarReducer(
         case SET_DRAWER_VISIBILITY:
             return Object.assign({}, state, {
                 drawerVisible: action.payload.drawerVisible
-            });
-
-        case SET_NAVBAR_MOBILE:
-            return Object.assign({}, state, {
-                mobile: action.payload.mobile
             });
 
         case SET_SCROLL_Y_AND_STICKY_TOP:

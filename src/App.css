@@ -4,7 +4,8 @@
 }
 
 .product-full {
-    object-fit: scale-down;
+    object-fit: contain;
+    height: auto;
     max-height: 80vh;
     border: 0;
 }

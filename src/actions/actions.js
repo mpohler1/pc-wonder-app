@@ -8,7 +8,7 @@ import {
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
     SET_DETAIL_PRODUCT,
-    SET_NAVBAR_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP
+    SET_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP, SET_LARGEST
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -53,15 +53,6 @@ export const fetchProductsFailure = () => (
     }
 );
 
-export const setNavbarMobile = mobile => (
-    {
-        type: SET_NAVBAR_MOBILE,
-        payload: {
-            mobile: mobile
-        }
-    }
-);
-
 export const setDrawerVisibility = drawerVisible => (
     {
         type: SET_DRAWER_VISIBILITY,
@@ -95,6 +86,24 @@ export const setDetailProduct = product => (
         type: SET_DETAIL_PRODUCT,
         payload: {
             product: product
+        }
+    }
+);
+
+export const setMobile = mobile => (
+    {
+        type: SET_MOBILE,
+        payload: {
+            mobile: mobile
+        }
+    }
+);
+
+export const setLargest = largest => (
+    {
+        type: SET_LARGEST,
+        payload: {
+            largest: largest
         }
     }
 );

@@ -1,0 +1,11 @@
+export const CASE = "Case";
+export const COOLING = "Cooling";
+export const CPU = "CPU";
+export const GPU = "GPU";
+export const KEYBOARD = "Keyboard";
+export const MEMORY = "Memory";
+export const MONITOR = "Monitor";
+export const MOTHERBOARD = "Motherboard";
+export const MOUSE = "Mouse";
+export const PSU = "PSU";
+export const STORAGE = "Storage";

@@ -5,7 +5,7 @@ import {
     fetchProductsRequest,
     fetchProductsSuccess,
     setMainViewMode,
-    setNavbarMenuVisibility
+    setDrawerVisibility
 } from "../../actions/actions";
 import {fetchAllProducts} from "../../service/apiService";
 import {PRODUCT_GRID} from "../../resources/viewMode";
@@ -27,7 +27,7 @@ class Brand extends Component {
 
     render() {
         return (
-            <h3 className="btn brand text-white text-nowrap ml-3 px-0 py-2"
+            <h3 className="btn brand text-white text-nowrap ml-3 px-0 py-0"
                 onClick={() => this.handleOnClick()}>
                 PC Wonder
             </h3>
@@ -44,5 +44,5 @@ export default connect(mapStateToProps, {
     fetchProductsSuccess,
     fetchProductsFailure,
     setMainViewMode,
-    setNavbarMenuVisibility
+    setNavbarMenuVisibility: setDrawerVisibility
 })(Brand);

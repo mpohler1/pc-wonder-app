@@ -2,7 +2,7 @@ import {
     FETCH_CATEGORIES_REQUEST,
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
-    SET_NAVBAR_MENU_VISIBILITY,
+    SET_DRAWER_VISIBILITY,
     SET_MAIN_VIEW_MODE, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_FAILURE, SET_DETAIL_PRODUCT
 } from "./actionTypes";
 
@@ -48,11 +48,11 @@ export const fetchProductsFailure = () => (
     }
 );
 
-export const setNavbarMenuVisibility = menuVisible => (
+export const setDrawerVisibility = drawerVisible => (
     {
-        type: SET_NAVBAR_MENU_VISIBILITY,
+        type: SET_DRAWER_VISIBILITY,
         payload: {
-            menuVisible: menuVisible
+            drawerVisible: drawerVisible
         }
     }
 );

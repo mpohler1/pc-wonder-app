@@ -22,7 +22,7 @@ class Navbar extends Component {
 const mapStateToProps = state => {
     return {
         categories: state.categories.list,
-        menuVisible: state.navbar.menuVisible
+        drawerVisible: state.navbar.drawerVisible
     };
 };
 

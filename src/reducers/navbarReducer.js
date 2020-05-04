@@ -1,10 +1,10 @@
-import {SET_NAVBAR_MENU_VISIBILITY} from "../actions/actionTypes";
+import {SET_DRAWER_VISIBILITY} from "../actions/actionTypes";
 
-function navbarReducer(state = {menuVisible: false}, action) {
+function navbarReducer(state = {drawerVisible: false}, action) {
     switch (action.type) {
-        case SET_NAVBAR_MENU_VISIBILITY:
+        case SET_DRAWER_VISIBILITY:
             return Object.assign({}, state, {
-                menuVisible: action.payload.menuVisible
+                drawerVisible: action.payload.drawerVisible
             });
 
         default:

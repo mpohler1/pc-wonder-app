@@ -8,14 +8,14 @@ import {
     fetchProductsRequest,
     fetchProductsSuccess,
     setMainViewMode,
-    setNavbarMenuVisibility
+    setDrawerVisibility
 } from "../../actions/actions";
 import Brand from "./Brand";
 
 class Drawer extends Component {
 
     handleBackgroundClick() {
-        this.props.setNavbarMenuVisibility(false);
+        this.props.setDrawerVisibility(false);
     }
 
     handleDrawerListClick(id) {
@@ -27,7 +27,7 @@ class Drawer extends Component {
                 this.props.fetchProductsFailure();
             }
             this.props.setMainViewMode(PRODUCT_GRID);
-            this.props.setNavbarMenuVisibility(false);
+            this.props.setDrawerVisibility(false);
         });
     }
 
@@ -35,12 +35,12 @@ class Drawer extends Component {
         return (
             <React.Fragment>
                 {
-                    this.props.menuVisible &&
+                    this.props.drawerVisible &&
                     <div className="drawer-shadow sticky-top"
                          onClick={() => this.handleBackgroundClick()}/>
                 }
                 {
-                    this.props.menuVisible &&
+                    this.props.drawerVisible &&
                     <div className="hide drawer navbar navbar-dark bg-dark d-flex flex-column flex-nowrap align-items-start border-right border-secondary px-0 m-0 sticky-top">
                         <div className="d-flex flex-row flex-nowrap align-items-center border-bottom border-secondary px-3 pb-2">
                             <MenuButton/>
@@ -66,12 +66,12 @@ class Drawer extends Component {
 const mapStateToProps = state => {
     return {
         categories: state.categories.list,
-        menuVisible: state.navbar.menuVisible
+        drawerVisible: state.navbar.drawerVisible
     };
 };
 
 export default connect(mapStateToProps, {
-    setNavbarMenuVisibility,
+    setDrawerVisibility,
     setMainViewMode,
     fetchProductsRequest,
     fetchProductsSuccess,

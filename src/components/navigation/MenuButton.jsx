@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {setNavbarMenuVisibility} from "../../actions/actions";
+import {setDrawerVisibility} from "../../actions/actions";
 
 class MenuButton extends Component {
 
     handleOnClick() {
-        this.props.setNavbarMenuVisibility(!this.props.menuVisible);
+        this.props.setDrawerVisibility(!this.props.drawerVisible);
     }
 
     render() {
@@ -21,10 +21,10 @@ class MenuButton extends Component {
 
 const mapStateToProps = state => {
     return {
-        menuVisible: state.navbar.menuVisible
+        drawerVisible: state.navbar.drawerVisible
     }
 };
 
 export default connect(mapStateToProps, {
-    setNavbarMenuVisibility,
+    setDrawerVisibility,
 })(MenuButton);

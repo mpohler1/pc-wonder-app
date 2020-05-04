@@ -7,13 +7,13 @@ class ProductDetail extends Component {
     render() {
         return (
             <div className="d-flex flex-nowrap flex-row align-items-center m-2">
-                <div className="row row-cols-12 mx-sm-auto mt-sm-2 mt-lg-3">
-                    <div className="col col-12 col-md-6 col-lg-8 mb-2">
+                <div className="row row-cols-1 row-cols-sm-12 mx-auto mt-sm-2 mt-lg-3">
+                    <div className="col col-md-6 col-lg-8 mb-2">
                         <img src={this.props.product.imageURL}
                              className="card card-img product-full p-0"
                              alt={"" + this.props.product.name + " Image"}/>
                     </div>
-                    <div className="col col-12 col-md-6 col-lg-4">
+                    <div className="col col-md-6 col-lg-4">
                         <h2>
                             {this.props.product.name}
                         </h2>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class MouseDetail extends Component {
+class KeyboardDetail extends Component {
 
     render() {
         return (
@@ -12,28 +12,32 @@ class MouseDetail extends Component {
                         <td>{this.props.product.year}</td>
                     </tr>
                     <tr>
-                        <td>Orientation</td>
-                        <td>{this.props.product.orientation}</td>
+                        <td>Size</td>
+                        <td>{this.props.product.size}</td>
                     </tr>
                     <tr>
-                        <td>Tracking Method</td>
-                        <td>{this.props.product.tracking}</td>
+                        <td>Mechanical</td>
+                        <td>{this.props.mechanical ? 'Yes' : 'No'}</td>
+                    </tr>
+                    <tr>
+                        <td>Backlit</td>
+                        <td>{this.props.backlit ? 'Yes' : 'No'}</td>
                     </tr>
                     <tr>
                         <td>Wired</td>
-                        <td>{this.props.product.wired ? 'Yes' : 'No'}</td>
+                        <td>{this.props.wired ? 'Yes' : 'No'}</td>
                     </tr>
                     <tr>
-                        <td>Interface</td>
-                        <td>{this.props.product.mouseInterface}</td>
+                        <td>USB</td>
+                        <td>{this.props.usb ? 'Yes' : 'No'}</td>
                     </tr>
                     <tr>
-                        <td>Buttons</td>
-                        <td>{this.props.product.buttons}</td>
+                        <td>PS2</td>
+                        <td>{this.props.ps2 ? 'Yes' : 'No'}</td>
                     </tr>
                     <tr>
-                        <td>Max DPI</td>
-                        <td>{this.props.product.maxDPI}</td>
+                        <td>Color</td>
+                        <td>{this.props.product.color}</td>
                     </tr>
                 </tbody>
             </table>
@@ -49,4 +53,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(MouseDetail);
+})(KeyboardDetail);

@@ -12,16 +12,16 @@ import {
     MOUSE,
     PSU, STORAGE
 } from "../../../resources/categories";
-import CaseDetails from "./CaseDetails";
-import CoolingDetails from "./CoolingDetails";
-import KeyboardDetails from "./KeyboardDetails";
+import CaseDetails from "./CaseDetail";
+import CoolingDetails from "./CoolingDetail";
+import KeyboardDetails from "./KeyboardDetail";
 import MemoryDetail from "./MemoryDetail";
 import MonitorDetail from "./MonitorDetail";
 import MotherboardDetail from "./MotherboardDetail";
 import MouseDetail from "./MouseDetail";
 import StorageDetail from "./StorageDetail";
-import CPUDetails from "./CPUDetails";
-import GPUDetails from "./GPUDetails";
+import CPUDetails from "./CPUDetail";
+import GPUDetails from "./GPUDetail";
 import PSUDetail from "./PSUDetail";
 
 class Specification extends Component {

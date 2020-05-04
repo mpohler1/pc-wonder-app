@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class StorageDetail extends Component {
+class CPUDetail extends Component {
 
     render() {
         return (
@@ -12,24 +12,24 @@ class StorageDetail extends Component {
                         <td>{this.props.product.year}</td>
                     </tr>
                     <tr>
-                        <td>Storage Type</td>
-                        <td>{this.props.product.type}</td>
+                        <td>Socket</td>
+                        <td>{this.props.product.socket}</td>
                     </tr>
                     <tr>
-                        <td>Form Factor</td>
-                        <td>{this.props.product.form}</td>
+                        <td>Speed</td>
+                        <td>{this.props.product.speed} GHz</td>
                     </tr>
                     <tr>
-                        <td>SATA Versrion</td>
-                        <td>{this.props.product.sataVersion}</td>
+                        <td>Cores</td>
+                        <td>{this.props.product.cores}</td>
                     </tr>
                     <tr>
-                        <td>Size</td>
-                        <td>{this.props.product.size} GB</td>
+                        <td>64-bit Support</td>
+                        <td>{this.props.product.sixtyFourBitSupport ? 'Yes' : 'No'}</td>
                     </tr>
                     <tr>
-                        <td>Cache</td>
-                        <td>{this.props.product.cache} MB</td>
+                        <td>Hyper Threading Support</td>
+                        <td>{this.props.product.hyperThreadingSupport ? 'Yes' : 'No'}</td>
                     </tr>
                 </tbody>
             </table>
@@ -42,6 +42,7 @@ const mapStateToProps = state => {
         product: state.products.detail
     };
 };
+
 export default connect(mapStateToProps, {
 
-})(StorageDetail);
+})(CPUDetail);

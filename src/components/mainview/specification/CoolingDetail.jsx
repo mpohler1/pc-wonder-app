@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class MemoryDetail extends Component {
+class CoolingDetail extends Component {
 
     render() {
         return (
@@ -13,18 +13,15 @@ class MemoryDetail extends Component {
                     </tr>
                     <tr>
                         <td>Size</td>
-                        <td>{this.props.product.size}</td>
+                        <td>{this.props.product.size} mm</td>
                     </tr>
                     <tr>
-                        <td>Capacity</td>
-                        <td>
-                            {this.props.product.numSticks * this.props.product.memoryPerStick} GB (
-                            {this.props.product.numSticks} x {this.props.product.memoryPerStick} GB)
-                        </td>
+                        <td>Dimensions</td>
+                        <td>{this.props.product.length} x {this.props.product.width} x {this.props.product.height} mm</td>
                     </tr>
                     <tr>
-                        <td>Type</td>
-                        <td>{this.props.product.type}</td>
+                        <td>Weight</td>
+                        <td>{this.props.product.weight} lbs</td>
                     </tr>
                 </tbody>
             </table>
@@ -40,4 +37,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(MemoryDetail);
+})(CoolingDetail);

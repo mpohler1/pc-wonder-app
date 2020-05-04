@@ -3,7 +3,13 @@
     height: 230px;
 }
 
-.btn-card-img {
+.product-full {
+    object-fit: scale-down;
+    max-height: 80vh;
+    border: 0;
+}
+
+.btn-card-img-top {
     border: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -32,4 +38,8 @@
 
 .brand {
     font-size: 1.75rem;
+}
+
+.quantity {
+    max-width: 4rem;
 }

@@ -5,7 +5,7 @@ import {PRODUCT_DETAIL} from "../../resources/viewMode";
 
 class ProductGrid extends Component {
 
-    handleProductClick(product) {
+    handleOnClick(product) {
         this.props.setDetailProduct(product);
         this.props.setMainViewMode(PRODUCT_DETAIL);
     }
@@ -19,9 +19,9 @@ class ProductGrid extends Component {
                             <div className="col p-1 d-flex align-items-stretch">
                                 <div className="card container-fluid p-0 m-0">
                                     <img src={product.imageURL}
-                                         className="btn btn-card-img card-img-top product-thumbnail container-fluid p-0 m-0"
+                                         className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
                                          alt={product.name + " image"}
-                                         onClick={() => this.handleProductClick(product)}
+                                         onClick={() => this.handleOnClick(product)}
                                     />
                                     <div className="card-body">
                                         <h5 className="card-title">

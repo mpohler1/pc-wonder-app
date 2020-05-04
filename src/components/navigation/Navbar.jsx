@@ -22,14 +22,12 @@ class Navbar extends Component {
 
     handleScroll() {
         const newScrollY = window.scrollY;
-        if (!this.props.drawerVisible) {
-            if (newScrollY > this.props.scrollY) {
-                this.props.setScrollYAndStickyTop(newScrollY, false);
-            } else {
-                this.props.setScrollYAndStickyTop(newScrollY, true);
-            }
-        } else {
+        if (this.props.drawerVisible) {
             this.props.setScrollYAndStickyTop(newScrollY, this.props.stickyTop);
+        } else if (newScrollY > this.props.scrollY) {
+            this.props.setScrollYAndStickyTop(newScrollY, false);
+        } else {
+            this.props.setScrollYAndStickyTop(newScrollY, true);
         }
     }
 

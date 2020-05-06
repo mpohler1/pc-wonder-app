@@ -1,4 +1,4 @@
-import {SET_DRAWER_VISIBILITY, SET_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP} from "../actions/actionTypes";
+import {SET_DRAWER_VISIBILITY, SET_SCROLL_Y_AND_STICKY_TOP} from "../actions/actionTypes";
 
 function navbarReducer(
     state = {

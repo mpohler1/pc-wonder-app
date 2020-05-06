@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import Specification from "./specification/Specification";
 import {XXL_BREAKPOINT} from "../../resources/breakpoints";
-import {setLargest} from "../../actions/actions";
+import {insertItemIntoCart, setLargest, setProductQuantity} from "../../actions/actions";
 
 class ProductDetail extends Component {
 
@@ -14,8 +14,17 @@ class ProductDetail extends Component {
         }
     }
 
+    handleQuantityChange(event) {
+        this.props.setProductQuantity(parseInt(event.target.value));
+    }
+
+    handleCartButtonClick() {
+        this.props.insertItemIntoCart(this.props.product, this.props.quantity);
+    }
+
     componentDidMount() {
         window.addEventListener('resize', () => this.handleResize());
+        this.props.setProductQuantity(1);
     }
 
     componentWillUnmount() {
@@ -47,8 +56,12 @@ class ProductDetail extends Component {
                                     ${this.props.product.price.toFixed(2)}
                                 </h2>
                                 <div className="input-group">
-                                    <input className="form-control quantity ml-2" type="number" placeholder="1"/>
-                                    <button className="btn btn-primary ml-2">
+                                    <input className="form-control quantity ml-2"
+                                           type="number"
+                                           value={this.props.quantity}
+                                           onChange={event => this.handleQuantityChange(event)}/>
+                                    <button className="btn btn-primary ml-2"
+                                            onClick={() => this.handleCartButtonClick()}>
                                         Add To Cart
                                     </button>
                                 </div>
@@ -84,10 +97,13 @@ class ProductDetail extends Component {
 const mapStateToProps = state => {
     return {
         product: state.products.detail,
+        quantity: state.products.quantity,
         largest: state.screen.largest
     };
 };
 
 export default connect(mapStateToProps, {
-    setLargest
+    setLargest,
+    insertItemIntoCart,
+    setProductQuantity
 })(ProductDetail);

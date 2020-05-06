@@ -8,7 +8,7 @@ import {
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
     SET_DETAIL_PRODUCT,
-    SET_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP, SET_LARGEST
+    SET_MOBILE, SET_SCROLL_Y_AND_STICKY_TOP, SET_LARGEST, INSERT_ITEM_INTO_CART, SET_PRODUCT_QUANTITY
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -86,6 +86,25 @@ export const setDetailProduct = product => (
         type: SET_DETAIL_PRODUCT,
         payload: {
             product: product
+        }
+    }
+);
+
+export const setProductQuantity = quantity => (
+    {
+        type: SET_PRODUCT_QUANTITY,
+        payload: {
+            quantity: quantity
+        }
+    }
+);
+
+export const insertItemIntoCart = (product, quantity) => (
+    {
+        type: INSERT_ITEM_INTO_CART,
+        payload: {
+            product: product,
+            quantity: quantity
         }
     }
 );

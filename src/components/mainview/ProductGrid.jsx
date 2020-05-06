@@ -1,13 +1,17 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {setDetailProduct, setMainViewMode} from "../../actions/actions";
+import {insertItemIntoCart, setDetailProduct, setMainViewMode} from "../../actions/actions";
 import {PRODUCT_DETAIL} from "../../resources/viewMode";
 
 class ProductGrid extends Component {
 
-    handleOnClick(product) {
+    handleProductClick(product) {
         this.props.setDetailProduct(product);
         this.props.setMainViewMode(PRODUCT_DETAIL);
+    }
+
+    handleCartButtonClick(product) {
+        this.props.insertItemIntoCart(product, 1);
     }
 
     render() {
@@ -21,7 +25,7 @@ class ProductGrid extends Component {
                                     <img src={product.imageURL}
                                          className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
                                          alt={product.name + " image"}
-                                         onClick={() => this.handleOnClick(product)}
+                                         onClick={() => this.handleProductClick(product)}
                                     />
                                     <div className="card-body">
                                         <h5 className="card-title">
@@ -36,7 +40,8 @@ class ProductGrid extends Component {
                                         <h4 className="card-title">
                                             ${product.price.toFixed(2)}
                                         </h4>
-                                        <button className="btn btn-primary">
+                                        <button className="btn btn-primary"
+                                                onClick={() => this.handleCartButtonClick(product)}>
                                             Add To Cart
                                         </button>
                                     </div>
@@ -58,5 +63,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     setDetailProduct,
-    setMainViewMode
+    setMainViewMode,
+    insertItemIntoCart
 })(ProductGrid);

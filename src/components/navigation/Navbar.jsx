@@ -4,21 +4,12 @@ import MenuButton from "./MenuButton";
 import CartButton from "./CartButton";
 import {connect} from "react-redux";
 import Brand from "./Brand";
-import {SM_BREAKPOINT} from "../../resources/breakpoints";
-import {setMobile, setScrollYAndStickyTop} from "../../actions/actions";
+import {setScrollYAndStickyTop} from "../../actions/actions";
 
 const CLASS_LIST_WITH_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 sticky-top";
 const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0";
 
 class Navbar extends Component {
-
-    handleResize() {
-        if (this.props.mobile && window.innerWidth >= SM_BREAKPOINT) {
-            this.props.setMobile(false)
-        } else if (!this.props.mobile && window.innerWidth < SM_BREAKPOINT) {
-            this.props.setMobile(true)
-        }
-    }
 
     handleScroll() {
         const newScrollY = window.scrollY;
@@ -30,12 +21,10 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', () => this.handleResize());
         window.addEventListener('scroll', () => this.handleScroll());
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', () => this.handleResize());
         window.removeEventListener('scroll', () => this.handleScroll());
     }
 
@@ -81,6 +70,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setMobile,
     setScrollYAndStickyTop
 })(Navbar);

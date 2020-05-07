@@ -1,18 +1,9 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import Specification from "./specification/Specification";
-import {XXL_BREAKPOINT} from "../../resources/breakpoints";
-import {insertItemIntoCart, setLargest, setProductQuantity} from "../../actions/actions";
+import {insertItemIntoCart, setProductQuantity} from "../../actions/actions";
 
 class ProductDetail extends Component {
-
-    handleResize() {
-        if (this.props.largest && window.innerWidth < XXL_BREAKPOINT) {
-            this.props.setLargest(false)
-        } else if (!this.props.largest && window.innerWidth >= XXL_BREAKPOINT) {
-            this.props.setLargest(true)
-        }
-    }
 
     handleQuantityChange(event) {
         this.props.setProductQuantity(parseInt(event.target.value));
@@ -23,12 +14,7 @@ class ProductDetail extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', () => this.handleResize());
         this.props.setProductQuantity(1);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', () => this.handleResize());
     }
 
     render() {
@@ -103,7 +89,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setLargest,
     insertItemIntoCart,
     setProductQuantity
 })(ProductDetail);

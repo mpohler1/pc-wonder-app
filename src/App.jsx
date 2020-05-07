@@ -10,11 +10,26 @@ import {
     fetchCategoriesSuccess,
     fetchProductsFailure,
     fetchProductsRequest,
-    fetchProductsSuccess
+    fetchProductsSuccess, setLargest, setMobile
 } from "./actions/actions";
 import Drawer from "./components/navigation/Drawer";
+import {SM_BREAKPOINT, XXL_BREAKPOINT} from "./resources/breakpoints";
 
 class App extends Component{
+
+    handleResize() {
+        if (this.props.mobile && window.innerWidth >= SM_BREAKPOINT) {
+            this.props.setMobile(false)
+        } else if (!this.props.mobile && window.innerWidth < SM_BREAKPOINT) {
+            this.props.setMobile(true);
+        }
+
+        if (this.props.largest && window.innerWidth < XXL_BREAKPOINT) {
+            this.props.setLargest(false)
+        } else if (!this.props.largest && window.innerWidth >= XXL_BREAKPOINT) {
+            this.props.setLargest(true)
+        }
+    }
 
     setCategories() {
         this.props.fetchCategoriesRequest();
@@ -39,8 +54,13 @@ class App extends Component{
     }
 
     componentDidMount() {
+        window.addEventListener('resize', () => this.handleResize());
         this.setCategories();
         this.setProducts();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', () => this.handleResize());
     }
 
     render() {
@@ -56,7 +76,10 @@ class App extends Component{
 }
 
 const mapStateToProps = state => {
-    return {}
+    return {
+        mobile: state.screen.mobile,
+        largest: state.screen.largest
+    }
 };
 
 export default connect(mapStateToProps, {
@@ -65,5 +88,7 @@ export default connect(mapStateToProps, {
     fetchCategoriesFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
-    fetchProductsFailure
+    fetchProductsFailure,
+    setMobile,
+    setLargest
 })(App);

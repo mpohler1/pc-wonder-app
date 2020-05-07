@@ -58,7 +58,9 @@ class ProductDetail extends Component {
                                     <h5>
                                         Specifications:
                                     </h5>
-                                    <Specification/>
+                                    <div className="specification-box">
+                                        <Specification/>
+                                    </div>
                                 </React.Fragment>
                             }
                         </div>

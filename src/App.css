@@ -44,3 +44,8 @@
 .quantity {
     max-width: 4rem;
 }
+
+.specification-box {
+    max-height: 60vh;
+    overflow-y: auto;
+}

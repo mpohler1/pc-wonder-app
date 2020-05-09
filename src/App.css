@@ -46,6 +46,16 @@
 }
 
 .specification-box {
-    max-height: 60vh;
+    max-height: 61vh;
     overflow-y: auto;
+}
+
+.page {
+    min-height: calc(100vh - (122px + 0.5rem));
+}
+
+@media screen and (min-width: 640px) {
+    .page {
+        min-height: calc(100vh - (68px + 0.5rem));
+    }
 }

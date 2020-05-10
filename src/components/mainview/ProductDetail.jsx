@@ -1,12 +1,15 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import Specification from "./specification/Specification";
-import {insertItemIntoCart, setProductQuantity} from "../../actions/actions";
+import {insertItemIntoCart, setQuantityInProductDetail} from "../../actions/actions";
 
 class ProductDetail extends Component {
 
     handleQuantityChange(event) {
-        this.props.setProductQuantity(parseInt(event.target.value));
+        const quantity = parseInt(event.target.value);
+        if (quantity > 0) {
+            this.props.setQuantityInProductDetail(quantity);
+        }
     }
 
     handleCartButtonClick() {
@@ -14,7 +17,7 @@ class ProductDetail extends Component {
     }
 
     componentDidMount() {
-        this.props.setProductQuantity(1);
+        this.props.setQuantityInProductDetail(1);
     }
 
     render() {
@@ -92,5 +95,5 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     insertItemIntoCart,
-    setProductQuantity
+    setQuantityInProductDetail
 })(ProductDetail);

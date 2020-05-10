@@ -1,23 +1,31 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {setQuantityInItemList} from "../../actions/actions";
 
 class ItemList extends Component {
+
+    handleQuantityChange(item, event) {
+        const quantity = parseInt(event.target.value);
+        if (quantity > 0) {
+            this.props.setQuantityInItemList(item.product.id, quantity);
+        }
+    }
 
     render() {
         return (
             <table className="table table-striped">
                 <thead>
-                        {
-                            this.props.mobile &&
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col"/>
-                                </tr>
-                        }
-                        {
-                            !this.props.mobile &&
+                    {
+                        this.props.mobile &&
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col"/>
+                            </tr>
+                    }
+                    {
+                        !this.props.mobile &&
                             <tr>
                                 <th scope="col">Image</th>
                                 <th scope="col">Name</th>
@@ -26,7 +34,7 @@ class ItemList extends Component {
                                 <th scope="col">Subtotal</th>
                                 <th scope="col">Remove</th>
                             </tr>
-                        }
+                    }
                 </thead>
                 <tbody>
                     {
@@ -43,15 +51,17 @@ class ItemList extends Component {
                                 {
                                     !this.props.mobile && <td>{item.product.name}</td>
                                 }
-                                <td>${parseInt(item.product.price).toFixed(2)}</td>
+                                <td>${parseFloat(item.product.price).toFixed(2)}</td>
                                 <td>
                                     <input className="form-control quantity"
-                                           type="number"/>
+                                           type="number"
+                                           value={item.quantity}
+                                           onChange={event => this.handleQuantityChange(item, event)}/>
                                 </td>
                                 {
                                     !this.props.mobile &&
                                     <td>
-                                        ${parseInt(item.product.price * item.quantity).toFixed(2)}
+                                        ${(item.product.price * item.quantity).toFixed(2)}
                                     </td>
                                 }
                                 <td>
@@ -76,5 +86,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-
+    setQuantityInItemList
 })(ItemList);

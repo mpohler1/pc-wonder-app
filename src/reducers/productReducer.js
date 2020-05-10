@@ -1,4 +1,4 @@
-import {FETCH_PRODUCTS_SUCCESS, SET_DETAIL_PRODUCT, SET_PRODUCT_QUANTITY} from "../actions/actionTypes";
+import {FETCH_PRODUCTS_SUCCESS, SET_DETAIL_PRODUCT, SET_QUANTITY_IN_PRODUCT_DETAIL} from "../actions/actionTypes";
 
 function productReducer(state = {list: [], quantity: 0}, action) {
     switch (action.type) {
@@ -12,7 +12,7 @@ function productReducer(state = {list: [], quantity: 0}, action) {
                 detail: action.payload.product
             });
 
-        case SET_PRODUCT_QUANTITY:
+        case SET_QUANTITY_IN_PRODUCT_DETAIL:
             return Object.assign({}, state, {
                 quantity: action.payload.quantity
             });

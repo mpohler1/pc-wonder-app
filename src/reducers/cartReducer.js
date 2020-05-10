@@ -1,6 +1,7 @@
-import {INSERT_ITEM_INTO_CART} from "../actions/actionTypes";
+import {INSERT_ITEM_INTO_CART, SET_QUANTITY_IN_ITEM_LIST} from "../actions/actionTypes";
 
 function cartReducer(state={items: []}, action) {
+
     switch (action.type) {
         case INSERT_ITEM_INTO_CART:
             let foundItem = false;
@@ -19,6 +20,16 @@ function cartReducer(state={items: []}, action) {
             }
             return Object.assign({}, state, {
                 items: items
+            });
+
+        case SET_QUANTITY_IN_ITEM_LIST:
+            return Object.assign({}, state, {
+                items: state.items.slice().map(item => {
+                    if (item.product.id === action.payload.productId) {
+                        item.quantity = action.payload.quantity;
+                    }
+                    return item;
+                })
             });
 
         default:

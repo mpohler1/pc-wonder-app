@@ -1,54 +1,77 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-const CLASS_LIST_WITH_BORDER_TOP = "row row-cols-1 border-top border-bottom border-secondary p-2 d-flex flex-row align-items-center";
-const CLASS_LIST_WITHOUT_BORDER_TOP = "row row-cols-1 border-bottom border-secondary p-2 d-flex flex-row align-items-center";
-
 class ItemList extends Component {
 
     render() {
         return (
-            <div className="container">
-                {
-                    this.props.items.map(item => (
-                        <div className={item.product.id === this.props.items[0].product.id ? CLASS_LIST_WITH_BORDER_TOP : CLASS_LIST_WITHOUT_BORDER_TOP}>
-                            <div className="col col-sm-3 col-xl-2 p-0">
-                                <img className="card-img p-0"
-                                     src={item.product.imageURL}
-                                     alt={"Thumbnail for " + item.product.name}/>
-                            </div>
-                            <div className="col col-sm-2 p-2">
-                                <p className="p-0">
-                                    {item.product.name}
-                                </p>
-                            </div>
-                            <div className="col col-sm-7 p-2">
-                                <div className="input-group d-flex flex-row align-items-center">
-                                    <p className="pl-sm-2 pr-2 ml-sm-auto">
-                                        ${item.product.price} x
-                                    </p>
+            <table className="table table-striped">
+                <thead>
+                        {
+                            this.props.mobile &&
+                                <tr>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col"/>
+                                </tr>
+                        }
+                        {
+                            !this.props.mobile &&
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        }
+                </thead>
+                <tbody>
+                    {
+                        this.props.items.map(item => (
+                            <tr>
+                                <td>
+                                    <img className="card-img product-cart-item p-0 m-0"
+                                         src={item.product.imageURL}
+                                         alt={("Thumbnail for " + item.product.name)}/>
+                                    {
+                                        this.props.mobile && <p className="p-0">{item.product.name}</p>
+                                    }
+                                </td>
+                                {
+                                    !this.props.mobile && <td>{item.product.name}</td>
+                                }
+                                <td>${parseInt(item.product.price).toFixed(2)}</td>
+                                <td>
                                     <input className="form-control quantity"
-                                           type="number"
-                                           placeholder="1"/>
-                                    <p className="px-2">
-                                        = ${item.product.price * item.quantity}
-                                    </p>
-                                    <button className="btn btn-danger ml-auto">
+                                           type="number"/>
+                                </td>
+                                {
+                                    !this.props.mobile &&
+                                    <td>
+                                        ${parseInt(item.product.price * item.quantity).toFixed(2)}
+                                    </td>
+                                }
+                                <td>
+                                    <button className="btn btn-danger">
                                         X
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        items: state.cart.items
+        items: state.cart.items,
+        mobile: state.screen.mobile
     }
 };
 

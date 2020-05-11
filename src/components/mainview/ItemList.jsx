@@ -6,7 +6,7 @@ class ItemList extends Component {
 
     handleQuantityChange(item, event) {
         const quantity = parseInt(event.target.value);
-        if (quantity >= 0 || isNaN(quantity)) {
+        if (quantity > 0 || isNaN(quantity)) {
             this.props.setQuantityInItemList(item.product.id, quantity);
         }
     }

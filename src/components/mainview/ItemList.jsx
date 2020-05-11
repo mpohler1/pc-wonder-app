@@ -6,7 +6,7 @@ class ItemList extends Component {
 
     handleQuantityChange(item, event) {
         const quantity = parseInt(event.target.value);
-        if (quantity > 0) {
+        if (quantity >= 0 || isNaN(quantity)) {
             this.props.setQuantityInItemList(item.product.id, quantity);
         }
     }
@@ -65,7 +65,7 @@ class ItemList extends Component {
                                 {
                                     !this.props.mobile &&
                                     <td>
-                                        ${(item.product.price * item.quantity).toFixed(2)}
+                                        ${isNaN(item.quantity) ? "0.00" : (item.product.price * item.quantity).toFixed(2)}
                                     </td>
                                 }
                                 <td>

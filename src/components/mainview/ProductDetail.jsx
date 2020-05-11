@@ -7,7 +7,7 @@ class ProductDetail extends Component {
 
     handleQuantityChange(event) {
         const quantity = parseInt(event.target.value);
-        if (quantity > 0) {
+        if (quantity >= 0 || isNaN(quantity)) {
             this.props.setQuantityInProductDetail(quantity);
         }
     }

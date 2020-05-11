@@ -4,6 +4,10 @@ import ItemList from "./ItemList";
 
 class Cart extends Component {
 
+    handleCheckoutButton() {
+
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -21,17 +25,18 @@ class Cart extends Component {
                     this.props.items.length > 0 &&
                         <div className="container-fluid">
                             <div className="row row-cols-1">
-                                <div className="col col-md-9 p-0 p-sm-2 p-md-3">
+                                <div className="col col-lg-9 p-0 p-sm-2 p-md-3">
                                     <ItemList/>
                                 </div>
-                                <div className="col col-md-3 p-2 p-md-3">
+                                <div className="col col-lg-3 p-2 p-md-3">
                                     <h3>
                                         Total: ${
                                             this.props.items &&
-                                            this.props.items.reduce((sum, item) => isNaN(parseInt(item.quantity)) ? sum + 0.00 : sum + (item.product.price * item.quantity), 0).toFixed(2)
+                                            this.props.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)
                                         }
                                     </h3>
-                                    <button className="btn btn-primary">
+                                    <button className="btn btn-primary"
+                                            onClick={() => this.handleCheckoutButton()}>
                                         Checkout
                                     </button>
                                 </div>

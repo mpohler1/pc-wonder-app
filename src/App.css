@@ -10,12 +10,6 @@
     border: 0;
 }
 
-.product-cart-item {
-    object-fit: cover;
-    height: 10vh;
-    width: 15vh;
-}
-
 .btn-card-img-top {
     border: 0;
     border-bottom-left-radius: 0;

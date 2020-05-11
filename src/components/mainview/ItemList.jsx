@@ -3,18 +3,22 @@ import {connect} from "react-redux";
 import {removeItemFromCart, setDetailProduct, setMainViewMode, setQuantityInItemList} from "../../actions/actions";
 import {PRODUCT_DETAIL} from "../../resources/viewMode";
 
+const CLASS_LIST_WITH_BORDER_TOP = "row align-items-center border-top border-bottom border-secondary";
+const CLASS_LIST_WITHOUT_BORDER_TOP = "row align-items-center border-bottom border-secondary";
+
 class ItemList extends Component {
+
+    handleMinusButtonClick(item) {
+        this.props.setQuantityInItemList(item.product.id, item.quantity-1);
+    }
+
+    handlePlusButtonClick(item) {
+        this.props.setQuantityInItemList(item.product.id, item.quantity+1);
+    }
 
     handleProductClick(product) {
         this.props.setDetailProduct(product);
         this.props.setMainViewMode(PRODUCT_DETAIL);
-    }
-
-    handleQuantityChange(item, event) {
-        const quantity = parseInt(event.target.value);
-        if (quantity > 0 || isNaN(quantity)) {
-            this.props.setQuantityInItemList(item.product.id, quantity);
-        }
     }
 
     handleXButtonClick(item) {
@@ -23,73 +27,58 @@ class ItemList extends Component {
 
     render() {
         return (
-            <table className="table table-striped">
-                <thead>
-                    {
-                        this.props.mobile &&
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col"/>
-                            </tr>
-                    }
-                    {
-                        !this.props.mobile &&
-                            <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Remove</th>
-                            </tr>
-                    }
-                </thead>
-                <tbody>
-                    {
-                        this.props.items.map(item => (
-                            <tr>
-                                <td>
-                                    <img className="btn card-img product-cart-item p-0 m-0"
-                                         src={item.product.imageURL}
-                                         alt={("Thumbnail for " + item.product.name)}
-                                         onClick={() => this.handleProductClick(item.product)}/>
-                                    {
-                                        this.props.mobile &&
-                                            <p className="p-0">
-                                                {item.product.name}
-                                            </p>
-                                    }
-                                </td>
-                                {
-                                    !this.props.mobile && <td>{item.product.name}</td>
-                                }
-                                <td>${parseFloat(item.product.price).toFixed(2)}</td>
-                                <td>
-                                    <input className="form-control quantity"
-                                           type="number"
-                                           value={item.quantity}
-                                           onChange={event => this.handleQuantityChange(item, event)}/>
-                                </td>
-                                {
-                                    !this.props.mobile &&
-                                    <td>
-                                        ${isNaN(item.quantity) ? "0.00" : (item.product.price * item.quantity).toFixed(2)}
-                                    </td>
-                                }
-                                <td>
-                                    <button className="btn ml-auto mr-0"
-                                            type="button"
-                                            onClick={() => this.handleXButtonClick(item)}>
-                                        <span className="h5 oi oi-x text-danger"/>
-                                    </button>
-                                </td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+            <div className="container-fluid">
+                {
+                    this.props.items.map(item => (
+                        <div className={item.product.id === this.props.items[0].product.id ? CLASS_LIST_WITH_BORDER_TOP : CLASS_LIST_WITHOUT_BORDER_TOP}>
+                            <div className="col col-md-4 col-lg-3">
+                                <img className="btn card-img"
+                                     src={item.product.imageURL}
+                                     alt={"Thumbnail for" + item.product.name}
+                                     onClick={() => this.handleProductClick(item.product)}/>
+                            </div>
+                            <div className="col">
+                                <div className="row">
+                                    <div className="col-12 col-md-3">
+                                        <h5>
+                                            {item.product.name}
+                                        </h5>
+                                    </div>
+                                    <div className="col-12 col-md-3">
+                                        <h5>
+                                            ${parseFloat(item.product.price).toFixed(2)}
+                                        </h5>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="btn-group align-items-center text-nowrap ml-n2">
+                                            <button className="btn"
+                                                    onClick={() => this.handleMinusButtonClick(item)}
+                                                    ref={button => button && (item.quantity > 1 ? button.removeAttribute("disabled") : button.setAttribute("disabled", "true"))}>
+                                                <span className="h5 oi oi-minus text-secondary"/>
+                                            </button>
+                                            <h5>
+                                                {item.quantity}
+                                            </h5>
+                                            <button className="btn"
+                                                    onClick={() => this.handlePlusButtonClick(item)}>
+                                                <span className="h5 oi oi-plus text-secondary"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="col-6">
+                                        <div className="btn-group align-items-center text-nowrap ml-2">
+                                            <button className="btn"
+                                                    onClick={() => this.handleXButtonClick(item)}>
+                                                <span className="h5 oi oi-x text-danger"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
         );
     }
 }

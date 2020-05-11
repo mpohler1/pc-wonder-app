@@ -65,3 +65,7 @@
         min-height: calc(100vh - (68px + 0.5rem));
     }
 }
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}

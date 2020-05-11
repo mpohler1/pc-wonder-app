@@ -1,8 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {removeItemFromCart, setQuantityInItemList} from "../../actions/actions";
+import {removeItemFromCart, setDetailProduct, setMainViewMode, setQuantityInItemList} from "../../actions/actions";
+import {PRODUCT_DETAIL} from "../../resources/viewMode";
 
 class ItemList extends Component {
+
+    handleProductClick(product) {
+        this.props.setDetailProduct(product);
+        this.props.setMainViewMode(PRODUCT_DETAIL);
+    }
 
     handleQuantityChange(item, event) {
         const quantity = parseInt(event.target.value);
@@ -45,11 +51,15 @@ class ItemList extends Component {
                         this.props.items.map(item => (
                             <tr>
                                 <td>
-                                    <img className="card-img product-cart-item p-0 m-0"
+                                    <img className="btn card-img product-cart-item p-0 m-0"
                                          src={item.product.imageURL}
-                                         alt={("Thumbnail for " + item.product.name)}/>
+                                         alt={("Thumbnail for " + item.product.name)}
+                                         onClick={() => this.handleProductClick(item.product)}/>
                                     {
-                                        this.props.mobile && <p className="p-0">{item.product.name}</p>
+                                        this.props.mobile &&
+                                            <p className="p-0">
+                                                {item.product.name}
+                                            </p>
                                     }
                                 </td>
                                 {
@@ -93,5 +103,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     setQuantityInItemList,
-    removeItemFromCart
+    removeItemFromCart,
+    setDetailProduct,
+    setMainViewMode
 })(ItemList);

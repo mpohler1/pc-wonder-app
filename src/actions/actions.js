@@ -13,7 +13,7 @@ import {
     SET_LARGEST,
     INSERT_ITEM_INTO_CART,
     SET_QUANTITY_IN_PRODUCT_DETAIL,
-    SET_QUANTITY_IN_ITEM_LIST
+    SET_QUANTITY_IN_ITEM_LIST, REMOVE_ITEM_FROM_CART
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -120,6 +120,15 @@ export const setQuantityInItemList = (productId, quantity) => (
         payload: {
             productId: productId,
             quantity: quantity
+        }
+    }
+);
+
+export const removeItemFromCart = (productId) => (
+    {
+        type: REMOVE_ITEM_FROM_CART,
+        payload: {
+            productId: productId
         }
     }
 );

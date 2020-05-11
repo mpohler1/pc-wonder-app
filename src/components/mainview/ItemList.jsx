@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {setQuantityInItemList} from "../../actions/actions";
+import {removeItemFromCart, setQuantityInItemList} from "../../actions/actions";
 
 class ItemList extends Component {
 
@@ -9,6 +9,10 @@ class ItemList extends Component {
         if (quantity > 0) {
             this.props.setQuantityInItemList(item.product.id, quantity);
         }
+    }
+
+    handleXButtonClick(item) {
+        this.props.removeItemFromCart(item.product.id);
     }
 
     render() {
@@ -65,8 +69,10 @@ class ItemList extends Component {
                                     </td>
                                 }
                                 <td>
-                                    <button className="btn btn-danger">
-                                        X
+                                    <button className="btn ml-auto mr-0"
+                                            type="button"
+                                            onClick={() => this.handleXButtonClick(item)}>
+                                        <span className="h5 oi oi-x text-danger"/>
                                     </button>
                                 </td>
                             </tr>
@@ -86,5 +92,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setQuantityInItemList
+    setQuantityInItemList,
+    removeItemFromCart
 })(ItemList);

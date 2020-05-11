@@ -1,4 +1,4 @@
-import {INSERT_ITEM_INTO_CART, SET_QUANTITY_IN_ITEM_LIST} from "../actions/actionTypes";
+import {INSERT_ITEM_INTO_CART, REMOVE_ITEM_FROM_CART, SET_QUANTITY_IN_ITEM_LIST} from "../actions/actionTypes";
 
 function cartReducer(state={items: []}, action) {
 
@@ -30,6 +30,11 @@ function cartReducer(state={items: []}, action) {
                     }
                     return item;
                 })
+            });
+
+        case REMOVE_ITEM_FROM_CART:
+            return Object.assign({}, state, {
+                items: state.items.slice().filter(item => item.product.id !== action.payload.productId)
             });
 
         default:

@@ -28,7 +28,7 @@ class Cart extends Component {
                                     <h3>
                                         Total: ${
                                             this.props.items &&
-                                            this.props.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)
+                                            this.props.items.reduce((sum, item) => isNaN(parseInt(item.quantity)) ? sum + 0.00 : sum + (item.product.price * item.quantity), 0).toFixed(2)
                                         }
                                     </h3>
                                     <button className="btn btn-primary">

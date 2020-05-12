@@ -36,12 +36,12 @@ class Drawer extends Component {
             <React.Fragment>
                 {
                     this.props.drawerVisible &&
-                    <div className="drawer-shadow sticky-top"
+                    <div className="drawer-shadow fixed-top"
                          onClick={() => this.handleBackgroundClick()}/>
                 }
                 {
                     this.props.drawerVisible &&
-                    <div className="hide drawer navbar navbar-dark bg-dark d-flex flex-column flex-nowrap align-items-start border-right border-secondary px-0 m-0 sticky-top">
+                    <div className="hide drawer navbar navbar-dark bg-dark d-flex flex-column flex-nowrap align-items-start border-right border-secondary px-0 m-0 fixed-top">
                         <div className="d-flex flex-row flex-nowrap align-items-center border-bottom border-secondary px-3 pb-2">
                             <MenuButton/>
                             <Brand/>

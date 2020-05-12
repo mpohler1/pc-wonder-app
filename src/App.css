@@ -63,3 +63,11 @@
 .table > tbody > tr > td {
     vertical-align: middle;
 }
+
+.cart-footer {
+    height: 4rem;
+}
+
+.cart-item-list {
+    margin-bottom: 4rem;
+}

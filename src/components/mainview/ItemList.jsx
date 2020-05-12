@@ -37,7 +37,7 @@ class ItemList extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid cart-item-list">
                 {
                     this.props.items.map(item => (
                         <div className={item.product.id === this.props.items[0].product.id ? CLASS_LIST_WITH_BORDER_TOP : CLASS_LIST_WITHOUT_BORDER_TOP}>

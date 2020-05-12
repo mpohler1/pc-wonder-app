@@ -9,7 +9,9 @@ const CLASS_LIST_WITHOUT_BORDER_TOP = "row align-items-center border-bottom bord
 class ItemList extends Component {
 
     handleMinusButtonClick(item) {
-        this.props.setQuantityInItemList(item.product.id, item.quantity-1);
+        if (item.quantity > 1) {
+            this.props.setQuantityInItemList(item.product.id, item.quantity - 1);
+        }
     }
 
     handlePlusButtonClick(item) {
@@ -23,6 +25,14 @@ class ItemList extends Component {
 
     handleXButtonClick(item) {
         this.props.removeItemFromCart(item.product.id);
+    }
+
+    determineIfMinusButtonIsDisabled(button, item) {
+        if (item.quantity > 1) {
+            button.removeAttribute("disabled");
+        } else {
+            button.setAttribute("disabled", "true");
+        }
     }
 
     render() {
@@ -53,7 +63,7 @@ class ItemList extends Component {
                                         <div className="btn-group align-items-center text-nowrap ml-n2">
                                             <button className="btn"
                                                     onClick={() => this.handleMinusButtonClick(item)}
-                                                    ref={button => button && (item.quantity > 1 ? button.removeAttribute("disabled") : button.setAttribute("disabled", "true"))}>
+                                                    ref={button => button && this.determineIfMinusButtonIsDisabled(button, item)}>
                                                 <span className="h5 oi oi-minus text-secondary"/>
                                             </button>
                                             <h5>

@@ -49,7 +49,7 @@ class ItemList extends Component {
                                             ${parseFloat(item.product.price).toFixed(2)}
                                         </h5>
                                     </div>
-                                    <div className="col-6">
+                                    <div className="col-6 col-md-3">
                                         <div className="btn-group align-items-center text-nowrap ml-n2">
                                             <button className="btn"
                                                     onClick={() => this.handleMinusButtonClick(item)}
@@ -65,7 +65,7 @@ class ItemList extends Component {
                                             </button>
                                         </div>
                                     </div>
-                                    <div className="col-6">
+                                    <div className="col-6 col-md-3">
                                         <div className="btn-group align-items-center text-nowrap ml-2">
                                             <button className="btn"
                                                     onClick={() => this.handleXButtonClick(item)}>

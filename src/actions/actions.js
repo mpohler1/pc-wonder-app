@@ -13,7 +13,15 @@ import {
     SET_LARGEST,
     INSERT_ITEM_INTO_CART,
     SET_QUANTITY_IN_PRODUCT_DETAIL,
-    SET_QUANTITY_IN_ITEM_LIST, REMOVE_ITEM_FROM_CART
+    SET_QUANTITY_IN_ITEM_LIST,
+    REMOVE_ITEM_FROM_CART,
+    SET_ADDRESS_FIRST_NAME,
+    SET_ADDRESS_LAST_NAME,
+    SET_ADDRESS_COMPANY_NAME,
+    SET_ADDRESS_STREET,
+    SET_ADDRESS_APARTMENT_NUMBER,
+    SET_ADDRESS_CITY,
+    SET_ADDRESS_STATE, SET_ADDRESS_ZIP, SET_ADDRESS_EMAIL, SET_ADDRESS_PHONE_NUMBER
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -129,6 +137,96 @@ export const removeItemFromCart = (productId) => (
         type: REMOVE_ITEM_FROM_CART,
         payload: {
             productId: productId
+        }
+    }
+);
+
+export const setAddressFirstName = (firstName) => (
+    {
+        type: SET_ADDRESS_FIRST_NAME,
+        payload: {
+            firstName: firstName
+        }
+    }
+);
+
+export const setAddressLastName = (lastName) => (
+    {
+        type: SET_ADDRESS_LAST_NAME,
+        payload: {
+            lastName: lastName
+        }
+    }
+);
+
+export const setAddressCompanyName = (companyName) => (
+    {
+        type: SET_ADDRESS_COMPANY_NAME,
+        payload: {
+            companyName: companyName
+        }
+    }
+);
+
+export const setAddressStreet = (street) => (
+    {
+        type: SET_ADDRESS_STREET,
+        payload: {
+            street: street
+        }
+    }
+);
+
+export const setAddressApartmentNumber = (apartmentNumber) => (
+    {
+        type: SET_ADDRESS_APARTMENT_NUMBER,
+        payload: {
+            apartmentNumber: apartmentNumber
+        }
+    }
+);
+
+export const setAddressCity = (city) => (
+    {
+        type: SET_ADDRESS_CITY,
+        payload: {
+            city: city
+        }
+    }
+);
+
+export const setAddressState = (state) => (
+    {
+        type: SET_ADDRESS_STATE,
+        payload: {
+            state: state
+        }
+    }
+);
+
+export const setAddressZip = (zip) => (
+    {
+        type: SET_ADDRESS_ZIP,
+        payload: {
+            zip: zip
+        }
+    }
+);
+
+export const setAddressEmail = (email) => (
+    {
+        type: SET_ADDRESS_EMAIL,
+        payload: {
+            email: email
+        }
+    }
+);
+
+export const setAddressPhoneNumber = (phoneNumber) => (
+    {
+        type: SET_ADDRESS_PHONE_NUMBER,
+        payload: {
+            phoneNumber: phoneNumber
         }
     }
 );

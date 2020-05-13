@@ -1,10 +1,11 @@
 import React, {Component} from "react";
+import {connect} from "react-redux";
 
 class Checkout extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="container pb-3">
                 <div className="row">
                     <div className="col">
                         <div className="form-row my-2">
@@ -40,10 +41,10 @@ class Checkout extends Component {
                             </div>
                             <div className="col-2">
                                 <label htmlFor="state">State</label>
-                                <input className="form-control" id="state" placeholder="State"/>
+                                <input className="form-control" id="state" placeholder="ST"/>
                             </div>
                             <div className="col-4">
-                                <label htmlFor="zip">Zip</label>
+                                <label htmlFor="zipAddress">Zip</label>
                                 <input className="form-control" id="zip" placeholder="Zip"/>
                             </div>
                         </div>
@@ -59,9 +60,76 @@ class Checkout extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col">
+                        <div className="form-row my-2">
+                            <div className="col">
+                                <label htmlFor="cardNumber">Card Number <span className="text-danger">*</span> </label>
+                                <input className="form-control" id="cardNumber" disabled="true"/>
+                            </div>
+                        </div>
+                        <div className="form-row my-2">
+                            <div className="col-4">
+                                <label htmlFor="expiration">Expiration <span className="text-danger">*</span> </label>
+                                <input className="form-control" id="expiration" disabled="true"/>
+                            </div>
+                            <div className="col-4">
+                                <label htmlFor="cvc">CVC/CVV <span className="text-danger">*</span> </label>
+                                <input className="form-control" id="cvc" disabled="true"/>
+                            </div>
+                            <div className="col-4">
+                                <label htmlFor="zipPayment">Zip <span className="text-danger">*</span> </label>
+                                <input className="form-control" id="zipPayment" disabled="true"/>
+                            </div>
+                        </div>
+                        <div className="form-row my-2">
+                            <div className="col">
+                                <p className="text-danger">*Since this is a demo, payment has been disabled for your security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col">
+                        <div className="row">
+                            <div className="col">
+                                <h3>
+                                    Order: ${this.props.total}
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <h3>
+                                    Shipping: $0.00
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <h3>
+                                    Total: ${(parseFloat(this.props.total) + 0.00).toFixed(2)}
+                                </h3>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <button className="btn btn-primary">
+                                    Place Order
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 }
 
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        total: state.cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)
+    };
+};
+
+export default connect(mapStateToProps, {})(Checkout);

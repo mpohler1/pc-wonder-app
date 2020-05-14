@@ -71,3 +71,8 @@
 .cart-item-list {
     margin-bottom: 4rem;
 }
+
+.dropdown-menu {
+    max-height: 50vh;
+    overflow-y: auto;
+}

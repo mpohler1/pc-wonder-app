@@ -21,7 +21,12 @@ import {
     SET_ADDRESS_STREET,
     SET_ADDRESS_APARTMENT_NUMBER,
     SET_ADDRESS_CITY,
-    SET_ADDRESS_STATE, SET_ADDRESS_ZIP, SET_ADDRESS_EMAIL, SET_ADDRESS_PHONE_NUMBER
+    SET_ADDRESS_STATE,
+    SET_ADDRESS_ZIP,
+    SET_ADDRESS_EMAIL,
+    SET_ADDRESS_PHONE_NUMBER,
+    SET_COUNTRY_DROPDOWN_VISIBILITY,
+    SET_ADDRESS_COUNTRY
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -186,11 +191,11 @@ export const setAddressApartmentNumber = (apartmentNumber) => (
     }
 );
 
-export const setAddressCity = (city) => (
+export const setAddressCountry = (country) => (
     {
-        type: SET_ADDRESS_CITY,
+        type: SET_ADDRESS_COUNTRY,
         payload: {
-            city: city
+            country: country
         }
     }
 );
@@ -200,6 +205,15 @@ export const setAddressState = (state) => (
         type: SET_ADDRESS_STATE,
         payload: {
             state: state
+        }
+    }
+);
+
+export const setAddressCity = (city) => (
+    {
+        type: SET_ADDRESS_CITY,
+        payload: {
+            city: city
         }
     }
 );
@@ -227,6 +241,15 @@ export const setAddressPhoneNumber = (phoneNumber) => (
         type: SET_ADDRESS_PHONE_NUMBER,
         payload: {
             phoneNumber: phoneNumber
+        }
+    }
+);
+
+export const setCountryDropdownVisibility = (countryDropdownVisible) => (
+    {
+        type: SET_COUNTRY_DROPDOWN_VISIBILITY,
+        payload: {
+            countryDropdownVisible: countryDropdownVisible
         }
     }
 );

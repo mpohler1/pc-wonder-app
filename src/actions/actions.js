@@ -26,7 +26,7 @@ import {
     SET_ADDRESS_EMAIL,
     SET_ADDRESS_PHONE_NUMBER,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
-    SET_ADDRESS_COUNTRY
+    SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -250,6 +250,15 @@ export const setCountryDropdownVisibility = (countryDropdownVisible) => (
         type: SET_COUNTRY_DROPDOWN_VISIBILITY,
         payload: {
             countryDropdownVisible: countryDropdownVisible
+        }
+    }
+);
+
+export const setStateDropdownVisibility = (stateDropdownVisible) => (
+    {
+        type: SET_STATE_DROPDOWN_VISIBILITY,
+        payload: {
+            stateDropdownVisible: stateDropdownVisible
         }
     }
 );

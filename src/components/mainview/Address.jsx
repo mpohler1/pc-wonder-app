@@ -12,21 +12,25 @@ import {
     setAddressZip,
     setAddressEmail,
     setAddressPhoneNumber,
-    setCountryDropdownVisibility
+    setCountryDropdownVisibility,
+    setStateDropdownVisibility
 } from "../../actions/actions";
 import csc from "country-state-city";
 
 class Address extends Component {
-
-    handleCountryDropdownClick() {
-        this.props.setCountryDropdownVisibility(!this.props.countryDropdownVisible);
-    }
 
     handleCountryDropdownBlur(event) {
         if (event && event.relatedTarget) {
             event.relatedTarget.click();
         }
         this.props.setCountryDropdownVisibility(false);
+    }
+
+    handleStateDropdownBlur(event) {
+        if (event && event.relatedTarget) {
+            event.relatedTarget.click();
+        }
+        this.props.setStateDropdownVisibility(false);
     }
 
     render() {
@@ -87,7 +91,7 @@ class Address extends Component {
                                        type="button"
                                        id="country"
                                        value={this.props.country.name}
-                                       onClick={() => this.handleCountryDropdownClick()}
+                                       onClick={() => this.props.setCountryDropdownVisibility(!this.props.countryDropdownVisible)}
                                        onBlur={event => this.handleCountryDropdownBlur(event)}/>
                                 <div className={this.props.countryDropdownVisible ? "dropdown-menu show" : "dropdown-menu"}
                                      aria-labelledby="dropdownMenuButton">
@@ -104,11 +108,25 @@ class Address extends Component {
                         </div>
                         <div className="col-4">
                             <label htmlFor="state">State</label>
-                            <input className="form-control"
-                                   id="state"
-                                   placeholder="ST"
-                                   value={this.props.state}
-                                   onChange={event => this.props.setAddressState(event.target.value)}/>
+                            <div className="dropdown">
+                                <input className="form-control text-left"
+                                       type="button"
+                                       id="state"
+                                       placeholder="ST"
+                                       value={this.props.state.name}
+                                       onClick={() => this.props.setStateDropdownVisibility(!this.props.stateDropdownVisible)}
+                                       onBlur={event => this.handleStateDropdownBlur(event)}/>
+                                <div className={this.props.stateDropdownVisible ? "dropdown-menu dropdown-menu-right show" : "dropdown-menu dropdown-menu-right"}>
+                                    {
+                                        csc.getStatesOfCountry(this.props.country.id).map(state => (
+                                            <button className="btn dropdown-item"
+                                                    onClick={() => this.props.setAddressState(state)}>
+                                                {state.name}
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="form-row my-2">
@@ -167,7 +185,8 @@ const mapStateToProps = state => {
         zip: state.address.zip,
         email: state.address.email,
         phoneNumber: state.address.phoneNumber,
-        countryDropdownVisible: state.address.countryDropdownVisible
+        countryDropdownVisible: state.address.countryDropdownVisible,
+        stateDropdownVisible: state.address.stateDropdownVisible
     };
 };
 
@@ -183,5 +202,6 @@ export default connect(mapStateToProps, {
     setAddressZip,
     setAddressEmail,
     setAddressPhoneNumber,
-    setCountryDropdownVisibility
+    setCountryDropdownVisibility,
+    setStateDropdownVisibility
 })(Address);

@@ -3,7 +3,7 @@ import {
     SET_ADDRESS_COMPANY_NAME, SET_ADDRESS_COUNTRY, SET_ADDRESS_EMAIL,
     SET_ADDRESS_FIRST_NAME,
     SET_ADDRESS_LAST_NAME, SET_ADDRESS_PHONE_NUMBER, SET_ADDRESS_STATE,
-    SET_ADDRESS_STREET, SET_ADDRESS_ZIP, SET_COUNTRY_DROPDOWN_VISIBILITY
+    SET_ADDRESS_STREET, SET_ADDRESS_ZIP, SET_COUNTRY_DROPDOWN_VISIBILITY, SET_STATE_DROPDOWN_VISIBILITY
 } from "../actions/actionTypes";
 
 function addressReducer(state={
@@ -13,12 +13,13 @@ function addressReducer(state={
     street: "",
     apartmentNumber: "",
     country: {name: "Select A Country"},
-    state: "",
+    state: {name: "Select A State"},
     city: "",
     zip: "",
     email: "",
     phoneNumber: "",
-    countryDropdownVisible: false
+    countryDropdownVisible: false,
+    stateDropdownVisible: false
 }, action) {
     switch(action.type) {
         case SET_ADDRESS_FIRST_NAME:
@@ -79,6 +80,11 @@ function addressReducer(state={
         case SET_COUNTRY_DROPDOWN_VISIBILITY:
             return Object.assign({}, state, {
                 countryDropdownVisible: action.payload.countryDropdownVisible
+            });
+
+        case SET_STATE_DROPDOWN_VISIBILITY:
+            return Object.assign({}, state, {
+                stateDropdownVisible: action.payload.stateDropdownVisible
             });
 
         default:

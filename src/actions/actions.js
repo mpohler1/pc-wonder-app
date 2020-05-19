@@ -15,7 +15,7 @@ import {
     SET_QUANTITY_IN_PRODUCT_DETAIL,
     SET_QUANTITY_IN_ITEM_LIST,
     REMOVE_ITEM_FROM_CART,
-    SET_ADDRESS_FIRST_NAME,
+    SET_ADDRESS_NAME,
     SET_ADDRESS_LAST_NAME,
     SET_ADDRESS_COMPANY_NAME,
     SET_ADDRESS_STREET,
@@ -146,20 +146,11 @@ export const removeItemFromCart = (productId) => (
     }
 );
 
-export const setAddressFirstName = (firstName) => (
+export const setAddressName = (name) => (
     {
-        type: SET_ADDRESS_FIRST_NAME,
+        type: SET_ADDRESS_NAME,
         payload: {
-            firstName: firstName
-        }
-    }
-);
-
-export const setAddressLastName = (lastName) => (
-    {
-        type: SET_ADDRESS_LAST_NAME,
-        payload: {
-            lastName: lastName
+            name: name
         }
     }
 );

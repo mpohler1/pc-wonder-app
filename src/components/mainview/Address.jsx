@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {
-    setAddressFirstName,
-    setAddressLastName,
+    setAddressName,
     setAddressCompanyName,
     setAddressStreet,
     setAddressApartmentNumber,
@@ -57,20 +56,12 @@ class Address extends Component {
                 <div className="col">
                     <div className="form-row my-2">
                         <div className="col">
-                            <label htmlFor="firstName">First Name</label>
+                            <label htmlFor="name">Name</label>
                             <input className="form-control"
-                                   id="firstName"
-                                   placeholder="First Name"
-                                   value={this.props.firstName}
-                                   onChange={event => this.props.setAddressFirstName(event.target.value)}/>
-                        </div>
-                        <div className="col">
-                            <label htmlFor="lastName">Last Name</label>
-                            <input className="form-control"
-                                   id="lastName"
-                                   placeholder="Last Name"
-                                   value={this.props.lastName}
-                                   onChange={event => this.props.setAddressLastName(event.target.value)}/>
+                                   id="name"
+                                   placeholder="Name"
+                                   value={this.props.name}
+                                   onChange={event => this.props.setAddressName(event.target.value)}/>
                         </div>
                     </div>
                     <div className="form-row my-2">
@@ -206,8 +197,7 @@ class Address extends Component {
 
 const mapStateToProps = state => {
     return {
-        firstName: state.address.firstName,
-        lastName: state.address.lastName,
+        name: state.address.name,
         companyName: state.address.companyName,
         street: state.address.street,
         apartmentNumber: state.address.apartmentNumber,
@@ -225,8 +215,7 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setAddressFirstName,
-    setAddressLastName,
+    setAddressName,
     setAddressCompanyName,
     setAddressStreet,
     setAddressApartmentNumber,

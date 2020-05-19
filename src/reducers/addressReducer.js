@@ -4,7 +4,7 @@ import {
     SET_ADDRESS_COMPANY_NAME,
     SET_ADDRESS_COUNTRY,
     SET_ADDRESS_EMAIL,
-    SET_ADDRESS_FIRST_NAME,
+    SET_ADDRESS_NAME,
     SET_ADDRESS_LAST_NAME,
     SET_ADDRESS_PHONE_NUMBER,
     SET_ADDRESS_STATE,
@@ -16,8 +16,7 @@ import {
 } from "../actions/actionTypes";
 
 function addressReducer(state={
-    firstName: "",
-    lastName: "",
+    name: "",
     companyName: "",
     street: "",
     apartmentNumber: "",
@@ -32,14 +31,9 @@ function addressReducer(state={
     cityDropdownVisible: false
 }, action) {
     switch(action.type) {
-        case SET_ADDRESS_FIRST_NAME:
+        case SET_ADDRESS_NAME:
             return Object.assign({}, state, {
-                firstName: action.payload.firstName
-            });
-
-        case SET_ADDRESS_LAST_NAME:
-            return Object.assign({}, state, {
-                lastName: action.payload.lastName
+                name: action.payload.name
             });
 
         case SET_ADDRESS_COMPANY_NAME:

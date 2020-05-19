@@ -13,7 +13,8 @@ import {
     setAddressEmail,
     setAddressPhoneNumber,
     setCountryDropdownVisibility,
-    setStateDropdownVisibility
+    setStateDropdownVisibility,
+    setCityDropdownVisibility
 } from "../../actions/actions";
 import csc from "country-state-city";
 
@@ -31,6 +32,13 @@ class Address extends Component {
             event.relatedTarget.click();
         }
         this.props.setStateDropdownVisibility(false);
+    }
+
+    handleCityDropdownBlur(event) {
+        if (event && event.relatedTarget) {
+            event.relatedTarget.click();
+        }
+        this.props.setCityDropdownVisibility(false);
     }
 
     determineStateDropdownMenuClassList() {
@@ -140,15 +148,29 @@ class Address extends Component {
                         </div>
                     </div>
                     <div className="form-row my-2">
-                        <div className="col-8">
+                        <div className="col-12 col-sm-8">
                             <label htmlFor="city">City</label>
-                            <input className="form-control"
-                                   id="city"
-                                   placeholder="City"
-                                   value={this.props.city}
-                                   onChange={event => this.props.setAddressCity(event.target.value)}/>
+                            <div className="dropdown">
+                                <input className="form-control text-left"
+                                       type="button"
+                                       id="city"
+                                       placeholder="City"
+                                       value={this.props.city.name}
+                                       onClick={() => this.props.setCityDropdownVisibility(!this.props.cityDropdownVisible)}
+                                       onBlur={event => this.handleCityDropdownBlur(event)}/>
+                                <div className={this.props.cityDropdownVisible ? "dropdown-menu show" : "dropdown-menu"}>
+                                    {
+                                        csc.getCitiesOfState(this.props.state.id).map(city => (
+                                            <button className="btn dropdown-item"
+                                                    onClick={() => this.props.setAddressCity(city)}>
+                                                {city.name}
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 col-sm-4">
                             <label htmlFor="zipAddress">Zip</label>
                             <input className="form-control"
                                    id="zip"
@@ -158,7 +180,7 @@ class Address extends Component {
                         </div>
                     </div>
                     <div className="form-row my-2">
-                        <div className="col-7">
+                        <div className="col-12 col-sm-7">
                             <label htmlFor="email">Email Address</label>
                             <input className="form-control"
                                    id="email"
@@ -166,7 +188,7 @@ class Address extends Component {
                                    value={this.props.email}
                                    onChange={event => this.props.setAddressEmail(event.target.value)}/>
                         </div>
-                        <div className="col-5">
+                        <div className="col-12 col-sm-5">
                             <label htmlFor="phone">Phone Number</label>
                             <input className="form-control"
                                    id="phone"
@@ -197,6 +219,7 @@ const mapStateToProps = state => {
         phoneNumber: state.address.phoneNumber,
         countryDropdownVisible: state.address.countryDropdownVisible,
         stateDropdownVisible: state.address.stateDropdownVisible,
+        cityDropdownVisible: state.address.cityDropdownVisible,
         mobile: state.screen.mobile
     };
 };
@@ -214,5 +237,6 @@ export default connect(mapStateToProps, {
     setAddressEmail,
     setAddressPhoneNumber,
     setCountryDropdownVisibility,
-    setStateDropdownVisibility
+    setStateDropdownVisibility,
+    setCityDropdownVisibility
 })(Address);

@@ -33,6 +33,16 @@ class Address extends Component {
         this.props.setStateDropdownVisibility(false);
     }
 
+    determineStateDropdownMenuClassList() {
+        if (this.props.mobile && this.props.stateDropdownVisible) {
+            return "dropdown-menu show";
+        } else if (this.props.stateDropdownVisible) {
+            return "dropdown-menu dropdown-menu-right show";
+        } else {
+            return "dropdown-menu";
+        }
+    }
+
     render() {
         return (
             <div className="row">
@@ -84,7 +94,7 @@ class Address extends Component {
                         </div>
                     </div>
                     <div className="form-row my-2">
-                        <div className="col-8">
+                        <div className="col-12 col-sm-8">
                             <label htmlFor="country">Country</label>
                             <div className="dropdown">
                                 <input className="form-control text-left"
@@ -106,7 +116,7 @@ class Address extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 col-sm-4">
                             <label htmlFor="state">State</label>
                             <div className="dropdown">
                                 <input className="form-control text-left"
@@ -116,7 +126,7 @@ class Address extends Component {
                                        value={this.props.state.name}
                                        onClick={() => this.props.setStateDropdownVisibility(!this.props.stateDropdownVisible)}
                                        onBlur={event => this.handleStateDropdownBlur(event)}/>
-                                <div className={this.props.stateDropdownVisible ? "dropdown-menu dropdown-menu-right show" : "dropdown-menu dropdown-menu-right"}>
+                                <div className={this.determineStateDropdownMenuClassList()}>
                                     {
                                         csc.getStatesOfCountry(this.props.country.id).map(state => (
                                             <button className="btn dropdown-item"
@@ -186,7 +196,8 @@ const mapStateToProps = state => {
         email: state.address.email,
         phoneNumber: state.address.phoneNumber,
         countryDropdownVisible: state.address.countryDropdownVisible,
-        stateDropdownVisible: state.address.stateDropdownVisible
+        stateDropdownVisible: state.address.stateDropdownVisible,
+        mobile: state.screen.mobile
     };
 };
 

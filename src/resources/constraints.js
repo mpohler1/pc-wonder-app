@@ -1,13 +1,13 @@
 export const CONSTRAINTS = {
     name: {
         format: {
-            pattern: /^\w+$/,
+            pattern: /^[\w .]+$/,
             message: "must contain at least 1 alphanumeric character"
         }
     },
     street: {
         format: {
-            pattern: /^\w+$/,
+            pattern: /^[\w .]+$/,
             message: "must contain at least 1 alphanumeric character"
         }
     },
@@ -20,7 +20,7 @@ export const CONSTRAINTS = {
     zip: {
         format: {
             pattern: /^\d{5}-\d{4}|\d{5}$/,
-            message: "format must follow 12345 or 12345-1234"
+            message: "format must follow 12345 or 12345-6789"
         }
     },
     email: {

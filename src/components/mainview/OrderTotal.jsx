@@ -4,19 +4,44 @@ import {setMainViewMode} from "../../actions/actions";
 import {ORDER_CONFIRMATION} from "../../resources/viewMode";
 import {CONSTRAINTS} from "../../resources/constraints";
 import validate from "validate.js";
+import csc from "country-state-city";
 
 class OrderTotal extends Component {
 
     handlePlaceOrderButtonClick() {
-        let results = validate({
+        let validatorResults = validate({
             name: this.props.name,
             street: this.props.street,
-            apartmentNumber: this.props.street,
+            apartmentNumber: this.props.apartmentNumber,
             zip: this.props.zip,
             email: this.props.email
         }, CONSTRAINTS);
-        console.log(results);
-        if (results === undefined) {
+
+        let cscResults = {};
+
+        if (csc.getCountryById(this.props.country.id) !== this.props.country) {
+            cscResults.country = ["Select a Country"];
+        }
+
+        if (csc.getStateById(this.props.state.id) !== this.props.state) {
+            cscResults.state = ["Select a State"];
+        }
+
+        else if (!csc.getStatesOfCountry(this.props.country.id).includes(this.props.state)) {
+            cscResults.state = ["State must be within selected Country."];
+        }
+
+        if (csc.getCityById(this.props.city.id) !== this.props.city) {
+            cscResults.city = ["Select a City"];
+        }
+
+        else if (!csc.getCitiesOfState(this.props.state.id).includes(this.props.city)) {
+            cscResults.city = ["City must be within selected State"];
+        }
+
+        let combinedResults = Object.assign({}, validatorResults, cscResults);
+
+        if (combinedResults === undefined) {
             this.props.setMainViewMode(ORDER_CONFIRMATION);
         }
     }
@@ -68,6 +93,9 @@ const mapStateToProps = state => {
         apartmentNumber: state.address.apartmentNumber,
         zip: state.address.zip,
         email: state.address.email,
+        country: state.address.country,
+        state: state.address.state,
+        city: state.address.city
     };
 };
 

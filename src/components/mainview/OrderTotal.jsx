@@ -1,7 +1,13 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {setMainViewMode} from "../../actions/actions";
+import {ORDER_CONFIRMATION} from "../../resources/viewMode";
 
 class OrderTotal extends Component {
+
+    handlePlaceOrderButtonClick() {
+        this.props.setMainViewMode(ORDER_CONFIRMATION);
+    }
 
     render() {
 
@@ -31,7 +37,7 @@ class OrderTotal extends Component {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <button className="btn btn-primary">
+                            <button className="btn btn-primary" onClick={() => this.handlePlaceOrderButtonClick()}>
                                 Place Order
                             </button>
                         </div>
@@ -48,4 +54,6 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {})(OrderTotal);
+export default connect(mapStateToProps, {
+    setMainViewMode
+})(OrderTotal);

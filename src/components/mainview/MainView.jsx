@@ -3,8 +3,9 @@ import ProductGrid from "./ProductGrid";
 import ProductDetail from "./ProductDetail";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
-import {CART, CHECKOUT, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
+import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
 import {connect} from "react-redux";
+import OrderConfirmation from "./OrderConfirmation";
 
 class MainView extends Component {
 
@@ -28,6 +29,11 @@ class MainView extends Component {
             case CHECKOUT:
                 return (
                     <Checkout/>
+                );
+
+            case ORDER_CONFIRMATION:
+                return (
+                    <OrderConfirmation/>
                 );
 
             default:

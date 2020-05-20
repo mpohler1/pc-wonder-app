@@ -2,11 +2,23 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {setMainViewMode} from "../../actions/actions";
 import {ORDER_CONFIRMATION} from "../../resources/viewMode";
+import {CONSTRAINTS} from "../../resources/constraints";
+import validate from "validate.js";
 
 class OrderTotal extends Component {
 
     handlePlaceOrderButtonClick() {
-        this.props.setMainViewMode(ORDER_CONFIRMATION);
+        let results = validate({
+            name: this.props.name,
+            street: this.props.street,
+            apartmentNumber: this.props.street,
+            zip: this.props.zip,
+            email: this.props.email
+        }, CONSTRAINTS);
+        console.log(results);
+        if (results === undefined) {
+            this.props.setMainViewMode(ORDER_CONFIRMATION);
+        }
     }
 
     render() {
@@ -50,7 +62,17 @@ class OrderTotal extends Component {
 
 const mapStateToProps = state => {
     return {
-        total: state.cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)
+        total: state.cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2),
+        name: state.address.name,
+        companyName: state.address.companyName,
+        street: state.address.street,
+        apartmentNumber: state.address.apartmentNumber,
+        country: state.address.country,
+        state: state.address.state,
+        city: state.address.city,
+        zip: state.address.zip,
+        email: state.address.email,
+        phoneNumber: state.address.phoneNumber
     };
 };
 

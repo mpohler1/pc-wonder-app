@@ -174,6 +174,7 @@ class Address extends Component {
                         <div className="col-12 col-sm-7">
                             <label htmlFor="email">Email Address</label>
                             <input className="form-control"
+                                   type="email"
                                    id="email"
                                    placeholder="email@address.com"
                                    value={this.props.email}
@@ -182,8 +183,9 @@ class Address extends Component {
                         <div className="col-12 col-sm-5">
                             <label htmlFor="phone">Phone Number</label>
                             <input className="form-control"
+                                   type="tel"
                                    id="phone"
-                                   placeholder="123-456-7890"
+                                   placeholder="1234567890"
                                    value={this.props.phoneNumber}
                                    onChange={event => this.props.setAddressPhoneNumber(event.target.value)}/>
                         </div>

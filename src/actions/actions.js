@@ -23,7 +23,6 @@ import {
     SET_ADDRESS_STATE,
     SET_ADDRESS_ZIP,
     SET_ADDRESS_EMAIL,
-    SET_ADDRESS_PHONE_NUMBER,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
     SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY, SET_CITY_DROPDOWN_VISIBILITY
 } from "./actionTypes";
@@ -222,15 +221,6 @@ export const setAddressEmail = (email) => (
         type: SET_ADDRESS_EMAIL,
         payload: {
             email: email
-        }
-    }
-);
-
-export const setAddressPhoneNumber = (phoneNumber) => (
-    {
-        type: SET_ADDRESS_PHONE_NUMBER,
-        payload: {
-            phoneNumber: phoneNumber
         }
     }
 );

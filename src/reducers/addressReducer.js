@@ -5,7 +5,6 @@ import {
     SET_ADDRESS_COUNTRY,
     SET_ADDRESS_EMAIL,
     SET_ADDRESS_NAME,
-    SET_ADDRESS_PHONE_NUMBER,
     SET_ADDRESS_STATE,
     SET_ADDRESS_STREET,
     SET_ADDRESS_ZIP,
@@ -73,11 +72,6 @@ function addressReducer(state={
         case SET_ADDRESS_EMAIL:
             return Object.assign({}, state, {
                 email: action.payload.email
-            });
-
-        case SET_ADDRESS_PHONE_NUMBER:
-            return Object.assign({}, state, {
-                phoneNumber: action.payload.phoneNumber
             });
 
         case SET_COUNTRY_DROPDOWN_VISIBILITY:

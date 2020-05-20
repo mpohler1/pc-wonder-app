@@ -10,7 +10,6 @@ import {
     setAddressCity,
     setAddressZip,
     setAddressEmail,
-    setAddressPhoneNumber,
     setCountryDropdownVisibility,
     setStateDropdownVisibility,
     setCityDropdownVisibility
@@ -171,7 +170,7 @@ class Address extends Component {
                         </div>
                     </div>
                     <div className="form-row my-2">
-                        <div className="col-12 col-sm-7">
+                        <div className="col-12">
                             <label htmlFor="email">Email Address</label>
                             <input className="form-control"
                                    type="email"
@@ -179,15 +178,6 @@ class Address extends Component {
                                    placeholder="email@address.com"
                                    value={this.props.email}
                                    onChange={event => this.props.setAddressEmail(event.target.value)}/>
-                        </div>
-                        <div className="col-12 col-sm-5">
-                            <label htmlFor="phone">Phone Number</label>
-                            <input className="form-control"
-                                   type="tel"
-                                   id="phone"
-                                   placeholder="1234567890"
-                                   value={this.props.phoneNumber}
-                                   onChange={event => this.props.setAddressPhoneNumber(event.target.value)}/>
                         </div>
                     </div>
                 </div>
@@ -208,7 +198,6 @@ const mapStateToProps = state => {
         city: state.address.city,
         zip: state.address.zip,
         email: state.address.email,
-        phoneNumber: state.address.phoneNumber,
         countryDropdownVisible: state.address.countryDropdownVisible,
         stateDropdownVisible: state.address.stateDropdownVisible,
         cityDropdownVisible: state.address.cityDropdownVisible,
@@ -226,7 +215,6 @@ export default connect(mapStateToProps, {
     setAddressCity,
     setAddressZip,
     setAddressEmail,
-    setAddressPhoneNumber,
     setCountryDropdownVisibility,
     setStateDropdownVisibility,
     setCityDropdownVisibility

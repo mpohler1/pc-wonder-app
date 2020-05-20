@@ -64,15 +64,10 @@ const mapStateToProps = state => {
     return {
         total: state.cart.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2),
         name: state.address.name,
-        companyName: state.address.companyName,
         street: state.address.street,
         apartmentNumber: state.address.apartmentNumber,
-        country: state.address.country,
-        state: state.address.state,
-        city: state.address.city,
         zip: state.address.zip,
         email: state.address.email,
-        phoneNumber: state.address.phoneNumber
     };
 };
 

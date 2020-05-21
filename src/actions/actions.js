@@ -24,7 +24,7 @@ import {
     SET_ADDRESS_ZIP,
     SET_ADDRESS_EMAIL,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
-    SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY, SET_CITY_DROPDOWN_VISIBILITY
+    SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY, SET_CITY_DROPDOWN_VISIBILITY, SET_VALIDATION_ERRORS
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -248,6 +248,15 @@ export const setCityDropdownVisibility = (cityDropdownVisible) => (
         type: SET_CITY_DROPDOWN_VISIBILITY,
         payload: {
             cityDropdownVisible: cityDropdownVisible
+        }
+    }
+);
+
+export const setValidationErrors = (validationErrors) => (
+    {
+        type: SET_VALIDATION_ERRORS,
+        payload: {
+            validationErrors: validationErrors
         }
     }
 );

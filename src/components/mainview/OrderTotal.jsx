@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {setMainViewMode} from "../../actions/actions";
+import {setMainViewMode, setValidationErrors} from "../../actions/actions";
 import {ORDER_CONFIRMATION} from "../../resources/viewMode";
 import {CONSTRAINTS} from "../../resources/constraints";
 import validate from "validate.js";
@@ -10,10 +10,19 @@ class OrderTotal extends Component {
 
     handlePlaceOrderButtonClick() {
         const errors = this.validateAddress();
-        console.log(errors);
         // check if errors are empty
         if (Object.keys(errors).length === 0 && errors.constructor === Object) {
             this.props.setMainViewMode(ORDER_CONFIRMATION);
+        }
+        this.props.setValidationErrors(errors);
+    }
+
+    displayPlaceOrderButtonFeedback() {
+        // check if there are errors
+        if (Object.keys(this.props.errors).length > 0) {
+            return " There were errors processing your information.";
+        } else {
+            return "";
         }
     }
 
@@ -48,6 +57,9 @@ class OrderTotal extends Component {
                             <button className="btn btn-primary" onClick={() => this.handlePlaceOrderButtonClick()}>
                                 Place Order
                             </button>
+                            <span className="text-danger">
+                                {this.displayPlaceOrderButtonFeedback()}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +116,7 @@ class OrderTotal extends Component {
         }
 
         else if (!csc.getStatesOfCountry(this.props.country.id).includes(this.props.state)) {
-            errors.state = ["State must be within selected Country."];
+            errors.state = ["State must be within selected Country"];
         }
 
         if (csc.getCityById(this.props.city.id) !== this.props.city) {
@@ -129,10 +141,12 @@ const mapStateToProps = state => {
         email: state.address.email,
         country: state.address.country,
         state: state.address.state,
-        city: state.address.city
+        city: state.address.city,
+        errors: state.address.errors
     };
 };
 
 export default connect(mapStateToProps, {
-    setMainViewMode
+    setMainViewMode,
+    setValidationErrors
 })(OrderTotal);

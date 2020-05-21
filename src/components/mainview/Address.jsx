@@ -55,7 +55,12 @@ class Address extends Component {
                 <div className="col">
                     <div className="form-row my-2">
                         <div className="col">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name">
+                                Name
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.name}
+                                </span>
+                            </label>
                             <input className="form-control"
                                    id="name"
                                    placeholder="Name"
@@ -74,16 +79,26 @@ class Address extends Component {
                         </div>
                     </div>
                     <div className="form-row my-2">
-                        <div className="col-8">
-                            <label htmlFor="streetAddress">Street Address</label>
+                        <div className="col-12 col-sm-8">
+                            <label htmlFor="streetAddress">
+                                Street Address
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.street}
+                                </span>
+                            </label>
                             <input className="form-control"
                                    id="streetAddress"
                                    placeholder="Street Address"
                                    value={this.props.street}
                                    onChange={event => this.props.setAddressStreet(event.target.value)}/>
                         </div>
-                        <div className="col-4">
-                            <label htmlFor="apartmentNumber">Apartment #</label>
+                        <div className="col-12 col-sm-4">
+                            <label htmlFor="apartmentNumber">
+                                Apartment #
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.apartmentNumber}
+                                </span>
+                            </label>
                             <input className="form-control"
                                    id="apartmentNumber"
                                    placeholder="Apartment #"
@@ -93,7 +108,12 @@ class Address extends Component {
                     </div>
                     <div className="form-row my-2">
                         <div className="col-12 col-sm-8">
-                            <label htmlFor="country">Country</label>
+                            <label htmlFor="country">
+                                Country
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.country}
+                                </span>
+                            </label>
                             <div className="dropdown">
                                 <input className="form-control text-left"
                                        type="button"
@@ -115,7 +135,12 @@ class Address extends Component {
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
-                            <label htmlFor="state">State</label>
+                            <label htmlFor="state">
+                                State
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.state}
+                                </span>
+                            </label>
                             <div className="dropdown">
                                 <input className="form-control text-left"
                                        type="button"
@@ -139,7 +164,12 @@ class Address extends Component {
                     </div>
                     <div className="form-row my-2">
                         <div className="col-12 col-sm-8">
-                            <label htmlFor="city">City</label>
+                            <label htmlFor="city">
+                                City
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.city}
+                                </span>
+                            </label>
                             <div className="dropdown">
                                 <input className="form-control text-left"
                                        type="button"
@@ -161,7 +191,12 @@ class Address extends Component {
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
-                            <label htmlFor="zipAddress">Zip</label>
+                            <label htmlFor="zipAddress">
+                                Zip
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.zip}
+                                </span>
+                            </label>
                             <input className="form-control"
                                    id="zip"
                                    placeholder="Zip"
@@ -171,7 +206,12 @@ class Address extends Component {
                     </div>
                     <div className="form-row my-2">
                         <div className="col-12">
-                            <label htmlFor="email">Email Address</label>
+                            <label htmlFor="email">
+                                Email Address
+                                <span className="text-danger">
+                                    {" "}{this.props.errors.email}
+                                </span>
+                            </label>
                             <input className="form-control"
                                    type="email"
                                    id="email"
@@ -201,6 +241,7 @@ const mapStateToProps = state => {
         countryDropdownVisible: state.address.countryDropdownVisible,
         stateDropdownVisible: state.address.stateDropdownVisible,
         cityDropdownVisible: state.address.cityDropdownVisible,
+        errors: state.address.errors,
         mobile: state.screen.mobile
     };
 };

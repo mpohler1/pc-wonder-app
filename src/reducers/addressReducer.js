@@ -10,7 +10,7 @@ import {
     SET_ADDRESS_ZIP,
     SET_CITY_DROPDOWN_VISIBILITY,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
-    SET_STATE_DROPDOWN_VISIBILITY
+    SET_STATE_DROPDOWN_VISIBILITY, SET_VALIDATION_ERRORS
 } from "../actions/actionTypes";
 
 function addressReducer(state={
@@ -26,7 +26,8 @@ function addressReducer(state={
     phoneNumber: "",
     countryDropdownVisible: false,
     stateDropdownVisible: false,
-    cityDropdownVisible: false
+    cityDropdownVisible: false,
+    errors: {}
 }, action) {
     switch(action.type) {
         case SET_ADDRESS_NAME:
@@ -87,6 +88,11 @@ function addressReducer(state={
         case SET_CITY_DROPDOWN_VISIBILITY:
             return Object.assign({}, state, {
                 cityDropdownVisible: action.payload.cityDropdownVisible
+            });
+
+        case SET_VALIDATION_ERRORS:
+            return Object.assign({}, state, {
+                errors: action.payload.validationErrors
             });
 
         default:

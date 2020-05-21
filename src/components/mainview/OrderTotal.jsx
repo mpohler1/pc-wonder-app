@@ -9,39 +9,10 @@ import csc from "country-state-city";
 class OrderTotal extends Component {
 
     handlePlaceOrderButtonClick() {
-        let validatorResults = validate({
-            name: this.props.name,
-            street: this.props.street,
-            apartmentNumber: this.props.apartmentNumber,
-            zip: this.props.zip,
-            email: this.props.email
-        }, CONSTRAINTS);
-
-        let cscResults = {};
-
-        if (csc.getCountryById(this.props.country.id) !== this.props.country) {
-            cscResults.country = ["Select a Country"];
-        }
-
-        if (csc.getStateById(this.props.state.id) !== this.props.state) {
-            cscResults.state = ["Select a State"];
-        }
-
-        else if (!csc.getStatesOfCountry(this.props.country.id).includes(this.props.state)) {
-            cscResults.state = ["State must be within selected Country."];
-        }
-
-        if (csc.getCityById(this.props.city.id) !== this.props.city) {
-            cscResults.city = ["Select a City"];
-        }
-
-        else if (!csc.getCitiesOfState(this.props.state.id).includes(this.props.city)) {
-            cscResults.city = ["City must be within selected State"];
-        }
-
-        let combinedResults = Object.assign({}, validatorResults, cscResults);
-
-        if (combinedResults === undefined) {
+        const errors = this.validateAddress();
+        console.log(errors);
+        // check if errors are empty
+        if (Object.keys(errors).length === 0 && errors.constructor === Object) {
             this.props.setMainViewMode(ORDER_CONFIRMATION);
         }
     }
@@ -82,6 +53,69 @@ class OrderTotal extends Component {
                 </div>
             </div>
         );
+    }
+
+    validateAddress() {
+        const textFieldErrors = this.validateTextFields();
+        const dropdownErrors = this.validateDropDowns();
+        const combinedErrors = Object.assign({}, textFieldErrors, dropdownErrors);
+        return combinedErrors;
+    }
+
+    validateTextFields() {
+        let errors = {};
+
+        /* validate() returns undefined when there are no issues, but since I combine these errors with the dropdown
+        errors, it can never be undefined. If the dropdown validation changes or is removed, there is the possibility
+        that this function returns undefined if the below conditionals are false. To future proof this method, I decided
+        to use Object.assign() to ensure that I only return either an empty object or an object with errors. */
+        errors = Object.assign({}, errors, validate({
+            name: this.props.name,
+            street: this.props.street,
+        }, CONSTRAINTS));
+
+        if (this.props.apartmentNumber.length > 0) {
+            const apartmentNumberResults = validate({apartmentNumber: this.props.apartmentNumber}, CONSTRAINTS);
+            errors = Object.assign({}, errors, apartmentNumberResults);
+        }
+
+        if (this.props.zip.length > 0) {
+            const zipResults = validate({zip: this.props.zip}, CONSTRAINTS);
+            errors = Object.assign({}, errors, zipResults);
+        }
+
+        if (this.props.email.length > 0) {
+            const emailResults = validate({email: this.props.email}, CONSTRAINTS);
+            errors = Object.assign({}, errors, emailResults);
+        }
+
+        return errors;
+    }
+
+    validateDropDowns() {
+        let errors = {};
+
+        if (csc.getCountryById(this.props.country.id) !== this.props.country) {
+            errors.country = ["Select a Country"];
+        }
+
+        if (csc.getStateById(this.props.state.id) !== this.props.state) {
+            errors.state = ["Select a State"];
+        }
+
+        else if (!csc.getStatesOfCountry(this.props.country.id).includes(this.props.state)) {
+            errors.state = ["State must be within selected Country."];
+        }
+
+        if (csc.getCityById(this.props.city.id) !== this.props.city) {
+            errors.city = ["Select a City"];
+        }
+
+        else if (!csc.getCitiesOfState(this.props.state.id).includes(this.props.city)) {
+            errors.city = ["City must be within selected State"];
+        }
+
+        return errors;
     }
 }
 

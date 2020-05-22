@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {setMainViewMode, setValidationErrors} from "../../actions/actions";
+import {placeOrder, setMainViewMode, setValidationErrors} from "../../actions/actions";
 import {ORDER_CONFIRMATION} from "../../resources/viewMode";
 import {CONSTRAINTS} from "../../resources/constraints";
 import validate from "validate.js";
@@ -12,6 +12,7 @@ class OrderTotal extends Component {
         const errors = this.validateAddress();
         // check if errors are empty
         if (Object.keys(errors).length === 0 && errors.constructor === Object) {
+            this.props.placeOrder();
             this.props.setMainViewMode(ORDER_CONFIRMATION);
         }
         this.props.setValidationErrors(errors);
@@ -148,5 +149,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     setMainViewMode,
-    setValidationErrors
+    setValidationErrors,
+    placeOrder
 })(OrderTotal);

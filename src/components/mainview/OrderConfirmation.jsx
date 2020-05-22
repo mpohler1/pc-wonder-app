@@ -5,7 +5,7 @@ class OrderConfirmation extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container-fluid mt-2">
                 <div className="row">
                     <div className="col">
                         <h4>
@@ -31,13 +31,13 @@ class OrderConfirmation extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col">
+                    <div className="col table-responsive">
                         <table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Product</th>
                                     <th>Price</th>
-                                    <th>Quantity</th>
+                                    <th>QTY</th>
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>

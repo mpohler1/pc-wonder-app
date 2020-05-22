@@ -1,11 +1,11 @@
 import React, {Component} from "react";
-import ProductGrid from "./ProductGrid";
-import ProductDetail from "./ProductDetail";
-import Cart from "./Cart";
-import Checkout from "./Checkout";
+import ProductGrid from "./productgrid/ProductGrid";
+import ProductDetail from "./productdetail/ProductDetail";
+import Cart from "./cart/Cart";
+import Checkout from "./checkout/Checkout";
 import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
 import {connect} from "react-redux";
-import OrderConfirmation from "./OrderConfirmation";
+import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
 
 class MainView extends Component {
 

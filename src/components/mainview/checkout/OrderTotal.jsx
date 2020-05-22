@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {placeOrder, setMainViewMode, setValidationErrors} from "../../actions/actions";
-import {ORDER_CONFIRMATION} from "../../resources/viewMode";
-import {CONSTRAINTS} from "../../resources/constraints";
+import {placeOrder, setMainViewMode, setValidationErrors} from "../../../actions/actions";
+import {ORDER_CONFIRMATION} from "../../../resources/viewMode";
+import {CONSTRAINTS} from "../../../resources/constraints";
 import validate from "validate.js";
 import csc from "country-state-city";
 

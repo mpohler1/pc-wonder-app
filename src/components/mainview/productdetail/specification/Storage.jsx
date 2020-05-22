@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class MemoryDetail extends Component {
+class Storage extends Component {
 
     render() {
         return (
@@ -12,19 +12,24 @@ class MemoryDetail extends Component {
                         <td>{this.props.product.year}</td>
                     </tr>
                     <tr>
-                        <td>Size</td>
-                        <td>{this.props.product.size}</td>
-                    </tr>
-                    <tr>
-                        <td>Capacity</td>
-                        <td>
-                            {this.props.product.numSticks * this.props.product.memoryPerStick} GB (
-                            {this.props.product.numSticks} x {this.props.product.memoryPerStick} GB)
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Type</td>
+                        <td>Storage Type</td>
                         <td>{this.props.product.type}</td>
+                    </tr>
+                    <tr>
+                        <td>Form Factor</td>
+                        <td>{this.props.product.form}</td>
+                    </tr>
+                    <tr>
+                        <td>SATA Versrion</td>
+                        <td>{this.props.product.sataVersion}</td>
+                    </tr>
+                    <tr>
+                        <td>Size</td>
+                        <td>{this.props.product.size} GB</td>
+                    </tr>
+                    <tr>
+                        <td>Cache</td>
+                        <td>{this.props.product.cache} MB</td>
                     </tr>
                 </tbody>
             </table>
@@ -37,7 +42,6 @@ const mapStateToProps = state => {
         product: state.products.detail
     };
 };
-
 export default connect(mapStateToProps, {
 
-})(MemoryDetail);
+})(Storage);

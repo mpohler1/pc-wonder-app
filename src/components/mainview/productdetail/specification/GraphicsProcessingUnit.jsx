@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class MonitorDetail extends Component {
+class GraphicsProcessingUnit extends Component {
 
     render() {
         return (
@@ -16,36 +16,36 @@ class MonitorDetail extends Component {
                         <td>{this.props.product.size}</td>
                     </tr>
                     <tr>
-                        <td>Resolution</td>
-                        <td>{this.props.product.resolutionX} x {this.props.product.resolutionY}</td>
+                        <td>Fans</td>
+                        <td>{this.props.product.fans}</td>
                     </tr>
                     <tr>
-                        <td>Refresh Rate</td>
-                        <td>{this.props.product.refreshRate} Hz</td>
+                        <td>Speed</td>
+                        <td>{this.props.product.speed} MHz</td>
                     </tr>
                     <tr>
-                        <td>Response Time</td>
-                        <td>{this.props.product.responseTime} ms</td>
+                        <td>PCI Interface</td>
+                        <td>{this.props.product.pciInterface}</td>
                     </tr>
                     <tr>
-                        <td>Built In Speakers</td>
-                        <td>{this.props.product.speakers ? 'Yes' : 'No'}</td>
+                        <td>Display Ports</td>
+                        <td>{this.props.product.displayPortPorts}</td>
                     </tr>
                     <tr>
-                        <td>Curved</td>
-                        <td>{this.props.product.curved ? 'Yes' : 'No'}</td>
+                        <td>HDMI Ports</td>
+                        <td>{this.props.product.hdmiPorts}</td>
                     </tr>
                     <tr>
-                        <td>Display Port</td>
-                        <td>{this.props.product.displayPort ? 'Yes' : 'No'}</td>
+                        <td>DVI Ports</td>
+                        <td>{this.props.product.dviPorts}</td>
                     </tr>
                     <tr>
-                        <td>HDMI</td>
-                        <td>{this.props.product.hdmi ? 'Yes' : 'No'}</td>
+                        <td>Slot Width</td>
+                        <td>{this.props.product.slotWidth}</td>
                     </tr>
                     <tr>
-                        <td>USB Ports</td>
-                        <td>{this.props.product.usbPorts}</td>
+                        <td>Dimensions</td>
+                        <td>{this.props.product.length} x {this.props.product.height} in</td>
                     </tr>
                 </tbody>
             </table>
@@ -61,4 +61,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(MonitorDetail);
+})(GraphicsProcessingUnit);

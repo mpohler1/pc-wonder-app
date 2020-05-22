@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import Specification from "./specification/Specification";
-import {insertItemIntoCart, setQuantityInProductDetail} from "../../actions/actions";
+import Specification from "./Specification";
+import {insertItemIntoCart, setQuantityInProductDetail} from "../../../actions/actions";
 
 class ProductDetail extends Component {
 

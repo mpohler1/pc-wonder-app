@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class PSUDetail extends Component {
+class PowerSupplyUnit extends Component {
 
     render() {
         return (
@@ -69,4 +69,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(PSUDetail);
+})(PowerSupplyUnit);

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {insertItemIntoCart, setDetailProduct, setMainViewMode} from "../../actions/actions";
-import {PRODUCT_DETAIL} from "../../resources/viewMode";
+import {insertItemIntoCart, setDetailProduct, setMainViewMode} from "../../../actions/actions";
+import {PRODUCT_DETAIL} from "../../../resources/viewMode";
 
 class ProductGrid extends Component {
 

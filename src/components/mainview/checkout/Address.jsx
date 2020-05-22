@@ -13,7 +13,7 @@ import {
     setCountryDropdownVisibility,
     setStateDropdownVisibility,
     setCityDropdownVisibility
-} from "../../actions/actions";
+} from "../../../actions/actions";
 import csc from "country-state-city";
 
 class Address extends Component {

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class MotherboardDetail extends Component {
+class Motherboard extends Component {
 
     render() {
         return (
@@ -85,4 +85,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(MotherboardDetail);
+})(Motherboard);

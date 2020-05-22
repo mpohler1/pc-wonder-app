@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 
-class CoolingDetail extends Component {
+class Cooling extends Component {
 
     render() {
         return (
@@ -37,4 +37,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
 
-})(CoolingDetail);
+})(Cooling);

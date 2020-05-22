@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import ItemList from "./ItemList";
-import {setMainViewMode} from "../../actions/actions";
-import {CHECKOUT} from "../../resources/viewMode";
+import {setMainViewMode} from "../../../actions/actions";
+import {CHECKOUT} from "../../../resources/viewMode";
 
 class Cart extends Component {
 

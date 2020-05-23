@@ -16,7 +16,8 @@ function productReducer(state = {list: [], quantity: 0}, action) {
         case FETCH_PRODUCT_SUCCESS:
         case SET_DETAIL_PRODUCT:
             return Object.assign({}, state, {
-                detail: action.payload.product
+                detail: action.payload.product,
+                quantity: 1
             });
 
         case SET_QUANTITY_IN_PRODUCT_DETAIL:

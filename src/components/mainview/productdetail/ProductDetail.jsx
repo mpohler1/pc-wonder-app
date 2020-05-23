@@ -40,10 +40,10 @@ class ProductDetail extends Component {
 
     componentDidMount() {
         this.loadProductFromURL();
-        this.props.setQuantityInProductDetail(1);
     }
 
     render() {
+        console.log("render");
         return (
             <React.Fragment>
                 {

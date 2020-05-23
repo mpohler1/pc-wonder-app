@@ -24,8 +24,7 @@ class ProductDetail extends Component {
     }
 
     loadProductFromURL() {
-        const url = this.props.history.location.pathname;
-        const uuid = "" + url.slice(url.lastIndexOf("/")+1);
+        const uuid = this.props.match.params.uuid;
         if (this.props.product === undefined || this.props.product.uuid !== uuid) {
             this.props.fetchProductRequest();
             fetchProductByUUID(uuid).then(([response, json]) => {

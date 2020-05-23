@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import Specification from "./Specification";
-import {insertItemIntoCart, setQuantityInProductDetail} from "../../../actions/actions";
+import {
+    fetchProductFailure,
+    fetchProductRequest,
+    fetchProductSuccess,
+    insertItemIntoCart,
+    setQuantityInProductDetail
+} from "../../../actions/actions";
+import {fetchProductByUUID} from "../../../service/apiService";
 
 class ProductDetail extends Component {
 
@@ -16,71 +23,92 @@ class ProductDetail extends Component {
         this.props.insertItemIntoCart(this.props.product, this.props.quantity);
     }
 
+    loadProductFromURL() {
+        const url = this.props.history.location.pathname;
+        const uuid = "" + url.slice(url.lastIndexOf("/")+1);
+        if (this.props.product === undefined || this.props.product.uuid !== uuid) {
+            this.props.fetchProductRequest();
+            fetchProductByUUID(uuid).then(([response, json]) => {
+                if (response.status === 200) {
+                    this.props.fetchProductSuccess(json);
+                } else {
+                    this.props.fetchProductFailure();
+                }
+            })
+        }
+    }
+
     componentDidMount() {
+        this.loadProductFromURL();
         this.props.setQuantityInProductDetail(1);
     }
 
     render() {
         return (
-            <div className="d-flex flex-nowrap flex-row align-items-center mt-3">
-                <div className="col">
-                    <div className="row row-cols-1 row-cols-sm-12 mt-sm-2 mt-lg-3">
-                        <div className="col col-md-6 col-lg-8 mb-2">
-                            <img src={this.props.product.imageURL}
-                                 className="card card-img product-full p-0"
-                                 alt={"" + this.props.product.name + " Image"}/>
-                        </div>
-                        <div className="col col-md-6 col-lg-4">
-                            <h2>
-                                {this.props.product.name}
-                            </h2>
-                            <h5>
-                                {this.props.product.manufacturer.name}
-                            </h5>
-                            <p>
-                                {this.props.product.description} <br/>
-                            </p>
-                            <div className="d-flex flex-row align-items-center mb-2">
-                                <h2 className="text-nowrap">
-                                    ${this.props.product.price.toFixed(2)}
-                                </h2>
-                                <div className="input-group">
-                                    <input className="form-control quantity ml-2"
-                                           type="number"
-                                           value={this.props.quantity}
-                                           onChange={event => this.handleQuantityChange(event)}/>
-                                    <button className="btn btn-primary ml-2"
-                                            onClick={() => this.handleCartButtonClick()}>
-                                        Add To Cart
-                                    </button>
+            <React.Fragment>
+                {
+                    this.props.product &&
+                    <div className="d-flex flex-nowrap flex-row align-items-center mt-3">
+                        <div className="col">
+                            <div className="row row-cols-1 row-cols-sm-12 mt-sm-2 mt-lg-3">
+                                <div className="col col-md-6 col-lg-8 mb-2">
+                                    <img src={this.props.product.imageURL}
+                                         className="card card-img product-full p-0"
+                                         alt={"" + this.props.product.name + " Image"}/>
+                                </div>
+                                <div className="col col-md-6 col-lg-4">
+                                    <h2>
+                                        {this.props.product.name}
+                                    </h2>
+                                    <h5>
+                                        {this.props.product.manufacturer.name}
+                                    </h5>
+                                    <p>
+                                        {this.props.product.description} <br/>
+                                    </p>
+                                    <div className="d-flex flex-row align-items-center mb-2">
+                                        <h2 className="text-nowrap">
+                                            ${this.props.product.price.toFixed(2)}
+                                        </h2>
+                                        <div className="input-group">
+                                            <input className="form-control quantity ml-2"
+                                                   type="number"
+                                                   value={this.props.quantity}
+                                                   onChange={event => this.handleQuantityChange(event)}/>
+                                            <button className="btn btn-primary ml-2"
+                                                    onClick={() => this.handleCartButtonClick()}>
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {
+                                        this.props.largest &&
+                                        <React.Fragment>
+                                            <h5>
+                                                Specifications:
+                                            </h5>
+                                            <div className="specification-box">
+                                                <Specification/>
+                                            </div>
+                                        </React.Fragment>
+                                    }
                                 </div>
                             </div>
                             {
-                                this.props.largest &&
-                                <React.Fragment>
-                                    <h5>
-                                        Specifications:
-                                    </h5>
-                                    <div className="specification-box">
+                                !this.props.largest &&
+                                <div className="row">
+                                    <div className="col">
+                                        <h5>
+                                            Specifications:
+                                        </h5>
                                         <Specification/>
                                     </div>
-                                </React.Fragment>
+                                </div>
                             }
                         </div>
                     </div>
-                    {
-                        !this.props.largest &&
-                        <div className="row">
-                            <div className="col">
-                                <h5>
-                                    Specifications:
-                                </h5>
-                                <Specification/>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </div>
+                }
+            </React.Fragment>
         );
     }
 }
@@ -95,5 +123,8 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     insertItemIntoCart,
-    setQuantityInProductDetail
+    setQuantityInProductDetail,
+    fetchProductRequest,
+    fetchProductSuccess,
+    fetchProductFailure
 })(ProductDetail);

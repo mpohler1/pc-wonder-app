@@ -4,11 +4,11 @@ import {
     fetchProductsFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
-    setMainViewMode,
+    setRoute,
     setDrawerVisibility
 } from "../../actions/actions";
 import {fetchAllProducts} from "../../service/apiService";
-import {PRODUCT_GRID} from "../../resources/viewMode";
+import {PRODUCT_GRID} from "../../resources/routes";
 
 class Brand extends Component {
 
@@ -43,6 +43,6 @@ export default connect(mapStateToProps, {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
-    setMainViewMode,
+    setMainViewMode: setRoute,
     setNavbarMenuVisibility: setDrawerVisibility
 })(Brand);

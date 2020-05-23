@@ -3,7 +3,7 @@ import {
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
     SET_DRAWER_VISIBILITY,
-    SET_MAIN_VIEW_MODE,
+    SET_ROUTE,
     FETCH_PRODUCTS_REQUEST,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
@@ -24,7 +24,12 @@ import {
     SET_ADDRESS_ZIP,
     SET_ADDRESS_EMAIL,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
-    SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY, SET_CITY_DROPDOWN_VISIBILITY, SET_VALIDATION_ERRORS, PLACE_ORDER
+    SET_ADDRESS_COUNTRY,
+    SET_STATE_DROPDOWN_VISIBILITY,
+    SET_CITY_DROPDOWN_VISIBILITY,
+    SET_VALIDATION_ERRORS,
+    PLACE_ORDER,
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -69,6 +74,27 @@ export const fetchProductsFailure = () => (
     }
 );
 
+export const fetchProductRequest = () => (
+    {
+        type: FETCH_PRODUCT_REQUEST
+    }
+);
+
+export const fetchProductSuccess = product => (
+    {
+        type: FETCH_PRODUCT_SUCCESS,
+        payload: {
+            product: product
+        }
+    }
+);
+
+export const fetchProductFailure = () => (
+    {
+        type: FETCH_PRODUCT_FAILURE
+    }
+);
+
 export const setDrawerVisibility = drawerVisible => (
     {
         type: SET_DRAWER_VISIBILITY,
@@ -88,11 +114,11 @@ export const setScrollYAndStickyTop = (scrollY, stickyTop) => (
     }
 );
 
-export const setMainViewMode = viewMode => (
+export const setRoute = route => (
     {
-        type: SET_MAIN_VIEW_MODE,
+        type: SET_ROUTE,
         payload: {
-            viewMode: viewMode
+            route: route
         }
     }
 );

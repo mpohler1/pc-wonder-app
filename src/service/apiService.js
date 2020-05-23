@@ -11,7 +11,7 @@ export function fetchCategories() {
     }).then(response => Promise.all([
         response,
         response.json()
-    ]))
+    ]));
 }
 
 export function fetchAllProducts() {
@@ -25,7 +25,7 @@ export function fetchAllProducts() {
     }).then(response => Promise.all([
         response,
         response.json()
-    ]))
+    ]));
 }
 
 export function fetchProductsByCategory(categoryId) {
@@ -39,5 +39,19 @@ export function fetchProductsByCategory(categoryId) {
     }).then(response => Promise.all([
         response,
         response.json()
-    ]))
+    ]));
+}
+
+export function fetchProductByUUID(uuid) {
+    const endpoint = apiURL + "/product/" + uuid;
+    const headers = {
+        'content-type': 'application/json'
+    };
+    return fetch(endpoint, {
+        method: 'GET',
+        headers: headers
+    }).then(response => Promise.all([
+        response,
+        response.json()
+    ]));
 }

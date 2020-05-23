@@ -1,11 +1,11 @@
-import {PRODUCT_GRID} from "../resources/viewMode";
-import {SET_MAIN_VIEW_MODE} from "../actions/actionTypes";
+import {PRODUCT_GRID} from "../resources/routes";
+import {SET_ROUTE} from "../actions/actionTypes";
 
-function mainViewReducer(state = {viewMode: PRODUCT_GRID}, action) {
+function mainViewReducer(state = {route: PRODUCT_GRID}, action) {
     switch (action.type) {
-        case SET_MAIN_VIEW_MODE:
+        case SET_ROUTE:
             return Object.assign({}, state, {
-                viewMode: action.payload.viewMode
+                
             });
 
         default:

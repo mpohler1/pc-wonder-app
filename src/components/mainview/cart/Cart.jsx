@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import ItemList from "./ItemList";
-import {setMainViewMode} from "../../../actions/actions";
-import {CHECKOUT} from "../../../resources/viewMode";
+import {setRoute} from "../../../actions/actions";
+import {CHECKOUT} from "../../../resources/routes";
 
 class Cart extends Component {
 
@@ -56,5 +56,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setMainViewMode
+    setMainViewMode: setRoute
 })(Cart);

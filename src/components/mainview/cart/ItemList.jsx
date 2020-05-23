@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {removeItemFromCart, setDetailProduct, setMainViewMode, setQuantityInItemList} from "../../../actions/actions";
-import {PRODUCT_DETAIL} from "../../../resources/viewMode";
+import {removeItemFromCart, setDetailProduct, setRoute, setQuantityInItemList} from "../../../actions/actions";
+import {PRODUCT_DETAIL} from "../../../resources/routes";
 
 const CLASS_LIST_WITH_BORDER_TOP = "row align-items-center border-top border-bottom border-secondary";
 const CLASS_LIST_WITHOUT_BORDER_TOP = "row align-items-center border-bottom border-secondary";
@@ -104,5 +104,5 @@ export default connect(mapStateToProps, {
     setQuantityInItemList,
     removeItemFromCart,
     setDetailProduct,
-    setMainViewMode
+    setMainViewMode: setRoute
 })(ItemList);

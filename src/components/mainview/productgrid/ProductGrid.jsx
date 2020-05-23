@@ -1,17 +1,17 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {insertItemIntoCart, setDetailProduct, setMainViewMode} from "../../../actions/actions";
-import {PRODUCT_DETAIL} from "../../../resources/viewMode";
+import {insertItemIntoCart, setDetailProduct, setRoute} from "../../../actions/actions";
+import {PRODUCT_DETAIL} from "../../../resources/routes";
+import {Link, withRouter} from "react-router-dom";
 
 class ProductGrid extends Component {
 
-    handleProductClick(product) {
-        this.props.setDetailProduct(product);
-        this.props.setMainViewMode(PRODUCT_DETAIL);
-    }
-
     handleCartButtonClick(product) {
         this.props.insertItemIntoCart(product, 1);
+    }
+
+    handleProductClick(product) {
+        this.props.setDetailProduct(product);
     }
 
     render() {
@@ -22,11 +22,11 @@ class ProductGrid extends Component {
                         this.props.products.map(product => (
                             <div className="col pr-0 pt-0 pl-2 pb-2 d-flex align-items-stretch">
                                 <div className="card container-fluid p-0 m-0">
-                                    <img src={product.imageURL}
-                                         className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
-                                         alt={product.name + " image"}
-                                         onClick={() => this.handleProductClick(product)}
-                                    />
+                                    <Link to={PRODUCT_DETAIL + product.uuid} onClick={() => this.handleProductClick(product)}>
+                                        <img src={product.imageURL}
+                                             className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
+                                             alt={product.name + " image"}/>
+                                    </Link>
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             {product.name}
@@ -61,8 +61,8 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     setDetailProduct,
-    setMainViewMode,
+    setRoute,
     insertItemIntoCart
-})(ProductGrid);
+})(ProductGrid));

@@ -3,48 +3,31 @@ import ProductGrid from "./productgrid/ProductGrid";
 import ProductDetail from "./productdetail/ProductDetail";
 import Cart from "./cart/Cart";
 import Checkout from "./checkout/Checkout";
-import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
+import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/routes";
 import {connect} from "react-redux";
 import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 class MainView extends Component {
 
     render() {
-        switch(this.props.viewMode) {
-            case PRODUCT_GRID:
-                return (
-                    <ProductGrid/>
-                );
-
-            case PRODUCT_DETAIL:
-                return (
-                    <ProductDetail/>
-                );
-
-            case CART:
-                return (
-                    <Cart/>
-                );
-
-            case CHECKOUT:
-                return (
-                    <Checkout/>
-                );
-
-            case ORDER_CONFIRMATION:
-                return (
-                    <OrderConfirmation/>
-                );
-
-            default:
-                return <div/>
-        }
+        return (
+            <BrowserRouter>
+                <Switch>
+                    <Route path={PRODUCT_GRID} exact component={ProductGrid}/>
+                    <Route path={PRODUCT_DETAIL} component={ProductDetail}/>
+                    <Route path={CART} component={Cart}/>
+                    <Route path={CHECKOUT} component={Checkout}/>
+                    <Route path={ORDER_CONFIRMATION} component={OrderConfirmation}/>
+                </Switch>
+            </BrowserRouter>
+        );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        viewMode: state.mainView.viewMode
+        route: state.mainView.route
     }
 };
 

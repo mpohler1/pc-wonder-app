@@ -1,13 +1,13 @@
 import React, {Component} from "react";
 import {fetchProductsByCategory} from "../../service/apiService";
-import {PRODUCT_GRID} from "../../resources/viewMode";
+import {PRODUCT_GRID} from "../../resources/routes";
 import MenuButton from "./MenuButton";
 import {connect} from "react-redux";
 import {
     fetchProductsFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
-    setMainViewMode,
+    setRoute,
     setDrawerVisibility
 } from "../../actions/actions";
 import Brand from "./Brand";
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
     setDrawerVisibility,
-    setMainViewMode,
+    setMainViewMode: setRoute,
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure

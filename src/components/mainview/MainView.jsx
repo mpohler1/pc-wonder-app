@@ -12,15 +12,13 @@ class MainView extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <Switch>
-                    <Route path={PRODUCT_GRID} exact component={ProductGrid}/>
-                    <Route path={PRODUCT_DETAIL} component={ProductDetail}/>
-                    <Route path={CART} component={Cart}/>
-                    <Route path={CHECKOUT} component={Checkout}/>
-                    <Route path={ORDER_CONFIRMATION} component={OrderConfirmation}/>
-                </Switch>
-            </BrowserRouter>
+            <Switch>
+                <Route path={PRODUCT_GRID} exact component={ProductGrid}/>
+                <Route path={PRODUCT_DETAIL} component={ProductDetail}/>
+                <Route path={CART} component={Cart}/>
+                <Route path={CHECKOUT} component={Checkout}/>
+                <Route path={ORDER_CONFIRMATION} component={OrderConfirmation}/>
+            </Switch>
         );
     }
 }

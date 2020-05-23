@@ -6,7 +6,7 @@ import Checkout from "./checkout/Checkout";
 import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/routes";
 import {connect} from "react-redux";
 import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 
 class MainView extends Component {
 

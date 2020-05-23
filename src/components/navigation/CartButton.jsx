@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Link, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {CART} from "../../resources/routes";
 
 class CartButton extends Component {
@@ -16,4 +16,4 @@ class CartButton extends Component {
     }
 }
 
-export default withRouter(CartButton);
+export default CartButton;

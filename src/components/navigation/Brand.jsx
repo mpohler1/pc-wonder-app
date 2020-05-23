@@ -4,11 +4,11 @@ import {
     fetchProductsFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
-    setRoute,
     setDrawerVisibility
 } from "../../actions/actions";
 import {fetchAllProducts} from "../../service/apiService";
 import {PRODUCT_GRID} from "../../resources/routes";
+import {Link} from "react-router-dom";
 
 class Brand extends Component {
 
@@ -20,17 +20,18 @@ class Brand extends Component {
             } else {
                 this.props.fetchProductsFailure();
             }
-            this.props.setMainViewMode(PRODUCT_GRID);
-            this.props.setNavbarMenuVisibility(false);
+            this.props.setDrawerVisibility(false);
         });
     }
 
     render() {
         return (
-            <h3 className="btn brand text-white text-nowrap ml-3 p-0"
-                onClick={() => this.handleOnClick()}>
-                PC Wonder
-            </h3>
+            <Link to={PRODUCT_GRID}
+                  onClick={() => this.handleOnClick()}>
+                <h3 className="btn brand text-white text-nowrap ml-3 p-0">
+                    PC Wonder
+                </h3>
+            </Link>
         );
     }
 }
@@ -43,6 +44,5 @@ export default connect(mapStateToProps, {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
-    setMainViewMode: setRoute,
-    setNavbarMenuVisibility: setDrawerVisibility
+    setDrawerVisibility
 })(Brand);

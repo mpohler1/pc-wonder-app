@@ -5,66 +5,84 @@ class OrderConfirmation extends Component {
 
     render() {
         return (
-            <div className="container-fluid mt-2">
-                <div className="row">
-                    <div className="col">
-                        <h4>
-                            Your order has been placed.
-                        </h4>
-                        <p>
-                            Thank you for ordering through PC Wonder.
-                            If this was a real website, your order would be shipped to the following address.
-                        </p>
-                        <h5>
-                            {this.props.name}<br/>
-                            {this.props.companyName.length > 0 && (
-                                <React.Fragment>
-                                    {this.props.companyName}<br/>
-                                </React.Fragment>
-                            )}
-                            {this.props.street} {this.props.apartmentNumber}<br/>
-                            {this.props.city.name}, {this.props.state.name} {this.props.zip}<br/>
-                        </h5>
-                        <p>
-                            The details of your order may be found below.
-                        </p>
+            <React.Fragment>
+                {
+                    this.props.order.length === 0 &&
+                    <div className="container-fluid d-flex flex-row align-items-center page">
+                        <div className="container-fluid d-flex flex-column align-items-center">
+                            <h1 className="display-4">
+                                No order information found.
+                            </h1>
+                            <p>
+                                Information from previous orders cannot be found on this page.
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="col table-responsive">
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>QTY</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.props.order.map(item => (
-                                        <tr>
-                                            <td>{item.product.name}</td>
-                                            <td>${parseFloat(item.product.price).toFixed(2)}</td>
-                                            <td>{item.quantity}</td>
-                                            <td>${(parseFloat(item.product.price) * parseFloat(item.quantity)).toFixed(2)}</td>
-                                        </tr>
-                                    ))
-                                }
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th/>
-                                    <th/>
-                                    <th>Total:</th>
-                                    <th>${this.props.total}</th>
-                                </tr>
-                            </tfoot>
-                        </table>
+                }
+                {
+                    this.props.order.length > 0 &&
+                    <div className="container-fluid mt-2">
+                        <div className="row">
+                            <div className="col">
+                                <h4>
+                                    Your order has been placed.
+                                </h4>
+                                <p>
+                                    Thank you for ordering through PC Wonder.
+                                    If this was a real website, your order would be shipped to the following address.
+                                </p>
+                                <h5>
+                                    {this.props.name}<br/>
+                                    {this.props.companyName.length > 0 && (
+                                        <React.Fragment>
+                                            {this.props.companyName}<br/>
+                                        </React.Fragment>
+                                    )}
+                                    {this.props.street} {this.props.apartmentNumber}<br/>
+                                    {this.props.city.name}, {this.props.state.name} {this.props.zip}<br/>
+                                </h5>
+                                <p>
+                                    The details of your order may be found below.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col table-responsive">
+                                <table className="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>QTY</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                        this.props.order.map(item => (
+                                            <tr>
+                                                <td>{item.product.name}</td>
+                                                <td>${parseFloat(item.product.price).toFixed(2)}</td>
+                                                <td>{item.quantity}</td>
+                                                <td>${(parseFloat(item.product.price) * parseFloat(item.quantity)).toFixed(2)}</td>
+                                            </tr>
+                                        ))
+                                    }
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th/>
+                                        <th/>
+                                        <th>Total:</th>
+                                        <th>${this.props.total}</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+            </React.Fragment>
         );
     }
 }

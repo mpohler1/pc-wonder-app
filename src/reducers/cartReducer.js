@@ -5,7 +5,7 @@ import {
     SET_QUANTITY_IN_ITEM_LIST
 } from "../actions/actionTypes";
 
-function cartReducer(state={items: []}, action) {
+function cartReducer(state={items: [], order: []}, action) {
 
     switch (action.type) {
         case INSERT_ITEM_INTO_CART:

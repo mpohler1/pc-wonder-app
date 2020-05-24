@@ -45,6 +45,19 @@ class ProductDetail extends Component {
         return (
             <React.Fragment>
                 {
+                    !this.props.product &&
+                    <div className="container-fluid d-flex flex-row align-items-center page">
+                        <div className="container-fluid d-flex flex-column align-items-center">
+                            <h1 className="display-4">
+                                Product not found.
+                            </h1>
+                            <p>
+                                A product associated with this page could not be found.
+                            </p>
+                        </div>
+                    </div>
+                }
+                {
                     this.props.product &&
                     <div className="d-flex flex-nowrap flex-row align-items-center mt-3">
                         <div className="col">

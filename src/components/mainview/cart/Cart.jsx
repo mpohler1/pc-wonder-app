@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import ItemList from "./ItemList";
-import {setRoute} from "../../../actions/actions";
 import {CHECKOUT} from "../../../resources/routes";
 
 class Cart extends Component {
 
     handleCheckoutButton() {
-        this.props.setMainViewMode(CHECKOUT);
+
     }
 
     render() {
@@ -56,5 +55,5 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, {
-    setMainViewMode: setRoute
+
 })(Cart);

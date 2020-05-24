@@ -42,7 +42,6 @@ class ProductDetail extends Component {
     }
 
     render() {
-        console.log("render");
         return (
             <React.Fragment>
                 {

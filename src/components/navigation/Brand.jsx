@@ -6,32 +6,22 @@ import {
     fetchProductsSuccess,
     setDrawerVisibility
 } from "../../actions/actions";
-import {fetchAllProducts} from "../../service/apiService";
 import {PRODUCT_GRID} from "../../resources/routes";
-import {Link} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class Brand extends Component {
 
     handleOnClick() {
-        this.props.fetchProductsRequest();
-        fetchAllProducts().then(([response, json]) => {
-            if (response.status === 200) {
-                this.props.fetchProductsSuccess(json);
-            } else {
-                this.props.fetchProductsFailure();
-            }
-            this.props.setDrawerVisibility(false);
-        });
+        this.props.setDrawerVisibility(false);
+        this.props.history.push(PRODUCT_GRID);
     }
 
     render() {
         return (
-            <Link to={PRODUCT_GRID}
-                  onClick={() => this.handleOnClick()}>
-                <h3 className="btn brand text-white text-nowrap ml-3 p-0">
-                    PC Wonder
-                </h3>
-            </Link>
+            <h3 className="btn brand text-white text-nowrap ml-3 p-0"
+                onClick={() => this.handleOnClick()}>
+                PC Wonder
+            </h3>
         );
     }
 }
@@ -40,9 +30,9 @@ const mapStateToProps = state => {
     return {};
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
     setDrawerVisibility
-})(Brand);
+})(Brand));

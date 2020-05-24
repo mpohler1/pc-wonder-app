@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {removeItemFromCart, setDetailProduct, setRoute, setQuantityInItemList} from "../../../actions/actions";
+import {removeItemFromCart, setDetailProduct, setQuantityInItemList} from "../../../actions/actions";
 import {PRODUCT_DETAIL} from "../../../resources/routes";
 
 const CLASS_LIST_WITH_BORDER_TOP = "row align-items-center border-top border-bottom border-secondary";
@@ -20,7 +20,7 @@ class ItemList extends Component {
 
     handleProductClick(product) {
         this.props.setDetailProduct(product);
-        this.props.setMainViewMode(PRODUCT_DETAIL);
+
     }
 
     handleXButtonClick(item) {
@@ -103,6 +103,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
     setQuantityInItemList,
     removeItemFromCart,
-    setDetailProduct,
-    setMainViewMode: setRoute
+    setDetailProduct
 })(ItemList);

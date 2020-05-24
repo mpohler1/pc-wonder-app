@@ -1,8 +1,15 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {insertItemIntoCart, setDetailProduct, setRoute} from "../../../actions/actions";
+import {
+    fetchProductsFailure,
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    insertItemIntoCart,
+    setDetailProduct,
+} from "../../../actions/actions";
 import {PRODUCT_DETAIL} from "../../../resources/routes";
 import {Link, withRouter} from "react-router-dom";
+import {fetchAllProducts, fetchProductsByCategoryName} from "../../../service/apiService";
 
 class ProductGrid extends Component {
 
@@ -12,6 +19,45 @@ class ProductGrid extends Component {
 
     handleProductClick(product) {
         this.props.setDetailProduct(product);
+    }
+
+    determineProductList() {
+        if (this.props.match.params.categoryName && this.props.match.params.categoryName !== this.props.categoryName) {
+            this.getProductsByCategoryName();
+        } else if (!this.props.match.params.categoryName) {
+            this.getAllProducts();
+        }
+    }
+
+    getProductsByCategoryName() {
+        const categoryName = this.props.match.params.categoryName;
+        this.props.fetchProductsRequest();
+        fetchProductsByCategoryName(categoryName).then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json, categoryName);
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        })
+    }
+
+    getAllProducts() {
+        this.props.fetchProductsRequest();
+        fetchAllProducts().then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json, "");
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        });
+    }
+
+    componentDidMount() {
+        this.determineProductList();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.determineProductList();
     }
 
     render() {
@@ -57,12 +103,16 @@ class ProductGrid extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.products.list
+        products: state.products.list,
+        categories: state.categories.list,
+        categoryName: state.products.categoryName
     };
 };
 
 export default withRouter(connect(mapStateToProps, {
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsFailure,
     setDetailProduct,
-    setRoute,
     insertItemIntoCart
 })(ProductGrid));

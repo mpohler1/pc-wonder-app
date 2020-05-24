@@ -7,10 +7,9 @@ import {
     CART_SCHEME,
     CHECKOUT_SCHEME,
     ORDER_CONFIRMATION_SCHEME,
-    PRODUCT_DETAIL_SCHEME,
+    PRODUCT_DETAIL_SCHEME, PRODUCT_GRID,
     PRODUCT_GRID_SCHEME
 } from "../../resources/routes";
-import {connect} from "react-redux";
 import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
 import {Redirect, Route, Switch} from "react-router-dom";
 
@@ -30,10 +29,4 @@ class MainView extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        route: state.mainView.route
-    }
-};
-
-export default connect(mapStateToProps)(MainView);
+export default MainView;

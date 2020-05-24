@@ -3,7 +3,7 @@ import Navbar from "./components/navigation/Navbar";
 import MainView from "./components/mainview/MainView";
 import Footer from "./components/footer/Footer";
 import {connect} from "react-redux";
-import {fetchAllProducts, fetchCategories} from "./service/apiService";
+import {fetchCategories} from "./service/apiService";
 import {
     fetchCategoriesFailure,
     fetchCategoriesRequest,
@@ -42,21 +42,9 @@ class App extends Component{
         });
     }
 
-    setProducts() {
-        this.props.fetchProductsRequest();
-        fetchAllProducts().then(([response, json]) => {
-            if (response.status === 200) {
-                this.props.fetchProductsSuccess(json);
-            } else {
-                this.props.fetchProductsFailure();
-            }
-        })
-    }
-
     componentDidMount() {
         window.addEventListener('resize', () => this.handleResize());
         this.setCategories();
-        this.setProducts();
     }
 
     componentWillUnmount() {

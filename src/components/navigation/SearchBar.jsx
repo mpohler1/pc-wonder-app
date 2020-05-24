@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 class SearchBar extends Component {
 
     handleSearch() {
-        this.props.setMainViewMode(PRODUCT_GRID);
+
     }
 
     render() {
@@ -29,4 +29,4 @@ const mapStateToProps = state => {
     return {}
 };
 
-export default connect(mapStateToProps, {setMainViewMode: setRoute})(SearchBar);
+export default connect(mapStateToProps, {})(SearchBar);

@@ -3,7 +3,6 @@ import {
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
     SET_DRAWER_VISIBILITY,
-    SET_ROUTE,
     FETCH_PRODUCTS_REQUEST,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
@@ -29,7 +28,7 @@ import {
     SET_CITY_DROPDOWN_VISIBILITY,
     SET_VALIDATION_ERRORS,
     PLACE_ORDER,
-    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -59,11 +58,12 @@ export const fetchProductsRequest = () => (
     }
 );
 
-export const fetchProductsSuccess = productList => (
+export const fetchProductsSuccess = (productList, categoryName) => (
     {
         type: FETCH_PRODUCTS_SUCCESS,
         payload: {
-            productList: productList
+            productList: productList,
+            categoryName: categoryName
         }
     }
 );
@@ -110,15 +110,6 @@ export const setScrollYAndStickyTop = (scrollY, stickyTop) => (
         payload: {
             scrollY: scrollY,
             stickyTop: stickyTop
-        }
-    }
-);
-
-export const setRoute = route => (
-    {
-        type: SET_ROUTE,
-        payload: {
-            route: route
         }
     }
 );

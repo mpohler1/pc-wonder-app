@@ -3,7 +3,6 @@ import {
     FETCH_CATEGORIES_FAILURE,
     FETCH_CATEGORIES_SUCCESS,
     SET_DRAWER_VISIBILITY,
-    SET_MAIN_VIEW_MODE,
     FETCH_PRODUCTS_REQUEST,
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE,
@@ -24,7 +23,12 @@ import {
     SET_ADDRESS_ZIP,
     SET_ADDRESS_EMAIL,
     SET_COUNTRY_DROPDOWN_VISIBILITY,
-    SET_ADDRESS_COUNTRY, SET_STATE_DROPDOWN_VISIBILITY, SET_CITY_DROPDOWN_VISIBILITY, SET_VALIDATION_ERRORS, PLACE_ORDER
+    SET_ADDRESS_COUNTRY,
+    SET_STATE_DROPDOWN_VISIBILITY,
+    SET_CITY_DROPDOWN_VISIBILITY,
+    SET_VALIDATION_ERRORS,
+    PLACE_ORDER,
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -54,11 +58,12 @@ export const fetchProductsRequest = () => (
     }
 );
 
-export const fetchProductsSuccess = productList => (
+export const fetchProductsSuccess = (productList, categoryName) => (
     {
         type: FETCH_PRODUCTS_SUCCESS,
         payload: {
-            productList: productList
+            productList: productList,
+            categoryName: categoryName
         }
     }
 );
@@ -66,6 +71,27 @@ export const fetchProductsSuccess = productList => (
 export const fetchProductsFailure = () => (
     {
         type: FETCH_PRODUCTS_FAILURE
+    }
+);
+
+export const fetchProductRequest = () => (
+    {
+        type: FETCH_PRODUCT_REQUEST
+    }
+);
+
+export const fetchProductSuccess = product => (
+    {
+        type: FETCH_PRODUCT_SUCCESS,
+        payload: {
+            product: product
+        }
+    }
+);
+
+export const fetchProductFailure = () => (
+    {
+        type: FETCH_PRODUCT_FAILURE
     }
 );
 
@@ -84,15 +110,6 @@ export const setScrollYAndStickyTop = (scrollY, stickyTop) => (
         payload: {
             scrollY: scrollY,
             stickyTop: stickyTop
-        }
-    }
-);
-
-export const setMainViewMode = viewMode => (
-    {
-        type: SET_MAIN_VIEW_MODE,
-        payload: {
-            viewMode: viewMode
         }
     }
 );

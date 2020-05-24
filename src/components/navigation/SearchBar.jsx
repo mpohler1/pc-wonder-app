@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import {PRODUCT_GRID} from "../../resources/viewMode";
-import {setMainViewMode} from "../../actions/actions";
+import {PRODUCT_GRID} from "../../resources/routes";
+import {setRoute} from "../../actions/actions";
 import {connect} from "react-redux";
 
 class SearchBar extends Component {
 
     handleSearch() {
-        this.props.setMainViewMode(PRODUCT_GRID);
+
     }
 
     render() {
@@ -29,4 +29,4 @@ const mapStateToProps = state => {
     return {}
 };
 
-export default connect(mapStateToProps, {setMainViewMode})(SearchBar);
+export default connect(mapStateToProps, {})(SearchBar);

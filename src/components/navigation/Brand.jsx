@@ -4,25 +4,16 @@ import {
     fetchProductsFailure,
     fetchProductsRequest,
     fetchProductsSuccess,
-    setMainViewMode,
     setDrawerVisibility
 } from "../../actions/actions";
-import {fetchAllProducts} from "../../service/apiService";
-import {PRODUCT_GRID} from "../../resources/viewMode";
+import {PRODUCT_GRID} from "../../resources/routes";
+import {withRouter} from "react-router-dom";
 
 class Brand extends Component {
 
     handleOnClick() {
-        this.props.fetchProductsRequest();
-        fetchAllProducts().then(([response, json]) => {
-            if (response.status === 200) {
-                this.props.fetchProductsSuccess(json);
-            } else {
-                this.props.fetchProductsFailure();
-            }
-            this.props.setMainViewMode(PRODUCT_GRID);
-            this.props.setNavbarMenuVisibility(false);
-        });
+        this.props.setDrawerVisibility(false);
+        this.props.history.push(PRODUCT_GRID);
     }
 
     render() {
@@ -39,10 +30,9 @@ const mapStateToProps = state => {
     return {};
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     fetchProductsRequest,
     fetchProductsSuccess,
     fetchProductsFailure,
-    setMainViewMode,
-    setNavbarMenuVisibility: setDrawerVisibility
-})(Brand);
+    setDrawerVisibility
+})(Brand));

@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {placeOrder, setMainViewMode, setValidationErrors} from "../../../actions/actions";
-import {ORDER_CONFIRMATION} from "../../../resources/viewMode";
+import {placeOrder, setValidationErrors} from "../../../actions/actions";
+import {ORDER_CONFIRMATION} from "../../../resources/routes";
 import {CONSTRAINTS} from "../../../resources/constraints";
 import validate from "validate.js";
 import csc from "country-state-city";
+import {withRouter} from "react-router-dom";
 
 class OrderTotal extends Component {
 
@@ -13,7 +14,7 @@ class OrderTotal extends Component {
         // check if errors are empty
         if (Object.keys(errors).length === 0 && errors.constructor === Object) {
             this.props.placeOrder();
-            this.props.setMainViewMode(ORDER_CONFIRMATION);
+            this.props.history.push(ORDER_CONFIRMATION);
         }
         this.props.setValidationErrors(errors);
     }
@@ -147,8 +148,7 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {
-    setMainViewMode,
+export default withRouter(connect(mapStateToProps, {
     setValidationErrors,
     placeOrder
-})(OrderTotal);
+})(OrderTotal));

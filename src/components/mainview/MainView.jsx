@@ -3,49 +3,32 @@ import ProductGrid from "./productgrid/ProductGrid";
 import ProductDetail from "./productdetail/ProductDetail";
 import Cart from "./cart/Cart";
 import Checkout from "./checkout/Checkout";
-import {CART, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_DETAIL, PRODUCT_GRID} from "../../resources/viewMode";
-import {connect} from "react-redux";
+import {
+    CART_SCHEME,
+    CHECKOUT_SCHEME,
+    ORDER_CONFIRMATION_SCHEME,
+    PRODUCT_DETAIL_SCHEME,
+    PRODUCT_GRID_SCHEME
+} from "../../resources/routes";
 import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
+import {Redirect, Route, Switch} from "react-router-dom";
+import NoMatch from "./nomatch/NoMatch";
 
 class MainView extends Component {
 
     render() {
-        switch(this.props.viewMode) {
-            case PRODUCT_GRID:
-                return (
-                    <ProductGrid/>
-                );
-
-            case PRODUCT_DETAIL:
-                return (
-                    <ProductDetail/>
-                );
-
-            case CART:
-                return (
-                    <Cart/>
-                );
-
-            case CHECKOUT:
-                return (
-                    <Checkout/>
-                );
-
-            case ORDER_CONFIRMATION:
-                return (
-                    <OrderConfirmation/>
-                );
-
-            default:
-                return <div/>
-        }
+        return (
+            <Switch>
+                <Redirect exact from={"/"} to={PRODUCT_GRID_SCHEME}/>
+                <Route path={PRODUCT_GRID_SCHEME} exact component={ProductGrid}/>
+                <Route path={PRODUCT_DETAIL_SCHEME} component={ProductDetail}/>
+                <Route path={CART_SCHEME} component={Cart}/>
+                <Route path={CHECKOUT_SCHEME} component={Checkout}/>
+                <Route path={ORDER_CONFIRMATION_SCHEME} component={OrderConfirmation}/>
+                <Route component={NoMatch}/>
+            </Switch>
+        );
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        viewMode: state.mainView.viewMode
-    }
-};
-
-export default connect(mapStateToProps)(MainView);
+export default MainView;

@@ -1,16 +1,12 @@
 import React, {Component} from "react";
-import {fetchProductsByCategory} from "../../service/apiService";
-import {PRODUCT_GRID} from "../../resources/viewMode";
 import MenuButton from "./MenuButton";
 import {connect} from "react-redux";
 import {
-    fetchProductsFailure,
-    fetchProductsRequest,
-    fetchProductsSuccess,
-    setMainViewMode,
     setDrawerVisibility
 } from "../../actions/actions";
 import Brand from "./Brand";
+import {withRouter} from "react-router-dom";
+import {PRODUCT_GRID} from "../../resources/routes";
 
 class Drawer extends Component {
 
@@ -18,17 +14,9 @@ class Drawer extends Component {
         this.props.setDrawerVisibility(false);
     }
 
-    handleDrawerListClick(id) {
-        this.props.fetchProductsRequest();
-        fetchProductsByCategory(id).then(([response, json]) => {
-            if (response.status === 200) {
-                this.props.fetchProductsSuccess(json);
-            } else {
-                this.props.fetchProductsFailure();
-            }
-            this.props.setMainViewMode(PRODUCT_GRID);
-            this.props.setDrawerVisibility(false);
-        });
+    handleDrawerListClick(categoryName) {
+        this.props.setDrawerVisibility(false);
+        this.props.history.push(PRODUCT_GRID + "/" + categoryName);
     }
 
     render() {
@@ -50,7 +38,7 @@ class Drawer extends Component {
                             {this.props.categories.map(category => (
                                 <div className="nav-item">
                                     <button className="h5 btn btn-lg nav-link text-white-50 text-nowrap p-0 pl-3"
-                                            onClick={() => this.handleDrawerListClick(category.id)}>
+                                            onClick={() => this.handleDrawerListClick(category.name.toLowerCase())}>
                                         {category.name}
                                     </button>
                                 </div>
@@ -70,10 +58,6 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     setDrawerVisibility,
-    setMainViewMode,
-    fetchProductsRequest,
-    fetchProductsSuccess,
-    fetchProductsFailure
-})(Drawer);
+})(Drawer));

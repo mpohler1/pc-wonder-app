@@ -1,17 +1,65 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {insertItemIntoCart, setDetailProduct, setMainViewMode} from "../../../actions/actions";
-import {PRODUCT_DETAIL} from "../../../resources/viewMode";
+import {
+    fetchProductsFailure,
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    insertItemIntoCart,
+    setDetailProduct,
+} from "../../../actions/actions";
+import {PRODUCT_DETAIL} from "../../../resources/routes";
+import {Link, withRouter} from "react-router-dom";
+import {fetchAllProducts, fetchProductsByCategoryName} from "../../../service/apiService";
 
 class ProductGrid extends Component {
 
-    handleProductClick(product) {
-        this.props.setDetailProduct(product);
-        this.props.setMainViewMode(PRODUCT_DETAIL);
-    }
-
     handleCartButtonClick(product) {
         this.props.insertItemIntoCart(product, 1);
+    }
+
+    handleProductClick(product) {
+        this.props.setDetailProduct(product);
+    }
+
+    determineProductList() {
+        if (this.props.match.params.categoryName && this.props.match.params.categoryName !== this.props.categoryName) {
+            this.getProductsByCategoryName();
+        } else if (!this.props.match.params.categoryName && this.props.categoryName !== "") {
+            this.getAllProducts();
+        }
+    }
+
+    getProductsByCategoryName() {
+        const categoryName = this.props.match.params.categoryName;
+        this.props.fetchProductsRequest();
+        fetchProductsByCategoryName(categoryName).then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json, categoryName);
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        })
+    }
+
+    getAllProducts() {
+        this.props.fetchProductsRequest();
+        fetchAllProducts().then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json, "");
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        });
+    }
+
+    componentDidMount() {
+        this.determineProductList();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.determineProductList();
+        }
     }
 
     render() {
@@ -22,11 +70,11 @@ class ProductGrid extends Component {
                         this.props.products.map(product => (
                             <div className="col pr-0 pt-0 pl-2 pb-2 d-flex align-items-stretch">
                                 <div className="card container-fluid p-0 m-0">
-                                    <img src={product.imageURL}
-                                         className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
-                                         alt={product.name + " image"}
-                                         onClick={() => this.handleProductClick(product)}
-                                    />
+                                    <Link to={PRODUCT_DETAIL + product.uuid} onClick={() => this.handleProductClick(product)}>
+                                        <img src={product.imageURL}
+                                             className="btn btn-card-img-top card-img-top product-thumbnail container-fluid p-0 m-0"
+                                             alt={product.name + " image"}/>
+                                    </Link>
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             {product.name}
@@ -57,12 +105,16 @@ class ProductGrid extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.products.list
+        products: state.products.list,
+        categories: state.categories.list,
+        categoryName: state.products.categoryName
     };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
+    fetchProductsRequest,
+    fetchProductsSuccess,
+    fetchProductsFailure,
     setDetailProduct,
-    setMainViewMode,
     insertItemIntoCart
-})(ProductGrid);
+})(ProductGrid));

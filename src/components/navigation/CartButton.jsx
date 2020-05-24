@@ -1,29 +1,19 @@
 import React, {Component} from "react";
-import {CART} from "../../resources/viewMode";
-import {connect} from "react-redux";
-import {setMainViewMode} from "../../actions/actions";
+import {Link} from "react-router-dom";
+import {CART} from "../../resources/routes";
 
 class CartButton extends Component {
 
-    handleOnClick() {
-        this.props.setMainViewMode(CART);
-    }
-
     render() {
         return (
-            <button className="btn ml-auto mr-0"
-                    type="button"
-                    onClick={() => this.handleOnClick()}>
-                <span className="h3 oi oi-cart text-white"/>
-            </button>
+            <Link to={CART}>
+                <button className="btn ml-auto mr-0"
+                        type="button">
+                    <span className="h3 oi oi-cart text-white"/>
+                </button>
+            </Link>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return {}
-};
-
-export default connect(mapStateToProps, {
-    setMainViewMode
-})(CartButton);
+export default CartButton;

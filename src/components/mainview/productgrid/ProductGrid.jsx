@@ -24,7 +24,7 @@ class ProductGrid extends Component {
     determineProductList() {
         if (this.props.match.params.categoryName && this.props.match.params.categoryName !== this.props.categoryName) {
             this.getProductsByCategoryName();
-        } else if (!this.props.match.params.categoryName) {
+        } else if (!this.props.match.params.categoryName && this.props.categoryName !== "") {
             this.getAllProducts();
         }
     }
@@ -57,7 +57,9 @@ class ProductGrid extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        this.determineProductList();
+        if (prevProps.location.pathname !== this.props.location.pathname) {
+            this.determineProductList();
+        }
     }
 
     render() {

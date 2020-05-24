@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import ItemList from "./ItemList";
 import {CHECKOUT} from "../../../resources/routes";
+import {withRouter} from "react-router-dom";
 
 class Cart extends Component {
 
     handleCheckoutButton() {
-
+        this.props.history.push(CHECKOUT);
     }
 
     render() {
@@ -54,6 +55,6 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
 
-})(Cart);
+})(Cart));

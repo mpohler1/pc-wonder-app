@@ -7,11 +7,12 @@ import {
     CART_SCHEME,
     CHECKOUT_SCHEME,
     ORDER_CONFIRMATION_SCHEME,
-    PRODUCT_DETAIL_SCHEME, PRODUCT_GRID,
+    PRODUCT_DETAIL_SCHEME,
     PRODUCT_GRID_SCHEME
 } from "../../resources/routes";
 import OrderConfirmation from "./orderconfirmation/OrderConfirmation";
 import {Redirect, Route, Switch} from "react-router-dom";
+import NoMatch from "./nomatch/NoMatch";
 
 class MainView extends Component {
 
@@ -24,6 +25,7 @@ class MainView extends Component {
                 <Route path={CART_SCHEME} component={Cart}/>
                 <Route path={CHECKOUT_SCHEME} component={Checkout}/>
                 <Route path={ORDER_CONFIRMATION_SCHEME} component={OrderConfirmation}/>
+                <Route component={NoMatch}/>
             </Switch>
         );
     }

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {removeItemFromCart, setDetailProduct, setQuantityInItemList} from "../../../actions/actions";
 import {PRODUCT_DETAIL} from "../../../resources/routes";
+import {withRouter} from "react-router-dom";
 
 const CLASS_LIST_WITH_BORDER_TOP = "row align-items-center border-top border-bottom border-secondary";
 const CLASS_LIST_WITHOUT_BORDER_TOP = "row align-items-center border-bottom border-secondary";
@@ -20,7 +21,7 @@ class ItemList extends Component {
 
     handleProductClick(product) {
         this.props.setDetailProduct(product);
-
+        this.props.history.push(PRODUCT_DETAIL + product.uuid);
     }
 
     handleXButtonClick(item) {
@@ -100,8 +101,8 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps, {
+export default withRouter(connect(mapStateToProps, {
     setQuantityInItemList,
     removeItemFromCart,
     setDetailProduct
-})(ItemList);
+})(ItemList));

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {PRODUCT_GRID} from "../../resources/routes";
+import {PRODUCT_GRID, SEARCH_QUERY} from "../../resources/routes";
 import {setSearchString} from "../../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 class SearchBar extends Component {
 
     handleSearch() {
-        this.props.history.push(PRODUCT_GRID + "/?search=" + this.props.searchString);
+        this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + this.props.searchString);
     }
 
     render() {

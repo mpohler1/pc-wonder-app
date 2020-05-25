@@ -6,7 +6,7 @@ import {
 } from "../../actions/actions";
 import Brand from "./Brand";
 import {withRouter} from "react-router-dom";
-import {PRODUCT_GRID} from "../../resources/routes";
+import {CATEGORY_QUERY, PRODUCT_GRID} from "../../resources/routes";
 
 class Drawer extends Component {
 
@@ -16,7 +16,7 @@ class Drawer extends Component {
 
     handleDrawerListClick(categoryName) {
         this.props.setDrawerVisibility(false);
-        this.props.history.push(PRODUCT_GRID + "/?category=" + categoryName);
+        this.props.history.push(PRODUCT_GRID + CATEGORY_QUERY + categoryName);
     }
 
     render() {

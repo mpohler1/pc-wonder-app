@@ -9,6 +9,7 @@ import {
     setQuantityInProductDetail
 } from "../../../actions/actions";
 import {fetchProductByUUID} from "../../../service/apiService";
+import {toast} from "react-toastify";
 
 class ProductDetail extends Component {
 
@@ -21,6 +22,15 @@ class ProductDetail extends Component {
 
     handleCartButtonClick() {
         this.props.insertItemIntoCart(this.props.product, this.props.quantity);
+        toast.success("Added " + this.props.product.name + " (" + this.props.quantity + ") to cart!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     loadProductFromURL() {

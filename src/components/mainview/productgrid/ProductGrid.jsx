@@ -12,11 +12,21 @@ import {Link, withRouter} from "react-router-dom";
 import {fetchAllProducts, fetchProductsByCategoryName, fetchProductsBySearch} from "../../../service/apiService";
 import * as queryString from "query-string";
 import {convertHyphensToSpaces} from "../../../service/urlConverter";
+import {toast} from "react-toastify";
 
 class ProductGrid extends Component {
 
     handleCartButtonClick(product) {
         this.props.insertItemIntoCart(product, 1);
+        toast.success("Added " + product.name + " to cart!", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+        });
     }
 
     handleProductClick(product) {

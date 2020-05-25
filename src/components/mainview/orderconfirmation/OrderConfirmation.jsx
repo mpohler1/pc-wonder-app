@@ -29,7 +29,7 @@ class OrderConfirmation extends Component {
                                 </h4>
                                 <p>
                                     Thank you for ordering through PC Wonder.
-                                    If this was a real website, your order would be shipped to the following address.
+                                    If this were a real website, your order would be shipped to the following address.
                                 </p>
                                 <h5>
                                     {this.props.name}<br/>

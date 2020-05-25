@@ -22,15 +22,22 @@ class ProductGrid extends Component {
         this.props.setDetailProduct(product);
     }
 
+    /*
+    * Right now there are 3 API calls for Products. products by category, products by search, and all products. These
+    * API calls are mutually exclusive for now, meaning you cannot search within a category. There is some nasty boolean
+    * logic that ensures the calls are used in a mutually exclusive way. This all will change when filtering is added.
+    **/
+
     determineProductList() {
         if (this.props.location.search) {
             const parsedQuery = queryString.parse(this.props.location.search);
             if (parsedQuery.category && parsedQuery.category !== this.props.categoryName) {
                 this.getProductsByCategoryName(parsedQuery.category);
             }
-            if (parsedQuery.search && parsedQuery.search !== this.props.searchString) {
+            else if (parsedQuery.search && parsedQuery.search !== this.props.searchString) {
                 this.getProductsBySearchString(parsedQuery.search);
             }
+        // the below condition is true when there has been a previous fetch for products by category or search
         } else if (this.props.categoryName !== "" || this.props.searchString !== "") {
             this.getAllProducts();
         }

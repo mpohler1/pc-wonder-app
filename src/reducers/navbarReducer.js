@@ -1,4 +1,4 @@
-import {SET_DRAWER_VISIBILITY, SET_SCROLL_Y_AND_STICKY_TOP, SET_SEARCH_FIELD} from "../actions/actionTypes";
+import {SET_DRAWER_VISIBILITY, SET_SCROLL_Y_AND_STICKY_TOP, SET_SEARCH_BAR_TEXT} from "../actions/actionTypes";
 
 function navbarReducer(
     state = {
@@ -14,9 +14,9 @@ function navbarReducer(
                 drawerVisible: action.payload.drawerVisible
             });
 
-        case SET_SEARCH_FIELD:
+        case SET_SEARCH_BAR_TEXT:
             return Object.assign({}, state, {
-                searchField: action.payload.searchField
+                searchBarText: action.payload.searchBarText
             });
 
         case SET_SCROLL_Y_AND_STICKY_TOP:

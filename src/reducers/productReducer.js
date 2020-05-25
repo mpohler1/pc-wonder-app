@@ -2,7 +2,7 @@ import {
     FETCH_PRODUCT_SUCCESS,
     FETCH_PRODUCTS_SUCCESS, SET_CATEGORY,
     SET_DETAIL_PRODUCT,
-    SET_QUANTITY_IN_PRODUCT_DETAIL, SET_SEARCH_FIELD
+    SET_QUANTITY_IN_PRODUCT_DETAIL, SET_SEARCH_BAR_TEXT
 } from "../actions/actionTypes";
 
 function productReducer(state = {list: [], quantity: 0}, action) {

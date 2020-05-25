@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {PRODUCT_GRID, SEARCH_QUERY} from "../../resources/routes";
-import {setSearchField} from "../../actions/actions";
+import {setSearchBarText} from "../../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as queryString from "query-string";
@@ -8,14 +8,14 @@ import * as queryString from "query-string";
 class SearchBar extends Component {
 
     handleSearch() {
-        this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + this.props.searchField);
+        this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + this.props.searchBarText);
     }
 
     determineSearchFieldValue() {
         if (this.props.location.search) {
             const parsedQuery = queryString.parse(this.props.location.search);
-            if (parsedQuery.search && parsedQuery.search !== this.props.searchField) {
-                this.props.setSearchField(parsedQuery.search);
+            if (parsedQuery.search && parsedQuery.search !== this.props.searchBarText) {
+                this.props.setSearchBarText(parsedQuery.search);
             }
         }
     }
@@ -38,8 +38,8 @@ class SearchBar extends Component {
                        type="search"
                        placeholder="Search"
                        aria-label="Search"
-                       value={this.props.searchField}
-                       onChange={event => this.props.setSearchField(event.target.value)}/>
+                       value={this.props.searchBarText}
+                       onChange={event => this.props.setSearchBarText(event.target.value)}/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-primary"
                             type="submit"
@@ -54,10 +54,10 @@ class SearchBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        searchField: state.navbar.searchField
+        searchBarText: state.navbar.searchBarText
     }
 };
 
 export default withRouter(connect(mapStateToProps, {
-    setSearchField
+    setSearchBarText
 })(SearchBar));

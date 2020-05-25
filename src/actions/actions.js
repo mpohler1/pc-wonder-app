@@ -28,7 +28,7 @@ import {
     SET_CITY_DROPDOWN_VISIBILITY,
     SET_VALIDATION_ERRORS,
     PLACE_ORDER,
-    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY, SET_SEARCH_FIELD
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY, SET_SEARCH_BAR_TEXT
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -105,11 +105,11 @@ export const setDrawerVisibility = drawerVisible => (
     }
 );
 
-export const setSearchField = searchField => (
+export const setSearchBarText = searchBarText => (
     {
-        type: SET_SEARCH_FIELD,
+        type: SET_SEARCH_BAR_TEXT,
         payload: {
-            searchField: searchField
+            searchBarText: searchBarText
         }
     }
 );

@@ -4,16 +4,17 @@ import {setSearchBarText} from "../../actions/actions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import * as queryString from "query-string";
+import {convertHyphensToSpaces, convertSpacesToHyphens} from "../../service/urlConverter";
 
 class SearchBar extends Component {
 
     handleSearch() {
-        this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + this.props.searchBarText);
+        this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + convertSpacesToHyphens(this.props.searchBarText));
     }
 
     determineSearchFieldValue() {
         if (this.props.location.search) {
-            const parsedQuery = queryString.parse(this.props.location.search);
+            const parsedQuery = queryString.parse(convertHyphensToSpaces(this.props.location.search));
             if (parsedQuery.search && parsedQuery.search !== this.props.searchBarText) {
                 this.props.setSearchBarText(parsedQuery.search);
             }

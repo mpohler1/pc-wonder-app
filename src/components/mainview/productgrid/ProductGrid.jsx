@@ -11,6 +11,7 @@ import {PRODUCT_DETAIL} from "../../../resources/routes";
 import {Link, withRouter} from "react-router-dom";
 import {fetchAllProducts, fetchProductsByCategoryName, fetchProductsBySearch} from "../../../service/apiService";
 import * as queryString from "query-string";
+import {convertHyphensToSpaces} from "../../../service/urlConverter";
 
 class ProductGrid extends Component {
 
@@ -30,7 +31,7 @@ class ProductGrid extends Component {
 
     determineProductList() {
         if (this.props.location.search) {
-            const parsedQuery = queryString.parse(this.props.location.search);
+            const parsedQuery = queryString.parse(convertHyphensToSpaces(this.props.location.search));
             if (parsedQuery.category && parsedQuery.category !== this.props.categoryName) {
                 this.getProductsByCategoryName(parsedQuery.category);
             }

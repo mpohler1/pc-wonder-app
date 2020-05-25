@@ -6,14 +6,14 @@ import {
     fetchProductsSuccess,
     setDrawerVisibility
 } from "../../actions/actions";
-import {PRODUCT_GRID_SCHEME} from "../../resources/routes";
+import {PRODUCT_GRID} from "../../resources/routes";
 import {withRouter} from "react-router-dom";
 
 class Brand extends Component {
 
     handleOnClick() {
         this.props.setDrawerVisibility(false);
-        this.props.history.push(PRODUCT_GRID_SCHEME);
+        this.props.history.push(PRODUCT_GRID);
     }
 
     render() {

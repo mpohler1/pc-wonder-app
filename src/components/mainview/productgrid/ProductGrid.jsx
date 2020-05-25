@@ -9,7 +9,7 @@ import {
 } from "../../../actions/actions";
 import {PRODUCT_DETAIL} from "../../../resources/routes";
 import {Link, withRouter} from "react-router-dom";
-import {fetchAllProducts, fetchProductsByCategoryName} from "../../../service/apiService";
+import {fetchAllProducts, fetchProductsByCategoryName, fetchProductsBySearch} from "../../../service/apiService";
 import * as queryString from "query-string";
 
 class ProductGrid extends Component {
@@ -28,7 +28,10 @@ class ProductGrid extends Component {
             if (parsedQuery.category && parsedQuery.category !== this.props.categoryName) {
                 this.getProductsByCategoryName(parsedQuery.category);
             }
-        } else if (this.props.categoryName !== "") {
+            if (parsedQuery.search && parsedQuery.search !== this.props.searchString) {
+                this.getProductsBySearchString(parsedQuery.search);
+            }
+        } else if (this.props.categoryName !== "" || this.props.searchString !== "") {
             this.getAllProducts();
         }
     }
@@ -37,7 +40,18 @@ class ProductGrid extends Component {
         this.props.fetchProductsRequest();
         fetchProductsByCategoryName(categoryName).then(([response, json]) => {
             if (response.status === 200) {
-                this.props.fetchProductsSuccess(json, categoryName);
+                this.props.fetchProductsSuccess(json, categoryName, "");
+            } else {
+                this.props.fetchProductsFailure();
+            }
+        })
+    }
+
+    getProductsBySearchString(searchString) {
+        this.props.fetchProductsRequest();
+        fetchProductsBySearch(searchString).then(([response, json]) => {
+            if (response.status === 200) {
+                this.props.fetchProductsSuccess(json, "", searchString);
             } else {
                 this.props.fetchProductsFailure();
             }
@@ -48,7 +62,7 @@ class ProductGrid extends Component {
         this.props.fetchProductsRequest();
         fetchAllProducts().then(([response, json]) => {
             if (response.status === 200) {
-                this.props.fetchProductsSuccess(json, "");
+                this.props.fetchProductsSuccess(json, "", "");
             } else {
                 this.props.fetchProductsFailure();
             }
@@ -110,7 +124,8 @@ const mapStateToProps = state => {
     return {
         products: state.products.list,
         categories: state.categories.list,
-        categoryName: state.products.categoryName
+        categoryName: state.products.categoryName,
+        searchString: state.products.searchString
     };
 };
 

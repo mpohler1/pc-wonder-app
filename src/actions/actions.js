@@ -28,7 +28,7 @@ import {
     SET_CITY_DROPDOWN_VISIBILITY,
     SET_VALIDATION_ERRORS,
     PLACE_ORDER,
-    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY, SET_SEARCH_STRING
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY, SET_SEARCH_FIELD
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -58,12 +58,13 @@ export const fetchProductsRequest = () => (
     }
 );
 
-export const fetchProductsSuccess = (productList, categoryName) => (
+export const fetchProductsSuccess = (productList, categoryName, searchString) => (
     {
         type: FETCH_PRODUCTS_SUCCESS,
         payload: {
             productList: productList,
-            categoryName: categoryName
+            categoryName: categoryName,
+            searchString: searchString
         }
     }
 );
@@ -104,11 +105,11 @@ export const setDrawerVisibility = drawerVisible => (
     }
 );
 
-export const setSearchString = searchString => (
+export const setSearchField = searchField => (
     {
-        type: SET_SEARCH_STRING,
+        type: SET_SEARCH_FIELD,
         payload: {
-            searchString: searchString
+            searchField: searchField
         }
     }
 );

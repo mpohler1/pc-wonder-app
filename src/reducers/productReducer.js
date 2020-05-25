@@ -2,7 +2,7 @@ import {
     FETCH_PRODUCT_SUCCESS,
     FETCH_PRODUCTS_SUCCESS, SET_CATEGORY,
     SET_DETAIL_PRODUCT,
-    SET_QUANTITY_IN_PRODUCT_DETAIL
+    SET_QUANTITY_IN_PRODUCT_DETAIL, SET_SEARCH_FIELD
 } from "../actions/actionTypes";
 
 function productReducer(state = {list: [], quantity: 0}, action) {
@@ -10,7 +10,8 @@ function productReducer(state = {list: [], quantity: 0}, action) {
         case FETCH_PRODUCTS_SUCCESS:
             return Object.assign({}, state, {
                 list: action.payload.productList,
-                categoryName: action.payload.categoryName
+                categoryName: action.payload.categoryName,
+                searchString: action.payload.searchString
             });
 
         // These two cases do the same thing.

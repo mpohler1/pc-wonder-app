@@ -4,7 +4,7 @@ export const CART_SCHEME = "/cart";
 export const CHECKOUT_SCHEME = "/checkout";
 export const ORDER_CONFIRMATION_SCHEME = "/order-confirmation";
 
-export const PRODUCT_GRID = "/products/";
+export const PRODUCT_GRID = "/products";
 export const PRODUCT_DETAIL = "/product/";
 export const CART = "/cart";
 export const CHECKOUT = "/checkout";

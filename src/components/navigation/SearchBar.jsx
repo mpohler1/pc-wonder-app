@@ -12,6 +12,12 @@ class SearchBar extends Component {
         this.props.history.push(PRODUCT_GRID + SEARCH_QUERY + convertSpacesToHyphens(this.props.searchBarText));
     }
 
+    handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            this.handleSearch();
+        }
+    }
+
     determineSearchFieldValue() {
         if (this.props.location.search) {
             const parsedQuery = queryString.parse(convertHyphensToSpaces(this.props.location.search));
@@ -40,7 +46,8 @@ class SearchBar extends Component {
                        placeholder="Search"
                        aria-label="Search"
                        value={this.props.searchBarText}
-                       onChange={event => this.props.setSearchBarText(event.target.value)}/>
+                       onChange={event => this.props.setSearchBarText(event.target.value)}
+                       onKeyPress={event => this.handleKeyPress(event)}/>
                 <div className="input-group-append">
                     <button className="btn btn-outline-primary"
                             type="submit"

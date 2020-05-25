@@ -56,6 +56,20 @@ export function fetchProductsByCategoryName(categoryName) {
     ]));
 }
 
+export function fetchProductsBySearch(searchString) {
+    const endpoint = apiURL + "/products/search/" + searchString;
+    const headers = {
+        'content-type': 'application/json'
+    };
+    return fetch(endpoint, {
+        method: 'GET',
+        headers: headers
+    }).then(response => Promise.all([
+        response,
+        response.json()
+    ]));
+}
+
 export function fetchProductByUUID(uuid) {
     const endpoint = apiURL + "/product/" + uuid;
     const headers = {

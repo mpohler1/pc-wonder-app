@@ -28,7 +28,7 @@ import {
     SET_CITY_DROPDOWN_VISIBILITY,
     SET_VALIDATION_ERRORS,
     PLACE_ORDER,
-    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY
+    FETCH_PRODUCT_REQUEST, FETCH_PRODUCT_SUCCESS, FETCH_PRODUCT_FAILURE, SET_CATEGORY, SET_SEARCH_STRING
 } from "./actionTypes";
 
 export const fetchCategoriesRequest = () => (
@@ -100,6 +100,15 @@ export const setDrawerVisibility = drawerVisible => (
         type: SET_DRAWER_VISIBILITY,
         payload: {
             drawerVisible: drawerVisible
+        }
+    }
+);
+
+export const setSearchString = searchString => (
+    {
+        type: SET_SEARCH_STRING,
+        payload: {
+            searchString: searchString
         }
     }
 );

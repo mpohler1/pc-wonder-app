@@ -16,7 +16,7 @@ class Drawer extends Component {
 
     handleDrawerListClick(categoryName) {
         this.props.setDrawerVisibility(false);
-        this.props.history.push(PRODUCT_GRID + "/" + categoryName);
+        this.props.history.push(PRODUCT_GRID + "/?category=" + categoryName);
     }
 
     render() {

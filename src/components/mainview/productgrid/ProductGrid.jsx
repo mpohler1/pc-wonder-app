@@ -10,6 +10,7 @@ import {
 import {PRODUCT_DETAIL} from "../../../resources/routes";
 import {Link, withRouter} from "react-router-dom";
 import {fetchAllProducts, fetchProductsByCategoryName} from "../../../service/apiService";
+import * as queryString from "query-string";
 
 class ProductGrid extends Component {
 
@@ -22,15 +23,17 @@ class ProductGrid extends Component {
     }
 
     determineProductList() {
-        if (this.props.match.params.categoryName && this.props.match.params.categoryName !== this.props.categoryName) {
-            this.getProductsByCategoryName();
-        } else if (!this.props.match.params.categoryName && this.props.categoryName !== "") {
+        if (this.props.location.search) {
+            const parsedQuery = queryString.parse(this.props.location.search);
+            if (parsedQuery.category && parsedQuery.category !== this.props.categoryName) {
+                this.getProductsByCategoryName(parsedQuery.category);
+            }
+        } else if (this.props.categoryName !== "") {
             this.getAllProducts();
         }
     }
 
-    getProductsByCategoryName() {
-        const categoryName = this.props.match.params.categoryName;
+    getProductsByCategoryName(categoryName) {
         this.props.fetchProductsRequest();
         fetchProductsByCategoryName(categoryName).then(([response, json]) => {
             if (response.status === 200) {
@@ -57,7 +60,7 @@ class ProductGrid extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.location.pathname !== this.props.location.pathname) {
+        if (prevProps.location.search !== this.props.location.search) {
             this.determineProductList();
         }
     }

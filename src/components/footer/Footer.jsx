@@ -93,8 +93,8 @@ class Footer extends Component {
                                         <p>
                                             This website was developed by Mason Pohler using JavaScript, JSX, and CSS. This website was
                                             built using ReactJS, Redux, and Bootstrap. <a className="text-white" href="https://github.com/mpohler1/pc-wonder-frontend">View Source</a>
-                                            <br/> <br/>
-                                            To see more of my work, checkout my <a className="text-white" href="https://masonpohler.com">Portfolio</a>
+                                            <br/><br/>
+                                            Checkout Mason Pohler's <a className="text-white" href="https://masonpohler.com">Portfolio</a>
                                         </p>
                                     </div>
                                 </div>

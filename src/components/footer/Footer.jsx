@@ -5,11 +5,11 @@ class Footer extends Component {
 
     render() {
         return (
-            <div className="container-fluid bg-dark text-white-50 d-flex flex-row align-items-center flex-grow-1">
+            <div className="container-fluid bg-black text-white-50 d-flex flex-row align-items-center flex-grow-1">
                 <div className="container-fluid d-flex flex-column align-items-center">
                     <div className="container footer">
-                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 pt-4">
-                            <div className="col px-4 pb-4">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 pt-1 pt-sm-2 pt-md-4">
+                            <div className="col px-1 pb-1">
                                 <div className="row">
                                     <div className="col d-flex flex-row align-items-center">
                                         <h1 className="display-4 text-white mx-auto">
@@ -18,10 +18,10 @@ class Footer extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col col-md-3 px-4 pb-4">
+                            <div className="col px-1 px-sm-2 px-md-4 pb-4">
                                 <div className="row">
-                                    <div className="col">
-                                        <h5 className="text-nowrap border-bottom border-secondary">
+                                    <div className="col border-bottom border-secondary">
+                                        <h5 className="text-nowrap">
                                             Site Navigation
                                         </h5>
                                     </div>
@@ -49,10 +49,10 @@ class Footer extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col px-4 pb-4">
+                            <div className="col px-1 px-sm-2 px-md-4 pb-4">
                                 <div className="row">
-                                    <div className="col">
-                                        <h5 className="text-nowrap border-bottom border-secondary">
+                                    <div className="col border-bottom border-secondary">
+                                        <h5 className="text-nowrap">
                                             Product Categories
                                         </h5>
                                     </div>
@@ -80,10 +80,10 @@ class Footer extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col px-4 pb-4">
+                            <div className="col px-1 px-sm-2 px-md-4 pb-4">
                                 <div className="row">
-                                    <div className="col">
-                                        <h5 className="text-nowrap border-bottom border-secondary">
+                                    <div className="col border-bottom border-secondary">
+                                        <h5 className="text-nowrap">
                                             About This Website
                                         </h5>
                                     </div>
@@ -98,8 +98,17 @@ class Footer extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-
+                        <div className="row row-cols-2 border-top border-secondary mx-n4 mx-sm-n2 mx-md-n1">
+                            <div className="col text-left text-nowrap pt-2">
+                                <p>
+                                    &copy; 2020 Mason Pohler
+                                </p>
+                            </div>
+                            <div className="col text-right text-nowrap pt-2">
+                                <p>
+                                    Privacy Policy
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

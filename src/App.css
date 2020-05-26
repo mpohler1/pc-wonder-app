@@ -58,6 +58,10 @@
     max-width: 1400px;
 }
 
+.bg-black {
+    background-color: #1c1f22;
+}
+
 @media screen and (min-width: 640px) {
     .page {
         min-height: calc(100vh - 68px);

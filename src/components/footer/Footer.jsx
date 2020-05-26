@@ -10,7 +10,7 @@ class Footer extends Component {
                     <div className="col px-4 pb-4">
                         <div className="row">
                             <div className="col">
-                                <h1 className="display-4">
+                                <h1 className="display-4 text-white">
                                     PC Wonder
                                 </h1>
                             </div>

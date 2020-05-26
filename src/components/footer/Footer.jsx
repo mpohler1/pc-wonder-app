@@ -19,7 +19,7 @@ class Footer extends Component {
                     <div className="col col-md-3 px-4 pb-4">
                         <div className="row">
                             <div className="col">
-                                <h5 className="text-nowrap">
+                                <h5 className="text-nowrap border-bottom border-secondary">
                                     Site Navigation
                                 </h5>
                             </div>
@@ -50,13 +50,13 @@ class Footer extends Component {
                     <div className="col px-4 pb-4">
                         <div className="row">
                             <div className="col">
-                                <h5 className="text-nowrap">
+                                <h5 className="text-nowrap border-bottom border-secondary">
                                     Product Categories
                                 </h5>
                             </div>
                         </div>
-                        <div className="row row-cols-1 row-cols-sm-2">
-                            <div className="col">
+                        <div className="row row-cols-1">
+                            <div className="col col-sm-2 col-md-4">
                                 <div className="d-flex flex-column flex-nowrap align-items-start">
                                     {this.props.categories.slice(0, this.props.categories.length/2+1).map(category => (
                                         <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
@@ -66,7 +66,7 @@ class Footer extends Component {
                                     ))}
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col col-sm-2 col-md-4">
                                 <div className="d-flex flex-column flex-nowrap align-items-start">
                                     {this.props.categories.slice(this.props.categories.length/2+1, this.props.categories.length).map(category => (
                                         <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
@@ -81,7 +81,7 @@ class Footer extends Component {
                     <div className="col px-4 pb-4">
                         <div className="row">
                             <div className="col">
-                                <h5 className="text-nowrap">
+                                <h5 className="text-nowrap border-bottom border-secondary">
                                     About This Website
                                 </h5>
                             </div>

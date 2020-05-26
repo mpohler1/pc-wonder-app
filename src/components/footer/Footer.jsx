@@ -68,7 +68,7 @@ class Footer extends Component {
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="col col-sm-2 col-md-4">
+                                    <div className="col col-sm-2 col-md-4 ml-md-3">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             {this.props.categories.slice(this.props.categories.length/2+1, this.props.categories.length).map(category => (
                                                 <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
@@ -93,6 +93,8 @@ class Footer extends Component {
                                         <p>
                                             This website was developed by Mason Pohler using JavaScript, JSX, and CSS. This website was
                                             built using ReactJS, Redux, and Bootstrap. <a className="text-white" href="https://github.com/mpohler1/pc-wonder-frontend">View Source</a>
+                                            <br/> <br/>
+                                            To see more of my work, checkout my <a className="text-white" href="https://masonpohler.com">Portfolio</a>
                                         </p>
                                     </div>
                                 </div>

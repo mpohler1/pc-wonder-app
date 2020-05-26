@@ -53,7 +53,7 @@ class App extends Component{
 
     render() {
         return (
-            <div className="">
+            <div className="min-vh-100 d-flex flex-column">
                 <Navbar/>
                 <MainView/>
                 <Footer/>

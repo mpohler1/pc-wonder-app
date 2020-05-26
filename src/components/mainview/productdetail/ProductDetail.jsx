@@ -69,63 +69,65 @@ class ProductDetail extends Component {
                 }
                 {
                     this.props.product &&
-                    <div className="d-flex flex-nowrap flex-row align-items-center mt-3">
-                        <div className="col">
-                            <div className="row row-cols-1 row-cols-sm-12 mt-sm-2 mt-lg-3">
-                                <div className="col col-md-6 col-lg-8 mb-2">
-                                    <img src={this.props.product.imageURL}
-                                         className="card card-img product-full p-0"
-                                         alt={"" + this.props.product.name + " Image"}/>
-                                </div>
-                                <div className="col col-md-6 col-lg-4">
-                                    <h2>
-                                        {this.props.product.name}
-                                    </h2>
-                                    <h5>
-                                        {this.props.product.manufacturer.name}
-                                    </h5>
-                                    <p>
-                                        {this.props.product.description} <br/>
-                                    </p>
-                                    <div className="d-flex flex-row align-items-center mb-2">
-                                        <h2 className="text-nowrap">
-                                            ${this.props.product.price.toFixed(2)}
-                                        </h2>
-                                        <div className="input-group">
-                                            <input className="form-control quantity ml-2"
-                                                   type="number"
-                                                   value={this.props.quantity}
-                                                   onChange={event => this.handleQuantityChange(event)}/>
-                                            <button className="btn btn-primary ml-2"
-                                                    onClick={() => this.handleCartButtonClick()}>
-                                                Add To Cart
-                                            </button>
-                                        </div>
+                    <div className="container-fluid page">
+                        <div className="d-flex flex-nowrap flex-row align-items-center pt-3">
+                            <div className="col">
+                                <div className="row row-cols-1 row-cols-sm-12 mt-sm-2 mt-lg-3">
+                                    <div className="col col-md-6 col-lg-8 mb-2">
+                                        <img src={this.props.product.imageURL}
+                                             className="card card-img product-full p-0"
+                                             alt={"" + this.props.product.name + " Image"}/>
                                     </div>
-                                    {
-                                        this.props.largest &&
-                                        <React.Fragment>
+                                    <div className="col col-md-6 col-lg-4">
+                                        <h2>
+                                            {this.props.product.name}
+                                        </h2>
+                                        <h5>
+                                            {this.props.product.manufacturer.name}
+                                        </h5>
+                                        <p>
+                                            {this.props.product.description} <br/>
+                                        </p>
+                                        <div className="d-flex flex-row align-items-center mb-2">
+                                            <h2 className="text-nowrap">
+                                                ${this.props.product.price.toFixed(2)}
+                                            </h2>
+                                            <div className="input-group">
+                                                <input className="form-control quantity ml-2"
+                                                       type="number"
+                                                       value={this.props.quantity}
+                                                       onChange={event => this.handleQuantityChange(event)}/>
+                                                <button className="btn btn-primary ml-2"
+                                                        onClick={() => this.handleCartButtonClick()}>
+                                                    Add To Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {
+                                            this.props.largest &&
+                                            <React.Fragment>
+                                                <h5>
+                                                    Specifications:
+                                                </h5>
+                                                <div className="specification-box">
+                                                    <Specification/>
+                                                </div>
+                                            </React.Fragment>
+                                        }
+                                    </div>
+                                </div>
+                                {
+                                    !this.props.largest &&
+                                    <div className="row">
+                                        <div className="col">
                                             <h5>
                                                 Specifications:
                                             </h5>
-                                            <div className="specification-box">
-                                                <Specification/>
-                                            </div>
-                                        </React.Fragment>
-                                    }
-                                </div>
-                            </div>
-                            {
-                                !this.props.largest &&
-                                <div className="row">
-                                    <div className="col">
-                                        <h5>
-                                            Specifications:
-                                        </h5>
-                                        <Specification/>
+                                            <Specification/>
+                                        </div>
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
                 }

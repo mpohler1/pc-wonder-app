@@ -25,7 +25,7 @@ class Cart extends Component {
                 }
                 {
                     this.props.items.length > 0 &&
-                        <div className="container-fluid">
+                        <div className="container-fluid page">
                             <div className="row row-cols-1">
                                 <div className="col col-lg-9 p-0 p-sm-2 p-md-3">
                                     <ItemList/>

@@ -10,11 +10,13 @@ import store from "./store/store";
 import {BrowserRouter} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import ScrollToTop from "./components/utility/ScrollToTop";
+import ScrollMemory from 'react-router-scroll-memory';
 
 ReactDOM.render(
     <Provider store={store}>
         <ToastContainer/>
         <BrowserRouter>
+            <ScrollMemory/>
             <ScrollToTop>
                 <App />
             </ScrollToTop>

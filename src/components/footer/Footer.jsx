@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {convertSpacesToHyphens} from "../../service/urlConverter";
-import {CART, CATEGORY_QUERY, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_GRID} from "../../resources/routes";
+import {CART, CATEGORY_QUERY, CHECKOUT, ORDER_CONFIRMATION, PRIVACY_POLICY, PRODUCT_GRID} from "../../resources/routes";
 
 class Footer extends Component {
 
@@ -36,19 +36,19 @@ class Footer extends Component {
                                 <div className="row">
                                     <div className="col">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
-                                            <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                            <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                     onClick={() => this.props.history.push(PRODUCT_GRID)}>
                                                 Home
                                             </button>
-                                            <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                            <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                     onClick={() => this.props.history.push(CART)}>
                                                 Cart
                                             </button>
-                                            <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                            <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                     onClick={() => this.props.history.push(CHECKOUT)}>
                                                 Checkout
                                             </button>
-                                            <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                            <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                     onClick={() => this.props.history.push(ORDER_CONFIRMATION)}>
                                                 Order Confirmation
                                             </button>
@@ -68,7 +68,7 @@ class Footer extends Component {
                                     <div className="col col-sm-2 col-md-4">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             {this.props.categories.slice(0, this.props.categories.length/2+1).map(category => (
-                                                <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                                <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                             onClick={() => this.handleCategoryLinkClick(category)}>
                                                         {category.name}
                                                 </button>
@@ -78,7 +78,7 @@ class Footer extends Component {
                                     <div className="col col-sm-2 col-md-4 ml-md-3">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             {this.props.categories.slice(this.props.categories.length/2+1, this.props.categories.length).map(category => (
-                                                <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
+                                                <button className="btn btn-link text-white-50 text-nowrap p-0"
                                                     onClick={() => this.handleCategoryLinkClick(category)}>
                                                     {category.name}
                                                 </button>
@@ -113,10 +113,11 @@ class Footer extends Component {
                                     &copy; 2020 Mason Pohler
                                 </p>
                             </div>
-                            <div className="col text-right text-nowrap pt-2">
-                                <p>
+                            <div className="col text-right text-nowrap pt-2 float-right">
+                                <button className="btn btn-link text-white-50 text-nowrap p-0 float-right"
+                                        onClick={() => this.props.history.push(PRIVACY_POLICY)}>
                                     Privacy Policy
-                                </p>
+                                </button>
                             </div>
                         </div>
                     </div>

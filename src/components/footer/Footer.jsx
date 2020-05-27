@@ -5,9 +5,9 @@ class Footer extends Component {
 
     render() {
         return (
-            <div className="container-fluid bg-black text-white-50 d-flex flex-row align-items-center flex-grow-1">
+            <div className="container-fluid bg-black text-white-50 d-flex flex-row align-items-center flex-grow-1 footer">
                 <div className="container-fluid d-flex flex-column align-items-center">
-                    <div className="container footer">
+                    <div className="container footer-content">
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 pt-1 pt-sm-2 pt-md-4">
                             <div className="col px-1 pb-1">
                                 <div className="row">

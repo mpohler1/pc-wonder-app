@@ -69,9 +69,9 @@ class ProductDetail extends Component {
                 }
                 {
                     this.props.product &&
-                    <div className="container-fluid page">
-                        <div className="d-flex flex-nowrap flex-row align-items-center pt-3">
-                            <div className="col">
+                    <div className="container-fluid d-flex flex-column align-items-center page">
+                        <div className="d-flex flex-nowrap flex-row align-items-center my-auto">
+                            <div className="col mx-auto">
                                 <div className="row row-cols-1 row-cols-sm-12 mt-sm-2 mt-lg-3">
                                     <div className="col col-md-6 col-lg-8 mb-2">
                                         <img src={this.props.product.imageURL}

@@ -115,8 +115,8 @@ class ProductGrid extends Component {
                 }
                 {
                     this.props.products.length > 0 &&
-                    <div className="container-fluid">
-                        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 bg-secondary pl-0 pr-2 pt-2 pb-0">
+                    <div className="container-fluid bg-secondary page">
+                        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 pl-0 pr-2 pt-2 pb-0">
                             {
                                 this.props.products.map(product => (
                                     <div className="col pr-0 pt-0 pl-2 pb-2 d-flex align-items-stretch">

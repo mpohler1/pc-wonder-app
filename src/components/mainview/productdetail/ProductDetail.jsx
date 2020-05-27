@@ -33,7 +33,15 @@ class ProductDetail extends Component {
                 progress: undefined,
             });
         } else {
-            toast.error("Quantity must be a positive integer");
+            toast.error("Quantity must be a positive integer", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 

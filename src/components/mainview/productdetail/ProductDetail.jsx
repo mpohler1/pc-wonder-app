@@ -21,16 +21,20 @@ class ProductDetail extends Component {
     }
 
     handleCartButtonClick() {
-        this.props.insertItemIntoCart(this.props.product, this.props.quantity);
-        toast.success("Added " + this.props.product.name + " (" + this.props.quantity + ") to cart!", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-        });
+        if (this.props.quantity && this.props.quantity > 0) {
+            this.props.insertItemIntoCart(this.props.product, this.props.quantity);
+            toast.success("Added " + this.props.product.name + " (" + this.props.quantity + ") to cart!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+        } else {
+            toast.error("Quantity must be a positive integer");
+        }
     }
 
     loadProductFromURL() {

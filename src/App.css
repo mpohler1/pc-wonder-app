@@ -99,3 +99,7 @@
     max-height: 50vh;
     overflow-y: auto;
 }
+
+.privacy-policy {
+    max-width: 50rem;
+}

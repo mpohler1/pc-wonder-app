@@ -58,9 +58,16 @@
     min-height: calc(100vh - 122px);
 }
 
+.under-nav {
+    top: 122px;
+}
+
 @media screen and (min-width: 640px) {
     .page {
         min-height: calc(100vh - 68px);
+    }
+    .under-nav {
+        top: 68px;
     }
 }
 
@@ -80,7 +87,7 @@
     vertical-align: middle;
 }
 
-.order-total {
+.cart-total {
     height: 4rem;
 }
 

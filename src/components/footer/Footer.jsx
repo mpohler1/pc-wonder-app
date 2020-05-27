@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {convertSpacesToHyphens} from "../../service/urlConverter";
-import {CATEGORY_QUERY, PRODUCT_GRID} from "../../resources/routes";
+import {CART, CATEGORY_QUERY, CHECKOUT, ORDER_CONFIRMATION, PRODUCT_GRID} from "../../resources/routes";
 
 class Footer extends Component {
 
@@ -37,19 +37,19 @@ class Footer extends Component {
                                     <div className="col">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                                    onClick={() => this.history.push(PRODUCT_GRID)}>
+                                                    onClick={() => this.props.history.push(PRODUCT_GRID)}>
                                                 Home
                                             </button>
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                            >
+                                                    onClick={() => this.props.history.push(CART)}>
                                                 Cart
                                             </button>
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                            >
+                                                    onClick={() => this.props.history.push(CHECKOUT)}>
                                                 Checkout
                                             </button>
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                            >
+                                                    onClick={() => this.props.history.push(ORDER_CONFIRMATION)}>
                                                 Order Confirmation
                                             </button>
                                         </div>

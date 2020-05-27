@@ -20,6 +20,10 @@
     border-bottom-right-radius: 0;
 }
 
+.navbar-main {
+    z-index: 1021;
+}
+
 .drawer {
     height: 100vh;
     width: fit-content;

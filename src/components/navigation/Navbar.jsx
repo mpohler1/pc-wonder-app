@@ -6,8 +6,8 @@ import {connect} from "react-redux";
 import Brand from "./Brand";
 import {setScrollYAndStickyTop} from "../../actions/actions";
 
-const CLASS_LIST_WITH_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 sticky-top";
-const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0";
+const CLASS_LIST_WITH_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 sticky-top navbar-main";
+const CLASS_LIST_WITHOUT_STICKY_TOP = "container-fluid navbar navbar-dark bg-dark pr-0 navbar-main";
 
 class Navbar extends Component {
 

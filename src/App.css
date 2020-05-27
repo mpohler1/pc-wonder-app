@@ -3,6 +3,10 @@
     height: 230px;
 }
 
+.cart-product-thumbnail {
+    max-width: 200px;
+}
+
 .product-full {
     object-fit: contain;
     height: auto;
@@ -76,12 +80,8 @@
     vertical-align: middle;
 }
 
-.cart-footer {
+.order-total {
     height: 4rem;
-}
-
-.cart-item-list {
-    margin-bottom: 4rem;
 }
 
 .dropdown-menu {

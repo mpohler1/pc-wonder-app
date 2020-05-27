@@ -38,12 +38,12 @@ class ItemList extends Component {
 
     render() {
         return (
-            <div className="container-fluid cart-item-list">
+            <div className="container-fluid">
                 {
                     this.props.items.map(item => (
                         <div className={item.product.id === this.props.items[0].product.id ? CLASS_LIST_WITH_BORDER_TOP : CLASS_LIST_WITHOUT_BORDER_TOP}>
                             <div className="col col-md-4 col-lg-3">
-                                <img className="btn card-img"
+                                <img className="btn card-img cart-product-thumbnail"
                                      src={item.product.imageURL}
                                      alt={"Thumbnail for" + item.product.name}
                                      onClick={() => this.handleProductClick(item.product)}/>

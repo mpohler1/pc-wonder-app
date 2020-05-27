@@ -26,21 +26,21 @@ class Cart extends Component {
                 {
                     this.props.items.length > 0 &&
                         <div className="container-fluid page">
-                            <div className="row row-cols-1">
-                                <div className="col col-lg-9 p-0 p-sm-2 p-md-3">
-                                    <ItemList/>
+                            <div className="row sticky-top">
+                                <div className="container-fluid bg-white">
+                                    <div className="row border-top border-secondary border-bottom d-flex flex-row align-items-center order-total">
+                                        <h3 className="d-inline-block mr-2 ml-auto">
+                                            Total: ${this.props.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}
+                                        </h3>
+                                        <button className="btn btn-primary mr-auto ml-2"
+                                                onClick={() => this.handleCheckoutButton()}>
+                                            Checkout
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="container-fluid fixed-bottom bg-white border-top border-secondary cart-footer">
-                                <div className="d-flex flex-row align-items-center text-nowrap p-2">
-                                    <h3 className="d-inline-block mr-2 ml-auto">
-                                        Total: ${this.props.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0).toFixed(2)}
-                                    </h3>
-                                    <button className="btn btn-primary mr-auto ml-2"
-                                            onClick={() => this.handleCheckoutButton()}>
-                                        Checkout
-                                    </button>
-                                </div>
+                            <div className="row row-cols-1">
+                                <ItemList/>
                             </div>
                         </div>
                 }

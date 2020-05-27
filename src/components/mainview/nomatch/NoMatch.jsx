@@ -4,14 +4,16 @@ class NoMatch extends Component {
 
     render() {
         return (
-            <div className="container-fluid d-flex flex-row align-items-center page">
-                <div className="container-fluid d-flex flex-column align-items-center">
-                    <h1 className="display-4">
-                        Page not found.
-                    </h1>
-                    <p>
-                        A page with this URL could not be found.
-                    </p>
+            <div className="container-fluid">
+                <div className="row d-flex flex-row align-items-center page">
+                    <div className="col d-flex flex-column align-items-center">
+                        <h1 className="display-4">
+                            Page not found.
+                        </h1>
+                        <p>
+                            A page with this URL could not be found.
+                        </p>
+                    </div>
                 </div>
             </div>
         );

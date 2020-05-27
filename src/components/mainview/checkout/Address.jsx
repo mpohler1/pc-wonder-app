@@ -53,7 +53,7 @@ class Address extends Component {
         return (
             <div className="row">
                 <div className="col">
-                    <div className="form-row my-2">
+                    <div className="form-row mb-2">
                         <div className="col">
                             <label htmlFor="name">
                                 Name

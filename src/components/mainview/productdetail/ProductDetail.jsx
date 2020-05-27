@@ -56,23 +56,25 @@ class ProductDetail extends Component {
             <React.Fragment>
                 {
                     !this.props.product &&
-                    <div className="container-fluid d-flex flex-row align-items-center page">
-                        <div className="container-fluid d-flex flex-column align-items-center">
-                            <h1 className="display-4">
-                                Product not found.
-                            </h1>
-                            <p>
-                                A product associated with this page could not be found.
-                            </p>
+                    <div className="container-fluid">
+                        <div className="row d-flex flex-row align-items-center page">
+                            <div className="col d-flex flex-column align-items-center">
+                                <h1 className="display-4">
+                                    Product not found.
+                                </h1>
+                                <p>
+                                    A product associated with this page could not be found.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 }
                 {
                     this.props.product &&
                     <div className="container-fluid d-flex flex-column align-items-center page px-0">
-                        <div className="d-flex flex-nowrap flex-row align-items-center my-auto">
+                        <div className="d-flex flex-nowrap flex-row align-items-center my-xl-auto">
                             <div className="col">
-                                <div className="row row-cols-1 row-cols-sm-12 mt-3">
+                                <div className="row row-cols-1 row-cols-sm-12 my-3">
                                     <div className="col col-md-6 col-lg-8 mb-2 my-xl-auto">
                                         <img src={this.props.product.imageURL}
                                              className="card card-img product-full p-0"

@@ -102,14 +102,16 @@ class ProductGrid extends Component {
             <React.Fragment>
                 {
                     this.props.products.length === 0 &&
-                    <div className="container-fluid d-flex flex-row align-items-center page">
-                        <div className="container-fluid d-flex flex-column align-items-center">
-                            <h1 className="display-4">
-                                No products found.
-                            </h1>
-                            <p>
-                                No products could be found for the search query "{this.props.searchString}".
-                            </p>
+                    <div className="container-fluid">
+                        <div className="row d-flex flex-row align-items-center page">
+                            <div className="col d-flex flex-column align-items-center">
+                                <h1 className="display-4">
+                                    No products found.
+                                </h1>
+                                <p>
+                                    No products could be found for the search query "{this.props.searchString}".
+                                </p>
+                            </div>
                         </div>
                     </div>
                 }

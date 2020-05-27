@@ -18,13 +18,15 @@ class Cart extends Component {
             <React.Fragment>
                 {
                     this.props.items.length === 0 &&
-                        <div className="container-fluid d-flex flex-row align-items-center page">
-                            <div className="container-fluid d-flex flex-column align-items-center">
+                    <div className="container-fluid">
+                        <div className="row d-flex flex-row align-items-center page">
+                            <div className="col d-flex flex-column align-items-center">
                                 <h1 className="display-4">
                                     Your cart is empty.
                                 </h1>
                             </div>
                         </div>
+                    </div>
                 }
                 {
                     this.props.items.length > 0 &&

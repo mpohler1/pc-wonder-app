@@ -21,8 +21,8 @@ class OrderConfirmation extends Component {
                 }
                 {
                     this.props.order.length > 0 &&
-                    <div className="container-fluid mt-2">
-                        <div className="row">
+                    <div className="container-fluid page">
+                        <div className="row mt-2">
                             <div className="col">
                                 <h4>
                                     Your order has been placed.

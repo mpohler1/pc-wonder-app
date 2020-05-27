@@ -14,11 +14,11 @@ import ScrollToTop from "./components/utility/ScrollToTop";
 ReactDOM.render(
     <Provider store={store}>
         <ToastContainer/>
-            <BrowserRouter>
-                <ScrollToTop>
-                    <App />
-                </ScrollToTop>
-            </BrowserRouter>
+        <BrowserRouter>
+            <ScrollToTop>
+                <App />
+            </ScrollToTop>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );

@@ -1,7 +1,14 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import {convertSpacesToHyphens} from "../../service/urlConverter";
+import {CATEGORY_QUERY, PRODUCT_GRID} from "../../resources/routes";
 
 class Footer extends Component {
+
+    handleCategoryLinkClick(category) {
+        this.props.history.push(PRODUCT_GRID + CATEGORY_QUERY + convertSpacesToHyphens(category.name.toLowerCase()));
+    }
 
     render() {
         return (
@@ -30,7 +37,7 @@ class Footer extends Component {
                                     <div className="col">
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                                    >
+                                                    onClick={() => this.history.push(PRODUCT_GRID)}>
                                                 Home
                                             </button>
                                             <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
@@ -62,7 +69,7 @@ class Footer extends Component {
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             {this.props.categories.slice(0, this.props.categories.length/2+1).map(category => (
                                                 <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                                            onClick={() => this.handleDrawerListClick(category.name.toLowerCase())}>
+                                                            onClick={() => this.handleCategoryLinkClick(category)}>
                                                         {category.name}
                                                 </button>
                                             ))}
@@ -72,7 +79,7 @@ class Footer extends Component {
                                         <div className="d-flex flex-column flex-nowrap align-items-start">
                                             {this.props.categories.slice(this.props.categories.length/2+1, this.props.categories.length).map(category => (
                                                 <button className="nav-item btn nav-link text-white-50 text-nowrap p-0"
-                                                    onClick={() => this.handleDrawerListClick(category.name.toLowerCase())}>
+                                                    onClick={() => this.handleCategoryLinkClick(category)}>
                                                     {category.name}
                                                 </button>
                                             ))}
@@ -125,4 +132,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, {})(Footer);
+export default withRouter(connect(mapStateToProps, {})(Footer));

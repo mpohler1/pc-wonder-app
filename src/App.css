@@ -66,7 +66,7 @@
     top: 122px;
 }
 
-@media screen and (min-width: 640px) {
+@media screen and (min-width: 576px) {
     .page {
         min-height: calc(100vh - 68px);
     }

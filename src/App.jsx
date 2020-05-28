@@ -14,7 +14,6 @@ import {
 } from "./actions/actions";
 import Drawer from "./components/navigation/Drawer";
 import {SM_BREAKPOINT, XXL_BREAKPOINT} from "./resources/breakpoints";
-import ScrollToTop from "./components/utility/ScrollToTop";
 
 class App extends Component{
 

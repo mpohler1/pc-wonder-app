@@ -1,8 +1,8 @@
 import {
     FETCH_PRODUCT_SUCCESS,
-    FETCH_PRODUCTS_SUCCESS, SET_CATEGORY,
+    FETCH_PRODUCTS_SUCCESS,
     SET_DETAIL_PRODUCT,
-    SET_QUANTITY_IN_PRODUCT_DETAIL, SET_SEARCH_BAR_TEXT
+    SET_QUANTITY_IN_PRODUCT_DETAIL
 } from "../actions/actionTypes";
 
 function productReducer(state = {list: [], quantity: 0}, action) {

@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/pc-wonder-app/static/css/main.d502b3d7.chunk.css",
-    "main.js": "/pc-wonder-app/static/js/main.3c2df3aa.chunk.js",
-    "main.js.map": "/pc-wonder-app/static/js/main.3c2df3aa.chunk.js.map",
+    "main.js": "/pc-wonder-app/static/js/main.5666b05c.chunk.js",
+    "main.js.map": "/pc-wonder-app/static/js/main.5666b05c.chunk.js.map",
     "runtime-main.js": "/pc-wonder-app/static/js/runtime-main.73c1e66b.js",
     "runtime-main.js.map": "/pc-wonder-app/static/js/runtime-main.73c1e66b.js.map",
     "static/css/2.1f9d7074.chunk.css": "/pc-wonder-app/static/css/2.1f9d7074.chunk.css",
     "static/js/2.b9521058.chunk.js": "/pc-wonder-app/static/js/2.b9521058.chunk.js",
     "static/js/2.b9521058.chunk.js.map": "/pc-wonder-app/static/js/2.b9521058.chunk.js.map",
     "index.html": "/pc-wonder-app/index.html",
-    "precache-manifest.d9d2b914a8e3173ed7c847a10d9c4e55.js": "/pc-wonder-app/precache-manifest.d9d2b914a8e3173ed7c847a10d9c4e55.js",
+    "precache-manifest.1bab52741bf5babacd268c882f1bb014.js": "/pc-wonder-app/precache-manifest.1bab52741bf5babacd268c882f1bb014.js",
     "service-worker.js": "/pc-wonder-app/service-worker.js",
     "static/css/2.1f9d7074.chunk.css.map": "/pc-wonder-app/static/css/2.1f9d7074.chunk.css.map",
     "static/css/main.d502b3d7.chunk.css.map": "/pc-wonder-app/static/css/main.d502b3d7.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.1f9d7074.chunk.css",
     "static/js/2.b9521058.chunk.js",
     "static/css/main.d502b3d7.chunk.css",
-    "static/js/main.3c2df3aa.chunk.js"
+    "static/js/main.5666b05c.chunk.js"
   ]
 }

@@ -7,20 +7,20 @@ import './App.css'
 import App from './App';
 import {Provider} from "react-redux";
 import store from "./store/store";
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {ToastContainer} from "react-toastify";
 import ScrollToTop from "./components/utility/ScrollToTop";
 import ScrollMemory from 'react-router-scroll-memory';
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ToastContainer/>
-        <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL} hashType="slash">
+        <Provider store={store}>
+            <ToastContainer/>
             <ScrollMemory/>
             <ScrollToTop>
                 <App />
             </ScrollToTop>
-        </BrowserRouter>
-    </Provider>,
+        </Provider>
+    </HashRouter>,
     document.getElementById('root')
 );

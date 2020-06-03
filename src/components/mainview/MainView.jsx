@@ -4,10 +4,10 @@ import ProductDetail from "./productdetail/ProductDetail";
 import Cart from "./cart/Cart";
 import Checkout from "./checkout/Checkout";
 import {
-    BASE_URL,
     CART_SCHEME,
     CHECKOUT_SCHEME,
-    ORDER_CONFIRMATION_SCHEME, PRIVACY_POLICY_SCHEME,
+    ORDER_CONFIRMATION_SCHEME,
+    PRIVACY_POLICY_SCHEME,
     PRODUCT_DETAIL_SCHEME,
     PRODUCT_GRID_SCHEME
 } from "../../resources/routes";
@@ -21,7 +21,7 @@ class MainView extends Component {
     render() {
         return (
             <Switch>
-                <Redirect exact from={BASE_URL} to={PRODUCT_GRID_SCHEME}/>
+                <Redirect exact from={"/"} to={PRODUCT_GRID_SCHEME}/>
                 <Route path={PRODUCT_GRID_SCHEME} exact component={ProductGrid}/>
                 <Route path={PRODUCT_DETAIL_SCHEME} component={ProductDetail}/>
                 <Route path={CART_SCHEME} component={Cart}/>

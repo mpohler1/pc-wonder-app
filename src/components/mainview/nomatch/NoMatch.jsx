@@ -2,6 +2,10 @@ import React, {Component} from "react";
 
 class NoMatch extends Component {
 
+    componentDidMount() {
+        document.title = "Page Not Found";
+    }
+
     render() {
         return (
             <div className="container-fluid">

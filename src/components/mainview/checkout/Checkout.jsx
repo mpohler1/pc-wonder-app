@@ -6,6 +6,10 @@ import {connect} from "react-redux";
 
 class Checkout extends Component {
 
+    componentDidMount() {
+        document.title = "Checkout";
+    }
+
     render() {
         return (
             <div className="container-fluid">

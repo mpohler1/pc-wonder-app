@@ -13,6 +13,10 @@ class Cart extends Component {
         this.props.history.push(CHECKOUT);
     }
 
+    componentDidMount() {
+        document.title = "Cart";
+    }
+
     render() {
         return (
             <React.Fragment>

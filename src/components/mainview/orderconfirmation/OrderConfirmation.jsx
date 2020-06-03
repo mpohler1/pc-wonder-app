@@ -3,6 +3,10 @@ import {connect} from "react-redux";
 
 class OrderConfirmation extends Component {
 
+    componentDidMount() {
+        document.title = "Order Confirmation";
+    }
+
     render() {
         return (
             <React.Fragment>

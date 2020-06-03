@@ -39,6 +39,22 @@ class ProductGrid extends Component {
     * logic that ensures the calls are used in a mutually exclusive way. This all will change when filtering is added.
     **/
 
+    determinePageTitle() {
+        if (!this.props.location.search) {
+            document.title = "All Products";
+        } else {
+            const parsedQuery = queryString.parse(convertHyphensToSpaces(this.props.location.search));
+            // Needs to change when no longer mutually exclusive
+            if (parsedQuery.category) {
+                document.title = parsedQuery.category;
+            } else if (parsedQuery.search) {
+                document.title = parsedQuery.search;
+            } else {
+                document.title = "Products";
+            }
+        }
+    }
+
     determineProductList() {
         if (this.props.location.search) {
             const parsedQuery = queryString.parse(convertHyphensToSpaces(this.props.location.search));
@@ -88,11 +104,13 @@ class ProductGrid extends Component {
     }
 
     componentDidMount() {
+        this.determinePageTitle();
         this.determineProductList();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.location.search !== this.props.location.search) {
+            this.determinePageTitle();
             this.determineProductList();
         }
     }

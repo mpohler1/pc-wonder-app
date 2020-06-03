@@ -52,10 +52,14 @@ class ProductDetail extends Component {
             fetchProductByUUID(uuid).then(([response, json]) => {
                 if (response.status === 200) {
                     this.props.fetchProductSuccess(json);
+                    document.title = this.props.product.name;
                 } else {
                     this.props.fetchProductFailure();
+                    document.title = "Product Not Found";
                 }
             })
+        } else {
+            document.title = this.props.product.name;
         }
     }
 

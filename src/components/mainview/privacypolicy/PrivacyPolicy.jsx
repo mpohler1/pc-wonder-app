@@ -3,6 +3,10 @@ import {privacyPolicy} from "../../../resources/privacyPolicy";
 
 class PrivacyPolicy extends Component {
 
+    componentDidMount() {
+        document.title = "Privacy Policy";
+    }
+
     render() {
         return (
             <div className="container-fluid">

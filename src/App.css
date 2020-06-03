@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+.product-thumbnail {
+    object-fit: cover;
+    height: 230px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cart-product-thumbnail {
+    max-width: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.product-full {
+    object-fit: contain;
+    height: auto;
+    max-height: 80vh;
+    border: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-card-img-top {
+    border: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-main {
+    z-index: 1021;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drawer {
+    height: 100vh;
+    width: fit-content;
+    position: fixed;
+    top: 0;
+}
+
+.drawer-list {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.drawer-shadow {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.brand {
+    font-size: 1.75rem;
+}
+
+.quantity {
+    max-width: 4rem;
+}
+
+.specification-box {
+    max-height: 61vh;
+    overflow-y: auto;
+}
+
+.page {
+    min-height: calc(100vh - 122px);
+}
+
+.under-nav {
+    top: 122px;
+}
+
+@media screen and (min-width: 576px) {
+    .page {
+        min-height: calc(100vh - 68px);
+    }
+    .under-nav {
+        top: 68px;
+    }
+}
+
+.footer {
+    min-height: 40vh;
+}
+
+.footer-content {
+    max-width: 1400px;
+}
+
+.bg-black {
+    background-color: #1c1f22;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.cart-total {
+    height: 4rem;
+}
+
+.dropdown-menu {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.privacy-policy {
+    max-width: 50rem;
 }

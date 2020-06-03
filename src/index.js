@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'open-iconic/font/css/open-iconic-bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {Provider} from "react-redux";
+import store from "./store/store";
+import {HashRouter} from "react-router-dom";
+import {ToastContainer} from "react-toastify";
+import ScrollToTop from "./components/utility/ScrollToTop";
+import ScrollMemory from 'react-router-scroll-memory';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <HashRouter>
+        <Provider store={store}>
+            <ToastContainer/>
+            <ScrollMemory/>
+            <ScrollToTop>
+                <App />
+            </ScrollToTop>
+        </Provider>
+    </HashRouter>,
+    document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();

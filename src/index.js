@@ -13,7 +13,7 @@ import ScrollToTop from "./components/utility/ScrollToTop";
 import ScrollMemory from 'react-router-scroll-memory';
 
 ReactDOM.render(
-    <HashRouter basename={process.env.PUBLIC_URL} hashType="slash">
+    <HashRouter>
         <Provider store={store}>
             <ToastContainer/>
             <ScrollMemory/>

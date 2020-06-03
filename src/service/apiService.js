@@ -1,4 +1,4 @@
-const apiURL = "http://192.168.1.69:8080";
+const apiURL = "https://api.masonpohler.com:3000";
 
 export function fetchCategories() {
     const endpoint = apiURL + "/categories";

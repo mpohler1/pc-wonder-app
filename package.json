@@ -1,6 +1,6 @@
 {
   "homepage": "https://www.masonpohler.com/pc-wonder-app",
-  "name": "pc-wonder-app",
+  "name": "pc-wonder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

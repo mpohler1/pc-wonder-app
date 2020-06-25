@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b21b512b1fa00e2d54f08f8bd5003844",
+    "revision": "9bea505ee00f539248f271c8e25b5f8c",
     "url": "/pc-wonder-app/index.html"
   },
   {

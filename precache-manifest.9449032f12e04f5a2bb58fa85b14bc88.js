@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9bea505ee00f539248f271c8e25b5f8c",
+    "revision": "10d94dce436aa5b3329b465a9e2cab28",
     "url": "/pc-wonder-app/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pc-wonder-app/static/css/2.1f9d7074.chunk.css"
   },
   {
-    "revision": "bd09cda8cc91c64e4db7",
+    "revision": "7bd671aa60c575cfa58d",
     "url": "/pc-wonder-app/static/css/main.d502b3d7.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pc-wonder-app/static/js/2.69624d6f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "bd09cda8cc91c64e4db7",
-    "url": "/pc-wonder-app/static/js/main.4e1b39b0.chunk.js"
+    "revision": "7bd671aa60c575cfa58d",
+    "url": "/pc-wonder-app/static/js/main.c6d7193d.chunk.js"
   },
   {
     "revision": "6eb4c1741309d6856d61",

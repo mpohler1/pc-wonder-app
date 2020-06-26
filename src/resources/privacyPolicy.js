@@ -1,5 +1,5 @@
 export const privacyPolicy = {
-    siteURL: "masonpohler.com/pc-wonder-app",
+    siteURL: "https://mpohler1.github.io/pc-wonder-app",
     effectiveDate: "May 27th, 2020",
     content: [
         "This site uses an application state in order to function. This application state is stored in your " +
